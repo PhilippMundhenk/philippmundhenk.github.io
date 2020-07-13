@@ -12,7 +12,7 @@ I use this website to publish information about projects I am pursuing both prof
 
 # Curriculum Vitae
 The following is a list of my professional and educational experience.
-- [Professional Experience](https://www.mundhenk.org/about#ProfessionalExperience)
+- [Professional Experience](about#professional-experience)
 - [Education](https://www.mundhenk.org/about#Education)
 - [Awards](https://www.mundhenk.org/about#Awards)
 - [Publications](https://www.mundhenk.org/publications)
@@ -58,7 +58,7 @@ Task: Optimization of an embedded communications stack
 at (http://www.embex.de)[embeX GmbH] in Freiburg, Germany
 Tasks: Software development in industrial communications using multiple standards (wired and wireless]
 
-## Education]
+## Education
 
 ###### since 2012: Doctoral Candidate
 in **Electrical and Computer Engineering (Elektro- und Informationstechnik]**
@@ -100,6 +100,7 @@ and (http://www.embex.de)[embeX GmbH], Freiburg
 from the (http://www.open.ac.uk)[Open University London]
 
 ## Awards
+
 **2019**: (https://dl.acm.org/journal/todaes/honors-and-awards)[2019 ACM Transactions on Design Automation of Electronic Systems [TODAES] Best Paper Award popup:yes]
 **2015**: Participant at the (http://www.nrf.gov.sg/gyss@one-north-2015)[Global Young Scientists Summit [GYSS] popup:yes]
 **2012**: Graduated among top 10 students, (http://www.tum.de)[Technische Universität München [TUM] popup:yes]
