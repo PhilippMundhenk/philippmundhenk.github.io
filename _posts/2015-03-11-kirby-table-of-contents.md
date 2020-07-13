@@ -7,8 +7,9 @@ categories: [home, kirby, tech]
 # Introduction
 For longer blog entries, it would be nice to be able to divide them into different sections and show a table of contents, such as done on this site. While Kirby, the CMS I am using for this site, allows to add different levels of headlines by adding one or multiple # in front of text, it does not automatically create anchors, which can be linked to. Additionally, there is no option to automatically create a table of contents of a page.
 
-###### NOTE:
-> This is for Kirby 2. It might work for Kirby 1 as [Kirbytext Extension Plugin](http://getkirby.com/blog/kirbytext), but I have not tested that. It is untested for Kirby 3
+NOTE:
+> This is for Kirby 2. It might work for Kirby 1 as [Kirbytext Extension Plugin](http://getkirby.com/blog/kirbytext), but I have not tested that.
+> It is untested for Kirby 3
 
 ## Installation
 To install the script, [download it](https://github.com/PhilippMundhenk/Kirby-Table-of-Contents) and simply place it in the *site/tags* folder within your Kirby installation.
@@ -39,7 +40,7 @@ new: (l6: Headline6)
 ### Table of Contents
 I created an additional tag, which allows to automatically create a table of contents, based on the above headline definitions:
 ```
-(TOC: 6) *not: use small toc, had to use capital to avoid interpretation
+(toc: 6)
 ```
 The parameter given to the table of contents tag is the number of levels that shall be shown in the table. I do not always want to show a full table, but maybe only the first one, two or three levels. This can be accomplished by setting the parameter to the respective value.
 
@@ -48,7 +49,7 @@ Further, the script only selects headlines from level 2 onwards, as I am using l
 ## Issues
 The table of contents currently does not implement all special characters. If used in a headline, the link might not work.
 
-In the future a nicer or adaptable design of the table of contents could be nice. For now, this needs to be adapted manually by replacing the "|" in the PHP code.
+In the future a nicer or adaptable design of the table of contents could be nice. For now, this needs to be adapted manually by replacing the connector in the PHP code.
 
 ## Download
 The script is available on [GitHub](https://github.com/PhilippMundhenk/bib-publication-list)
