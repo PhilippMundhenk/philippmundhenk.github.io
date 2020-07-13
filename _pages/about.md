@@ -149,7 +149,8 @@ from the [Open University London](http://www.open.ac.uk), in combination with [B
 ## Talks
 
 ###### 2020:
-**Automotive Software Architecture & Patterns**, Technische Universität München (TUM), Munich, Germany
+- **Automotive Software Architecture & Patterns**, Technische Universität München (TUM), Munich, Germany
+- **Fusion: A Safe and Secure Software Platform for Autonomous Driving**, Autonomous Systems Design (DATE), Grenoble, France
 
 ###### 2019:
 **Automotive Software Architecture & Patterns**, Technische Universität München (TUM), Munich, Germany
