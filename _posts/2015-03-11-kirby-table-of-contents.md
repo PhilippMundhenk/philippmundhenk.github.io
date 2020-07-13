@@ -4,7 +4,6 @@ title: Kirby Table of Contents
 categories: [home, kirby, tech]
 ---
 
-# Introduction
 For longer blog entries, it would be nice to be able to divide them into different sections and show a table of contents, such as done on this site. While Kirby, the CMS I am using for this site, allows to add different levels of headlines by adding one or multiple # in front of text, it does not automatically create anchors, which can be linked to. Additionally, there is no option to automatically create a table of contents of a page.
 
 NOTE:
