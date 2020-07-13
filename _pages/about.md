@@ -12,7 +12,7 @@ I use this website to publish information about projects I am pursuing both prof
 
 # Curriculum Vitae
 The following is a list of my professional and educational experience.
-- [Professional Experience](professional-experience)
+- [Professional Experience](#professional-experience)
 - [Education](#education)
 - [Awards](#awards)
 - [Publications](#publications)
@@ -45,7 +45,7 @@ at [TUM CREATE](http://www.tum-create.com.sg) in Singapore
 Topics:
 - Research in Automotive Network Security (Authentication & Authorization Protocols, Architecture Verification, Scheduling, ...]
 - Responsible for the development of the infotainment system in the electric taxi EVA: www.eva-taxi.sg
-- Results available in my book [Amazon](https://www.amazon.de/dp/3736996047) or online (https://www.mundhenk.org/publications]
+- Results available in my book [Amazon](https://www.amazon.de/dp/3736996047) or online (https://www.mundhenk.org/publications)
 
 ###### 2012: Research Assistant
 at [TUM CREATE](http://www.tum-create.com.sg) in Singapore
@@ -61,16 +61,17 @@ Tasks: Software development in industrial communications using multiple standard
 
 ## Education
 
-###### since 2012: Doctoral Candidate
+###### 2012 - 2017: Doctoral Candidate
 in **Electrical and Computer Engineering (Elektro- und Informationstechnik)**
 at [TUM CREATE](http://www.tum-create.com.sg),
 [Technical University Munich (TUM)](http://www.tum.de)
 and [Nanyang Technological University (NTU)](http://www.ntu.edu.sg) Interdisciplinary Graduate School (IGS)
 under the NTU-TUM Joint PhD Programme
 with supervisors [Prof. Dr. Sc. Samarjit Chakraborty](http://www.rcs.ei.tum.de/staff/chakraborty/) and [Assoc. Prof. Suhaib A. Fahmy](http://suhaibfahmy.com/)
-Topics:
-- Secure Communication and Verification for Electric Vehicles
-- Pervasive Human Machine Interfaces for Electric Vehicles
+
+Topic: "Security for Automotive Electrical/Electronic (E/E) Architectures"
+
+*Grade: Summa Cum Laude*
 
 ###### 2012: Internship & Master-Thesis
 at [TUM CREATE](http://www.tum-create.com.sg) in Singapore
@@ -102,15 +103,15 @@ from the [Open University London](http://www.open.ac.uk)
 
 ## Awards
 
-**2019**: [2019 ACM Transactions on Design Automation of Electronic Systems (TODAES) Best Paper Award](https://dl.acm.org/journal/todaes/honors-and-awards)
-**2015**: Participant at the [Global Young Scientists Summit (GYSS)](http://www.nrf.gov.sg/gyss@one-north-2015)
-**2012**: Graduated among top 10 students, [Technische Universität München (TUM)](http://www.tum.de)
-**2012**: [Prof. Dr.-Ing. Erich Müller-Stiftung Scholarship](http://stiftungen.stifterverband.info/t001_muellererich/index.html)
-**2011**: [PROMOS scholarship](http://www.daad.de/promos/)
-**2010 - 2012**: [Siemens Master Program Scholarship](http://www.siemens.de/jobs/studenten/studentenprogramme/smp/seiten/default.aspx)
-**2010 - 2011**: [e-fellows.net scholarship](http://www.e-fellows.net)
-**2009**: Scholarship of the Landesstiftung Baden-Württemberg [Baden-Württemberg Stipendium](http://www.bw-stipendium.de)
-**2007 - 2010**: Best degree in year, [Baden-Wuerttemberg Cooperative State University Loerrach [Duale Hochschule Baden-Württemberg (DHBW) Lörrach]](http://www.dhbw-loerrach.de)
+- **2019**: [2019 ACM Transactions on Design Automation of Electronic Systems (TODAES) Best Paper Award](https://dl.acm.org/journal/todaes/honors-and-awards)
+- **2015**: Participant at the [Global Young Scientists Summit (GYSS)](http://www.nrf.gov.sg/gyss@one-north-2015)
+- **2012**: Graduated among top 10 students, [Technische Universität München (TUM)](http://www.tum.de)
+- **2012**: [Prof. Dr.-Ing. Erich Müller-Stiftung Scholarship](http://stiftungen.stifterverband.info/t001_muellererich/index.html)
+- **2011**: [PROMOS scholarship](http://www.daad.de/promos/)
+- **2010 - 2012**: [Siemens Master Program Scholarship](http://www.siemens.de/jobs/studenten/studentenprogramme/smp/seiten/default.aspx)
+- **2010 - 2011**: [e-fellows.net scholarship](http://www.e-fellows.net)
+- **2009**: Scholarship of the Landesstiftung Baden-Württemberg [Baden-Württemberg Stipendium](http://www.bw-stipendium.de)
+- **2007 - 2010**: Best degree in year, [Baden-Wuerttemberg Cooperative State University Loerrach [Duale Hochschule Baden-Württemberg (DHBW) Lörrach]](http://www.dhbw-loerrach.de)
 
 ## Publications
 
