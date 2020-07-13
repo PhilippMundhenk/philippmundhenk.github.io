@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a Software Engineer at the (link: http://aid-driving.eu text: Autonomous Intelligent Driving GmbH popup: yes), a subsidiary of the (link: http://www.audi.de text: Audi AG popup: yes), focused on revolutionary approaches to autonomous driving. There, I am looking into middleware technologies and security questions for future automotive architectures.
+I am a Software Engineer at the [Autonomous Intelligent Driving GmbH](http://aid-driving.eu), a subsidiary of the [Audi AG](http://www.audi.de), focused on revolutionary approaches to autonomous driving. There, I am looking into middleware technologies and security questions for future automotive architectures.
 
 My hobbies relevant to and reflected on this website lie in areas adjacent to my research interests, mostly centered in the area of computer networks and computing applications.
 
