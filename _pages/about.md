@@ -95,13 +95,13 @@ with [Baden-Württemberg Stipendium](http://www.bw-stipendium.de) (state scholar
 
 ###### 2007-2010: Bachelor of Engineering (B. Eng.)
 in **Computer Engineering (Informationstechnik)**
-at [Baden-Wuerttemberg Cooperative State University Loerrach [Duale Hochschule Baden-Württemberg (DHBW) Lörrach]](http://www.dhbw-loerrach.de)
+at [Baden-Wuerttemberg Cooperative State University Loerrach (Duale Hochschule Baden-Württemberg (DHBW) Lörrach)](http://www.dhbw-loerrach.de)
 and [embeX GmbH](http://www.embex.de), Freiburg
 
 *awarded best degree in year*
 
 ###### 2007-2010: Bachelor of Engineering (B. Eng.] with Honors Upper Second Class
-from the [Open University London](http://www.open.ac.uk), in combination with [Baden-Wuerttemberg Cooperative State University Loerrach [Duale Hochschule Baden-Württemberg (DHBW) Lörrach]](http://www.dhbw-loerrach.de)
+from the [Open University London](http://www.open.ac.uk), in combination with [Baden-Wuerttemberg Cooperative State University Loerrach (Duale Hochschule Baden-Württemberg (DHBW) Lörrach)](http://www.dhbw-loerrach.de)
 
 ## Awards
 
@@ -113,7 +113,7 @@ from the [Open University London](http://www.open.ac.uk), in combination with [B
 - **2010 - 2012**: [Siemens Master Program Scholarship](http://www.siemens.de/jobs/studenten/studentenprogramme/smp/seiten/default.aspx)
 - **2010 - 2011**: [e-fellows.net scholarship](http://www.e-fellows.net)
 - **2009**: Scholarship of the Landesstiftung Baden-Württemberg [Baden-Württemberg Stipendium](http://www.bw-stipendium.de)
-- **2007 - 2010**: Best degree in year, [Baden-Wuerttemberg Cooperative State University Loerrach [Duale Hochschule Baden-Württemberg (DHBW) Lörrach]](http://www.dhbw-loerrach.de)
+- **2007 - 2010**: Best degree in year, [Baden-Wuerttemberg Cooperative State University Loerrach (Duale Hochschule Baden-Württemberg (DHBW) Lörrach)](http://www.dhbw-loerrach.de)
 
 ## Publications
 
