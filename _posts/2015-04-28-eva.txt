@@ -1,0 +1,117 @@
+Title: EVA - The Electric Taxi
+
+----
+
+Date: 2015-04-28
+
+----
+
+Description: 
+
+----
+
+Tags: work,TUM CREATE,EVA,infotainment,tech
+
+----
+
+Text: 
+
+(l2: Introduction)
+My employer TUM CREATE is a research organization centered around electric vehicles. In this context, it was decided to also build an actual electric vehicle. As taxis in Singapore account for 15% of all driven kilometers, though they only make up 3% of all vehicles. Thus, the leverage effect for environmental impact is especially high in this category of vehicles. Following this, TUM CREATE decided to build an electric taxi, designed for tropical megacities, such as Singapore. The outcome of this project is (link: http://www.eva-taxi.sg/ text: EVA popup:yes).
+
+I would like to use this article to give a short introduction to EVA, its development and highlight its features. I will go into more detail of the infotainment system in a separate article.
+
+##Content
+(toc: 5)
+
+(l2: History)
+The following is a short list of some of the most important events in the history of EVA:
+- **2011**: start of design
+- **2013-11**: EVA is presented at the Tokyo Motor Show with guest of honour, Professor Low Teck Seng, CEO of the Singapore (link: http://www.nrf.gov.sg/ text: National Research foundation [NRF])
+- **2014-10**: EVA receives the Bavarian State Prize for Electromobility, the "eCarTec Award"
+- **2015-04**: EVA is publicly launched with the first ride by Bertil Andersson, president of NTU and guest of honour, the German Ambassador to Singapore, Dr. Michael Witter
+
+(l3: Launch Event)
+The following video was released together with the launch of EVA and summarizes our motivation, the design, development and manufacturing process.
+(youtube: https://www.youtube.com/watch?v=3j3ruETQEzg)
+
+(l3: Making of EVA)
+This video shows a few more details on the construction process:
+(youtube: https://www.youtube.com/watch?v=ThZh4cYdkgY)
+
+(l2: Features)
+To address the requirements for electric taxis in tropical megacities, certain features are required. In a city like Singapore, temperatures are around 30 degrees Celsius all year round. Thus, an air conditioning is a necessity.  Further, taxis drive more than 500km a day, which is not straight-forward with battery powered vehicles. 
+
+(youtube: https://www.youtube.com/watch?v=WdgxC9p-m5w)
+
+To cover these requirements, EVA is built around a carbon fiber reinforced polymer (CFRP) body. This allows to reduce the weight of EVA significantly, compared to a steel structure. Further, EVA contains a fairly large battery of 50 kWh, which allows super fast charging with 360 A at 450 V. This way, it takes about 15 minutes to charge 200km of range.
+We further integrated an efficient air conditioning, cooling from the head of passengers first, thus reducing energy consumption. With this reduction of energy consumption, EVA can drive up to 200km on one charge in Singapore.
+
+(image: eva_cfrp_260.jpg caption: CFRP Body, source: TUM CREATE)
+
+To ensure the safety of young passengers, we also an innovative child seat. By folding over the front seat, it can be converted into a child seat, offering a safe seat for minors.
+
+(image: eva_child-seat_260.jpg caption: Child Seat Concept, source: TUM CREATE)
+
+Last, but not least, we added a fully integrated infotainment system, offering an interface for passenger smartphones, stereo sound per seat and payment functions, among others. I am particularly proud of this system, as I was a major contributor to this. I will describe the system in its own article soon.
+
+(image: eva_infotainment_260.jpg caption: Infotainment System, source: TUM CREATE)
+
+(l2: Photos)
+I would also like to show you a few selected photos of EVA.
+
+(image: eva_front_perspective.png caption: EVA Front, source: TUM CREATE)
+(image: eva_rear_perspective.png caption: EVA Rear, source: TUM CREATE)
+(image: eva_interior_driver.png caption: EVA Interior, source: TUM CREATE)
+(image: eva_detail_phone.png caption: Passenger Smartphone, source: TUM CREATE)
+
+(l2: Press Coverage)
+EVA has been covered in newspaper and magazine articles worldwide. The following is a selection of articles for the presentation at the Tokyo Motor Show, as well as for the launch event. These articles are in no specific order.
+
+(l3: Tokyo Motor Show)
+(link: http://www.straitstimes.com/breaking-news/singapore/story/cab-can-go-200km-15-minutes-charging-20131122 text: The Straits Times popup:yes)
+(link: http://inhabitat.com/super-fast-charging-eva-electric-taxi-unveiled-at-the-tokyo-motor-show/ text: Inhabitat popup:yes)
+(link: http://www.autoblog.com/2013/11/26/eva-electric-taxi-concept-geared-for-tropical-cities-cools-your/ text: autoblog popup:yes)
+(link: http://www.todayonline.com/singapore/electric-taxi-prototype-launched-motor-show text: TODAY newspaper popup:yes)
+(link: http://www.autobild.de/artikel/elektro-taxi-eva-tokyo-motor-show-2013-4461235.html text: AutoBild [German] popup:yes)
+(link: http://www.heise.de/autos/artikel/Klimaziel-2052898.html text: Heise Autos [German] popup:yes)
+(link: http://www.heise.de/newsticker/meldung/Elektrotaxi-EVA-fuer-Staedte-in-den-Tropen-2052296.html text: Heise online [German] popup:yes)
+(link: http://www.eetasia.com/ART_8800692303_765245_NT_9834279c.HTM text: EETimes Asia popup:yes)
+(link: http://www.golem.de/news/elektroauto-eva-das-e-taxi-fuer-die-tropen-1311-102895.html text: Golem.de [German] popup:yes)
+(link: http://motori.tiscali.it/feeds/13/12/09/t_70_20131209_news_900388.html text: tiscali: motori [Italian] popup:yes)
+(link: http://www.avem.fr/actualite-tum-create-eva-un-taxi-electrique-au-salon-de-tokyo-4598.html text: AVEM [French] popup:yes)
+(link: http://www.log.com.tr/15-dakika-sarjla-200-km-gidebilen-elektrikli-taksi/ text: Log [Turkish] popup:yes)
+(link: http://www.republika.co.id/berita/otomotif/mobil/13/11/27/mwx57y-isi-baterai-15-menit-taksi-ini-dapat-menempuh-200-km text: Republika Online [Indonesian] popup:yes)
+(link: http://paultan.org/2013/11/26/tum-create-eva-tms/ text: paultan.org popup:yes)
+(link: http://www.oekonews.at/index.php?mdoc_id=1085223 text: oekonews.at [German] popup:yes)
+(link: http://www.azocleantech.com/news.aspx?newsID=19225 text: AZoCleantech popup:yes)
+(link: http://www.ingenieur.de/Themen/Elektromobilitaet/Erstes-Elektrotaxi-fuer-tropische-Grossstaedte-entwickelt text: Ingenieur.de [German] popup:yes)
+(link: http://www.automobil-industrie.vogel.de/neuemodelle/articles/425984/ text: Automobil Industrie [German] popup:yes)
+(link: http://www.eco-business.com/press-releases/tum-create-showcases-ev-technologies-with-e-taxi-launch-at-tokyo/ text: Eco-Business popup:yes)
+(link: http://www.oneshift.com/news/8386/tum-create-showcases-future-ev-technologies-with-e-taxi-launch-at-tokyo text: Oneshift popup:yes)
+(link: http://www.sgcarmart.com/news/article.php?AID=9222 text: SGCarMart popup:yes)
+(link: http://dailyfusion.net/2013/11/fast-charging-electric-taxi-for-tropical-cities-presented-25247/ text: The Daily Fusion popup:yes)
+(link: http://evworld.com/news.cfm?newsid=31813 text: EV World popup:yes)
+(link: http://www.pddnet.com/news/2013/11/electric-taxi-eva-tropical-megacities text: Product Design & Development popup:yes)
+(link: http://www.transportweekly.com/pages/en/news/articles/105094/ text: transportweekly popup:yes)
+
+(l3: Launch Event)
+(link: http://www.channelnewsasia.com/news/technology/made-in-singapore-fast/1804176.html text: Channel News Asia [incl. video from national news])
+(link: http://eandt.theiet.org/news/2015/apr/electric-taxi-for-tropics.cfm text: E&T Engineering and Technology Magazine)
+(link: http://www.straitstimes.com/news/singapore/transport/story/made-singapore-electric-taxi-charges-fast-goes-the-distance-20150512#xtor=CS1-10 text: The Straits Times popup:yes)
+(link: http://www.spiegel.de/auto/aktuell/elektrotaxi-eva-fuer-tropische-megacities-a-1032824.html text: Spiegel Online [German] popup:yes)
+(link: http://www.welt.de/motor/news/article140269542/Elektroauto-Eva.html text: Die Welt [German] popup:yes)
+(link: http://www.focus.de/auto/news/elektroauto-eva-taxi-fuer-die-tropen_id_4647468.html text: Focus Online [German] popup:yes)
+(link: http://edition.cnn.com/2015/06/19/asia/singapore-ecocars/index.html text: CNN popup:yes)
+(link: https://www.mundhenk.org/content/2-blog/6-eva/haz_eva.jpg text: Hannoversche Allgemeine Zeitung [HAZ] [German] popup:yes)
+(link: http://www.todayonline.com/singapore/electric-taxi-designed-cool-riders-lesser-energy-unveiled-ntu text: TODAY newspaper)
+(link: http://www.businesstimes.com.sg/transport/ntu-linked-electric-taxi-unveiled text: The Business Times)
+(link: http://phys.org/news/2015-04-world-electric-taxi-tropical-megacities.html text: Phys.org)
+(link: http://www3.ntu.edu.sg/corpcomms2/Documents/2015/04_Apr/LHZB_150425_p14_Electric%20Taxi%20to%20test%20drive%20at%20NTU%20Campus.pdf text: Lianhe Zaobao [Chinese] popup:yes)
+(link: http://www.pddnet.com/news/2015/04/worlds-first-electric-taxi-tropics-designed text: Product Design & Development)
+(link: http://www.eurekalert.org/pub_releases/2015-04/ntu-nsa042415.php text: EurekAlert!)
+(link: http://www.nanowerk.com/news2/green/newsid=39870.php text: nanowerk)
+(link: http://www.xaluan.com/modules.php?name=News&file=article&sid=1151482 text: XaLuan [Vietnamese] popup:yes)
+(link: https://www.energylivenews.com/2015/04/26/worlds-coolest-taxi-evan-better/ text: Energy Live News)
+(link: http://www.azocleantech.com/news.aspx?newsID=21798 text: AZoCleantech)
+(link: http://www.globalbrandsmagazine.com/ntu-and-tum-design-worlds-first-electric-taxi-for-the-tropics/ text: Global Brands Magazine)
