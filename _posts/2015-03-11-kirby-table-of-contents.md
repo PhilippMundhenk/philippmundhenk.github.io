@@ -11,6 +11,9 @@ NOTE:
 > This is for Kirby 2. It might work for Kirby 1 as [Kirbytext Extension Plugin](http://getkirby.com/blog/kirbytext), but I have not tested that.
 > It is untested for Kirby 3
 
+## Content
+{:toc}
+
 ## Installation
 To install the script, [download it](https://github.com/PhilippMundhenk/Kirby-Table-of-Contents) and simply place it in the *site/tags* folder within your Kirby installation.
 
