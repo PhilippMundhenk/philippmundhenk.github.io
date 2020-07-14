@@ -4,7 +4,6 @@ title: Computing Cluster
 categories: [work, cluster, tech]
 ---
 
-## Introduction
 My work often crosses the areas of verification and optimization, which often require a large amount of computing power or memory. This holds especially whenever a large amount of testcases shall be solved. However, in many cases, e.g. with independent testcases, these computations can be easily parallelized, simply by calling a separate script for every testcase.
 
 In my current case, each testcase is a [PRISM](http://www.prismmodelchecker.org/) computation, which runs as a single thread, thus running on only one CPU core. The computations utilize this CPU core at 100%. As my workstation in the office has a quad core processor with Hyper-Threading, I have effectively 8 cores available to run these tasks in parallel. When the runtime of testcases increases to something like 24h, 8 cores can still be quite a bottleneck, when computing a higher number of testcases (e.g. 20). To speed up these computations, I implemented a small computing cluster, by utilizing all workstations with Linux-based operating systems that we have available at work.

@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Kirby BibTeX
-categories: home, kirby, tech
+categories: [home, kirby, tech]
 ---
 
-## Introduction
 While there exist a number of publication management tools on the web, I prefer to have my publications stored locally in a BibTeX file. This BibTeX file might be easy to parse for machines, but it is neither particularly nice for humans to read nor pretty. Luckily, there exist some projects out there using JavaScript to parse a BibTeX file into HTML and show this in a pretty manner. I base my work on the work of [Ville Karavirta](http://www.villekaravirta.com/publications/) and [Martin Lukasiewycz](https://github.com/lukasiewycz/lukasiewycz.github.io). Based on this I developed a small Kirby tag which allows to easily include a publications list into a Kirby page.
 
 > This is for Kirby 2. It might work for Kirby 1 as [Kirbytext Extension Plugin](http://getkirby.com/blog/kirbytext), but I have not tested that. 
