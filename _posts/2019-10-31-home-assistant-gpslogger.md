@@ -1,36 +1,20 @@
-Title: Home Assistant, GPSLogger & no open port
+---
+layout: post
+title: Home Assistant, GPSLogger & no open port
+categories: [home, automation]
+---
 
-----
-
-Date: 2019-10-31
-
-----
-
-Description: 
-
-----
-
-Tags: home,automation
-
-----
-
-Text: 
-
-(l2: Introduction)
 I have recently started venturing into the area of home automation a little more. As you can expect, my focus is running a system as flexible, functional and yet secure as possible. This involves to not use components connected to the Internet. The details of this, however, shall be the content of another article. There, I will introduce the hardware (currently undergoing changes) and platform I use.
-This article instead covers the higher-layer challenge of tracking Android phones positions (and via this the positions of people) with (link: https://gpslogger.app/  text: GPSLogger popup:yes) and bringing that information to (link: https://www.home-assistant.io/ text: Home Assistant popup:yes). While this works out of the box in Home Assistant, it requires Home Assistant, or, more specifically, the GPSLogger integration, to be available to the phone. This typically means an open port to the web server of Home Assistant. Seeing all the other control options available via the web interface, I did not want to risk exposing these, in case of a security incident. Thus, this article will present a solution to tunnel GPSLogger data into Home Assistant via a web server.
+This article instead covers the higher-layer challenge of tracking Android phones positions (and via this the positions of people) with [GPSLogger](https://gpslogger.app/) and bringing that information to [Home Assistant](https://www.home-assistant.io/). While this works out of the box in Home Assistant, it requires Home Assistant, or, more specifically, the GPSLogger integration, to be available to the phone. This typically means an open port to the web server of Home Assistant. Seeing all the other control options available via the web interface, I did not want to risk exposing these, in case of a security incident. Thus, this article will present a solution to tunnel GPSLogger data into Home Assistant via a web server.
 
-(l2: Content)
-(toc: 5)
-
-(l2: Caveats)
+## Caveats
 Lets start with the only downside of this: As the connection will need to be initiated from Home Assistant, this means, that the GPS data will be polled. This is of course not the most efficient way. To me, however, this is acceptable, as I do not require that data very frequently and can use a low polling interval, reducing the inefficiencies slightly.
 In this context, I can only recommend to also use an additional device_tracker platform, e.g., via ping or your router. While this is also often based on polling, you can set the update interval (scan_interval) a little shorter there, without sending packets around the world.
 
-(l2: Overview)
-The general approach works as follows: Instead of having GPSLogger call the REST endpoint of Home Assistant directly, it will be set up to call an address on a web server (such as the one this website is running on), which in turn will store the latest received sample (per device) to a file in JSON format. This file can be retrieved and interpreted by Home Assistant with a (link: https://www.home-assistant.io/integrations/rest/ text: RESTful Sensor popup:yes). Changes in the data will trigger an automation, which in turn calls a (link: https://www.home-assistant.io/integrations/rest_command/ text: RESTful Command popup:yes) to localhost, where the (link: https://www.home-assistant.io/integrations/gpslogger/ text: GPSLogger integration popup:yes) accepts this data. From there on, the data can be used as if directly injected to the GPSLogger integration.
+## Overview
+The general approach works as follows: Instead of having GPSLogger call the REST endpoint of Home Assistant directly, it will be set up to call an address on a web server (such as the one this website is running on), which in turn will store the latest received sample (per device) to a file in JSON format. This file can be retrieved and interpreted by Home Assistant with a [RESTful Sensor](https://www.home-assistant.io/integrations/rest/). Changes in the data will trigger an automation, which in turn calls a [RESTful Command](https://www.home-assistant.io/integrations/rest_command/) to localhost, where the [GPSLogger integration](https://www.home-assistant.io/integrations/gpslogger/) accepts this data. From there on, the data can be used as if directly injected to the GPSLogger integration.
 
-(l2: Server)
+## Server
 The data needs to be stored on an intermediate server. This requires a small PHP script in a protected folder. 
 
 ```php
@@ -60,7 +44,7 @@ The data needs to be stored on an intermediate server. This requires a small PHP
 ```
 This script will store the data received from GPSLogger in a JSON file, indexed by the device ID given with "?dev=". The resulting file could look something like this:
 
-```
+```json
 {
   "smartphone1": {
     "HDOP": "",
@@ -129,9 +113,9 @@ AuthUserFile /var/www/virtual/orillion/.htuser
 Require valid-user
 ```
 
-Make sure to also set up some users. Any (link: https://wiki.uberspace.de/webserver:htaccess text: .htaccess tutorial popup:yes) will show you how to do that, in case you are not familiar with it.
+Make sure to also set up some users. Any [.htaccess tutorial](https://wiki.uberspace.de/webserver:htaccess) will show you how to do that, in case you are not familiar with it.
 
-If you use HTTP to HTTPS redirect, you may also want to make sure, that the password is only requested on the HTTPS connection, to avoid transmission of plain text data. You can achieve this like this (see also (link: https://wiki.uberspace.de/webserver:htaccess text: Uberspace Wiki popup:yes)):
+If you use HTTP to HTTPS redirect, you may also want to make sure, that the password is only requested on the HTTPS connection, to avoid transmission of plain text data. You can achieve this like this (see also [Uberspace Wiki](https://wiki.uberspace.de/webserver:htaccess)):
 
 ```
 Order Deny,Allow
@@ -143,10 +127,10 @@ Require valid-user
 
 Don't forget to configure user name and password in GPSLogger as well.
 
-(l2: Home Assistant)
-The Home Assistant configuration is surprisingly easy. Make sure to first set up the GPSLogger integration, as described on the (link: https://www.home-assistant.io/integrations/gpslogger/ text: respective page popup:yes). Take note of the webhook URL shown in the setup.
+## Home Assistant
+The Home Assistant configuration is surprisingly easy. Make sure to first set up the GPSLogger integration, as described on the [respective page](https://www.home-assistant.io/integrations/gpslogger/). Take note of the webhook URL shown in the setup.
 
-(l3: configuration.yaml)
+### configuration.yaml
 Add the following to your configuration.yaml and adapt your server URL, user, and password, as well as the GPSLogger webhook. Also make sure to adapt the smartphone IDs to the ones transmitted by GPSLogger.
 
 ```yaml
@@ -173,7 +157,7 @@ rest_command:
 
 The sensor.gpslogger will pull the data from the server every 5 minutes and store it as attributes. These attributes are read by the rest_command.gps_update, when triggered, and pushed to the GPSLogger integration.
 
-(l3: automations.yaml)
+### automations.yaml
 To connect sensor.gpslogger to rest_command.gps_update, you can use the following automation:
 
 ```yaml
@@ -193,10 +177,10 @@ To connect sensor.gpslogger to rest_command.gps_update, you can use the followin
 
 Note that this automation always updates the location of both smartphones, even if only one location has changed. As the timestamp also remains the same, this should not pose any issue though.
 
-(l2: Conclusion)
+## Conclusion
 That's it! A set of simple configurations and a small PHP script is all you need to tunnel data from GPSLogger on Android via your server to Home Assistant. No open port to your home network and Home Assistant required!
 
-You may now e.g., add the resulting device_tracker instance created by the GPSLogger component to a (link: https://www.home-assistant.io/integrations/person/ text: person popup:yes) and trigger based on the location. The instance name of the device_tracker is equivalent to the serial number uploaded by GPSLogger. You may change this in the rest_command. Look for:
+You may now e.g., add the resulting device_tracker instance created by the GPSLogger component to a [person](https://www.home-assistant.io/integrations/person/) and trigger based on the location. The instance name of the device_tracker is equivalent to the serial number uploaded by GPSLogger. You may change this in the rest_command. Look for:
 ```
 device={{ states.sensor.gpslogger.attributes[device]['ser'] }}
 ```
