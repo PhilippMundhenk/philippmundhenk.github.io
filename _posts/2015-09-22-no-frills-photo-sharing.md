@@ -40,7 +40,7 @@ The filenames of the uploaded images are prefixed with the UNIX timestamp of the
 
 ## Screenshots
 ![Login Screen](/images/photosharing/screenshot1.png)
-![Main uploader with upload and download buttons and gallery](/images/screenshot2.png)
+![Main uploader with upload and download buttons and gallery](/images/photosharing/screenshot2.png)
 
 ## Deployment
 I deployed the solution on the same server this page is running on, making use of the already existing setup, especially regarding the HTTPS certificate.

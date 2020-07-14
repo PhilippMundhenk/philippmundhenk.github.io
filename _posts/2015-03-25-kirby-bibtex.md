@@ -28,6 +28,9 @@ You may further use a full URL:
 ```
 
 ## Demo
+
+> Note that this demo no longer works, since the website is not based on Kirby anymore.
+
 I use this setup for my own publications [here](http://www.mundhenk.org/publications).
 
 ## Issues
