@@ -95,7 +95,11 @@
 }
 .publications table.display td {
 	background-color: #FFFFFF;
+	border-collapse: collapse;
 	padding: 3px 10px;
+}
+.publications table.display tr {
+	border-collapse: collapse;
 }
 .publications table.display td.center { 
 	text-align: center;
