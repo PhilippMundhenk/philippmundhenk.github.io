@@ -15,7 +15,7 @@ I am running the server as [smart host](http://en.wikipedia.org/wiki/Smart_host)
 This is a personal decision, but as emails generally anyway pass unencrypted through the net, any server can read it. I find that acceptable. For secure emails, one should anyway use encryption.
 This setup also requires an external server, which could be something like Google, or a rented server. I am using the latter, it came with my domain. If you use other servers, such as Google, note that emails don't always get deleted when fetching them automatically.
 
-### Mozilla Cipher Suites)
+### Mozilla Cipher Suites
 Up-to-date information on secure cipher suite settings are available from [Mozilla](https://wiki.mozilla.org/Security/Server_Side_TLS). You might want to use the [modern compatibility suites](https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility) and fall back to [intermediate](https://wiki.mozilla.org/Security/Server_Side_TLS#Intermediate_compatibility_.28default.29), if you experience compatibility issues.
 
 I will try to keep this article as up-to-date as possible.
