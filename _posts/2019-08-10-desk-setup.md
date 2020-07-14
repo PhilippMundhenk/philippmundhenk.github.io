@@ -1,30 +1,14 @@
-Title: Desk & Setup
+---
+layout: post
+title: Desk & Setup
+categories: [home, desk]
+---
 
-----
-
-Date: 2019-08-10
-
-----
-
-Description: 
-
-----
-
-Tags: home,desk,it,battlestation
-
-----
-
-Text: 
-
-(l2: Introduction)
 After many years of using small, cramped corners to set up my computer equipment, I used the chance of a new spacious flat to also build a nice, big desk. I feel there are few things more luxurious to have than space, especially, when not needed. That's the main philosophy for this new setup. Additionally, a sleek, minimalist design was required, while at the same time offering sufficient storage space for a large number of devices, cables, etc.
 
-(image: whole_left_10.jpg caption: Whole Desk link: https://www.mundhenk.org/content/2-blog/20-building-a-desk/whole_left_100.jpg target: _blank)
+![Whole Desk](/images/desk/whole_left_100.jpg)
 
-(l2: Content)
-(toc: 5)
-
-(l2: Furniture)
+## Furniture
 I have been looking around for the right furniture for a long time. There are of course many beautfiful off-the-shelf desks out there, but they are usually not fitting for one reason or the other. Often dimensions are not as required and, even more often, the price is just too high. Take e.g., the (link: https://www.roche-bobois.com/en-ZZ/product/furtif-large-desk-can-be-disassembled text: FURTIF Large Desk popup:yes): A beautiful piece of furniture, but a few thousand Euros was not what I wanted to spend.
 
 On the other hand, although IKEA furniture is not always the most appealing, especially in terms of quality, one can certainly not complain about their pricing. And having an IKEA literally around the corner made me look deeper into customized desks based around IKEA furniture. (link: https://www.ikeahackers.net/ text: IKEA Hackers popup:yes) is of course always a good source of ideas. I also found two setups, which I took heavy inspiration from:
@@ -58,7 +42,7 @@ I did not mount the feet of the top shelf, placed on top of the tabletop, as I d
 
 I also added an IKEA Flintan desk chair and a floor mat, which I still had from my former setup.
 
-(l2: Hardware)
+## Hardware
 Furniture is one part to a desk, but the computing hardware and accessories are just as important.
 
 (image: workstation_left_off_10.jpg caption: Workstation link: https://www.mundhenk.org/content/2-blog/20-building-a-desk/workstation_left_off_100.jpg target: _blank)
@@ -87,7 +71,7 @@ On top of the highest Stuva cabinet, I installed a (link: https://en.wikipedia.o
 
 For sound, I either use the integrated speakers of the laptop, some Sennheiser PXC 550 Wireless I got from work, or my aged Bose QC3.
 
-(l2: Photos)
+## Photos
 Here are some more photos:
 (image: workstation_front_off_10.jpg caption: Workstation link: https://www.mundhenk.org/content/2-blog/20-building-a-desk/workstation_front_off_100.jpg target: _blank)
 (image: back_10.jpg caption: Back of screens link: https://www.mundhenk.org/content/2-blog/20-building-a-desk/back_100.jpg target: _blank)
@@ -95,7 +79,7 @@ Here are some more photos:
 (image: dock_10.jpg caption: Vertical dock link: https://www.mundhenk.org/content/2-blog/20-building-a-desk/dock_100.jpg target: _blank)
 (image: charging_cable_10.jpg caption: Magnetic charging cable link: https://www.mundhenk.org/content/2-blog/20-building-a-desk/charging_cable_100.jpg target: _blank)
 
-(l2: Improvements)
+## Improvements
 Nothing is ever perfect. These improvements would make sense:
 - I think of adding lighting, as the corner where the desk is located can be quite dark at night. I am still contemplating different lighting options.
 - Some drawers would be nice. While the IKEA Stuva series does offer some simple wire mesh drawers, I prefer something more stable. But I have not yet found something suitable.
