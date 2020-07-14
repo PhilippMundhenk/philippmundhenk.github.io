@@ -2,6 +2,7 @@
 layout: post
 title: Computing Cluster
 categories: [work, cluster, tech]
+---
 
 ## Introduction
 My work often crosses the areas of verification and optimization, which often require a large amount of computing power or memory. This holds especially whenever a large amount of testcases shall be solved. However, in many cases, e.g. with independent testcases, these computations can be easily parallelized, simply by calling a separate script for every testcase.
@@ -45,18 +46,18 @@ It is conventional that a head node (the server) does not do computational tasks
 TORQUE bases its communication on host names. These need to be set up correctly, before all other setup can be completed.
 Two ways can be used to set up these host names:
 1. /etc/hosts
-> This file hard codes all IP to host name assignments on every machine. If the IP addresses in the network where the computing nodes are running are fixed, this is a reasonable way to handle the host names. Should IP addresses be allocated dynamically (via DHCP), this method is not feasible, as the host files of every node need to be adjusted once the IP addresses change (e.g. on reboot).
->
-> It is also required that the own machine can be addressed by its host name (not localhost!). To do this, add the host names of all machines to their respective /etc/hosts in the lines starting with 127.0.0.1 and 127.0.1.1. In the following example we assume the host name to be *node*:
+This file hard codes all IP to host name assignments on every machine. If the IP addresses in the network where the computing nodes are running are fixed, this is a reasonable way to handle the host names. Should IP addresses be allocated dynamically (via DHCP), this method is not feasible, as the host files of every node need to be adjusted once the IP addresses change (e.g. on reboot).
+
+It is also required that the own machine can be addressed by its host name (not localhost!). To do this, add the host names of all machines to their respective /etc/hosts in the lines starting with 127.0.0.1 and 127.0.1.1. In the following example we assume the host name to be *node*:
 ```
 127.0.0.1 localhost node
 127.0.1.1 node
 ```
 
 2. DDNS
->If IP addresses are dynamic, you might want to use a dynamic DNS (DDNS) service. This way, you can sync your IP addresses to a host name, which you can in turn use to connect TORQUE. DDNS can be efficiently implemented with ddclient and [FreeDNS](http://freedns.afraid.org/). A quick Google search should show you how to set this up. You want to use the interface IP for synchronization in ddclient, not the external IP.
->
->I have to mention here that it is bad practice to use (external) DDNS services for internal IP addresses. It would be better to set up a proper naming service across the network, but this way is just so easy to set up, especially, if you already have a ddclient setup running.
+If IP addresses are dynamic, you might want to use a dynamic DNS (DDNS) service. This way, you can sync your IP addresses to a host name, which you can in turn use to connect TORQUE. DDNS can be efficiently implemented with ddclient and [FreeDNS](http://freedns.afraid.org/). A quick Google search should show you how to set this up. You want to use the interface IP for synchronization in ddclient, not the external IP.
+
+I have to mention here that it is bad practice to use (external) DDNS services for internal IP addresses. It would be better to set up a proper naming service across the network, but this way is just so easy to set up, especially, if you already have a ddclient setup running.
 
 #### Usernames
 As TORQUE is executing given scripts on the different machines available, it needs the rights to access these scripts. In our simple setup, we added a specific user for the execution of TORQUE scripts on every machine. It is important that this user has the same user ID on every machine, such that access rights are managed correctly. Here is an example of creating a user *cluster* with ID 1100 and a home directory:
