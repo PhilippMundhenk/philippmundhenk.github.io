@@ -73,10 +73,15 @@ For sound, I either use the integrated speakers of the laptop, some Sennheiser P
 
 ## Photos
 Here are some more photos:
+
 ![Workstation](/images/desk/workstation_front_off_10.jpg)
+
 ![Back fo screens](/images/desk/back_10.jpg)
+
 ![Vertical dock mount](/images/desk/dock_mount_10.jpg)
+
 ![Vertical dock](/images/desk/dock_10.jpg)
+
 ![Magnetic charging cable](/images/desk/charging_cable_10.jpg)
 
 ## Improvements
