@@ -121,7 +121,7 @@ We configure a Master Load Balancer on node01. In case this fails, node02 automa
 
 Furthermore, we define a health check, making sure that the service (in this case SSH) is still available on both nodes. In case the service fails on a node, this node is removed from the virtual server and will no longer be included in the round robin schedule.
 
-Note the script being called on state change. This is based on the results shown in (ref. 3). This is required, as we are running keepalived and the real servers on the same nodes.
+Note the script being called on state change. This is based on the results shown in [this article](http://gcharriere.com/blog/?p=339=1). This is required, as we are running keepalived and the real servers on the same nodes.
 
 For the script, place the following into ```/etc/keepalived/iptables.sh```:
 ```bash
@@ -364,6 +364,3 @@ This is a fairly easy load balancing and high availability setup, thanks to keep
 - Of course all of the above IP addresses can be used to access all the services in the system in the above configuration, as the real servers are equivalent. Assume, however a failed GlusterFS service on node01. While this will take node01 out of the GlusterFS virtual IP, thanks to the TCP_CHECK, it will not remove it from the Kubernetes cluster, as the check is running on a different port!
 - When testing: Take your time. Fail-over can take a second or two, don't be as impatient and me and miss a running configuration already. If you are unsure about the state of keepalived, use ```journalctl -f -u keepalived````, this shows you very detailed the state on every node.
 - An important caveat of this setup is, that it can't be used for the nodes itself. When you access e.g., 192.168.44.120 via SSH, you will notice that you receive a timeout on every second call. This happens when you should be accessing the other node due to round-robin. Thus, this setup can't be used to configure e.g., the GlusterFS Kubernetes plugin but is rather intended for clients not part of the cluster.
-
-## Additional Reading
-- [This article](http://gcharriere.com/blog/?p=339=1) helped me get started.
