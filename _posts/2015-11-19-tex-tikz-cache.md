@@ -1,31 +1,15 @@
-Title: TeX, TikZ, Cache
+---
+layout: post
+title: TeX, TikZ, Cache
+categories: [work, TeX, TikZ, tech]
+---
 
-----
-
-Date: 2015-11-19
-
-----
-
-Description: 
-
-----
-
-Tags: work,TUM CREATE,TeX,TikZ,tech
-
-----
-
-Text: 
-
-(l2: Introduction)
 When working in academia or writing your final thesis, you will come across TeX. While this is a great tool to write papers or a thesis, it has its caveats, one of these being performance. This especially holds when using TikZ or PGFPlots (which uses TikZ). When using these, every diagram and plot is redrawn every time you start your build process. To cache images, there is the function *\tikzexternalize*. This caches images, usually via automatically generated file names. This can lead to issues when you place a figure in the middle of your documents and do not clean the TikZ cache. Then, your figures might be confused by TeX. This is especially annoying when using the package *todonotes*, as every *\todo* is a TikZ image, resulting in confusion of ToDos whenever a new one is created.
 However, there is a way around this, shown here.
 
-This work has been created in cooperation with (link: http://www.matthiaskauer.com/ text: Matthias Kauer popup:yes).
+This work has been created in cooperation with [Matthias Kauer](http://www.matthiaskauer.com/).
 
-##Content
-(toc: 2)
-
-(l2: Commands)
+## Commands
 Here, we define a hand full of commands that help us with this:
 ```
 \newcommand*\execute[1]{\csname#1\endcsname}
@@ -49,7 +33,7 @@ Here, we define a hand full of commands that help us with this:
 }
 ```
 
-(l2: Explanations)
+## Explanations
 First, we define a helper macro *\execute*. This macro can take in any string and execute it like a TeX command. Thus, *\execute{test}* becomes *\test*.
 Then, we define the command *\tikzprefix*, which I use to set the directory, where I want my TikZ cache for figures defined as commands to be (in this case in the subfolder *figures*).
 
@@ -57,18 +41,18 @@ After this, *\tikzexternalize* initiates the TikZ cache and *\tikzexternaldisabl
 
 Now comes the interesting part: Two commands (*\inputtikz* and *\calltikz*) are taking care of using external files with TikZ cache and using TikZ figures defined as commands somewhere in your document. Both work somewhat the same way, first enabling the TikZ cache for the current figure, before setting a file name where to figure is to be stored. In case of a TikZ file, the cache files are stored in the same directory as the original file, in case of a TikZ figure as command, the cache files are stored in the folder *figures*. Afterwards the figure is either read with *\input* or, in case of a figure as command, executed with our helper macro *\execute*. Finally, the TikZ cache is disabled again, so it does not affect any other figures.
 
-(l2: Example)
+## Example
 Let me show you a minimal example:
 
 File miniFig2.tex:
-```
+```tex
 \begin{tikzpicture}
 	\node[ellipse,draw] (test) {TestImage2};
 \end{tikzpicture}
 ```
 
 File minimal.tex:
-```
+```tex
 \documentclass{book}
 
 \usepackage{tikz}
@@ -115,7 +99,7 @@ File minimal.tex:
 \end{document}
 ```
 
-(l2: Files)
+## Files
 Files before running TeX (don't forget to create your cache folder!):
 ```
 .
@@ -149,6 +133,6 @@ Files after running TeX:
 
 Note the *.pdf outputs for the separate figures. These are your cache files, the actual figures as PDF. They are also great for presentations, in case you need to present your paper or thesis somewhere.
 
-(l2: Output)
+## Output
 The final output file looks like this:
-(image: minimal.png)
+![Example output](/images/tikz/minimal.png)
