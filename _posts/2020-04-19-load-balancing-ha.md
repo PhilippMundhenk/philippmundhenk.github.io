@@ -75,7 +75,7 @@ virtual_server 192.168.44.120 22 {
 
 and the following in ```/etc/keepalived/config/ssh.conf``` on node02:
 
-```
+```ini
 vrrp_instance SSH {
     state BACKUP
     interface eth0
