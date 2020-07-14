@@ -11,7 +11,7 @@ This work has been created in cooperation with [Matthias Kauer](http://www.matth
 
 ## Commands
 Here, we define a hand full of commands that help us with this:
-```
+```tex
 \newcommand*\execute[1]{\csname#1\endcsname}
 \newcommand*\tikzprefix{figures/}
 
