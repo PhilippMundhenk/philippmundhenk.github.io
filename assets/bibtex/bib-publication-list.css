@@ -96,9 +96,17 @@
 .publications table.display td {
 	background-color: #FFFFFF;
 	border-collapse: collapse;
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none;
+	border-bottom-style: none;
 	padding: 3px 10px;
 }
 .publications table.display tr {
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none;
+	border-bottom-style: none;
 	border-collapse: collapse;
 }
 .publications table.display td.center { 
