@@ -17,9 +17,9 @@ For some time, I have been looking for a nicely designed alarm clock and some "a
 * alarms are persisted, so available after restart or power loss
 
 ## Photos
-![Home screen: Clock](images/kindle/clockscreen.jpg)
-![Managing alarms](images/kindle/alarmsettings.jpg)
-![List of set alarms](images/kindle/listofalarms.jpg)
+![Home screen: Clock](/images/kindle/clockscreen.jpg)
+![Managing alarms](/images/kindle/alarmsettings.jpg)
+![List of set alarms](/images/kindle/listofalarms.jpg)
 
 ## Concept
 There anre a few frameworks out there to develop small homebrew applications for the Kindle, the most well-known and used is the Kindle Unified Application Launcher (KUAL). However, they have pre-defined menues and own designs are not so easy to implement, or maybe not at all. Some other approaches generate PNG files and show them on the display (e.g., [here](https://mpetroff.net/2012/09/kindle-weather-display/)). This is certaily the most energy-efficient approach, but it is not very interactive, as no touch events can be used. I decided to follow a website-based approach, as shown [here](http://blog.yolo.pro/repurposing-an-old-kindle-touch-as-a-weather-display/). However, I decided to take it a bit further and make it fully interactive, by including touch buttons. Additionally, I needed to be able to play some sounds on the speakers, to make the alarm clock useful. For this I needed to be able to run local applications. I thus decided to add a small Python webserver to the Kindle, which is taking care of all tasks other than the GUI. Technically, there are two webservers, one for serving static files (images) and one for dynamic pages, such as those shown on the photos above. There is actually no need for a second webserver, and I will probably integrate that at some point.
