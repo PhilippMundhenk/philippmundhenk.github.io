@@ -1,37 +1,21 @@
-Title: Load Balancing and High Availability
+---
+layout: post
+title: Load Balancing and High Availability
+categories: [home, docker, tech, network]
+---
 
-----
-
-Date: 2020-04-19
-
-----
-
-Description: 
-
-----
-
-Tags: network,docker,home,tech,
-
-----
-
-Text: 
-
-(l2: Introduction)
 In my last article [Home Network Upgrade - Basics](https://www.mundhenk.org/blog/home-network-upgrade-basics), I described the setup of a Raspberry Pi-based cluster I plan on using for the core of my upgraded home network. One issue there, however, was that the devices need to be addressed directly. E.g., a service running on Kubernetes is available via the IP addresses of both nodes, if everything is working fine. But the client needs to select one address. E.g., if a client uses node01, and this node fails, the client needs to adjust. This is undesirable for our setup. This we need to introduce a means for fail-over. Additionally, we use the same setup for load balancing the incoming requests. In this private setup load balancing is less of a requirement, but high availability is much desired.
 
-##Content
-(toc: 5)
+## Software
+There are many load balancers available. However, most setups assume a single node taking care of load balancing. Unfortunately, in our small cluster, we can't afford an extra node just for this purpose. Furthermore, such a setup would introduce another single point of failure. Instead, we will be using [keepalived](https://www.keepalived.org/doc/introduction.html) to set up a distributed load balancer. Typically, this is also used on one or multiple dedicated nodes, but we will integrate it with the existing cluster nodes.
 
-(l2: Software)
-There are many load balancers available. However, most setups assume a single node taking care of load balancing. Unfortunately, in our small cluster, we can't afford an extra node just for this purpose. Furthermore, such a setup would introduce another single point of failure. Instead, we will be using keepalived (ref: 1) to set up a distributed load balancer. Typically, this is also used on one or multiple dedicated nodes, but we will integrate it with the existing cluster nodes.
-
-(l2: Configuration)
+## Configuration
 First, install keepalived on both nodes:
-```
+```bash
 sudo apt install keepalived
 ```
 
-As usual, when in doubt about any of the following, refer to the documentation (ref: 1) or the in this case excellent manpage (ref: 2).
+As usual, when in doubt about any of the following, refer to the [documentation](https://www.keepalived.org/doc/introduction.html) or the in this case excellent [manpage](https://www.keepalived.org/manpage.html).
 
 Now we will start configuring keepalived. Add the following to ```/etc/keepalived/keepalived.conf```
 ```
@@ -43,7 +27,7 @@ global_defs {
 include "config/*.conf"
 ```
 and create the directory referenced there:
-```
+```bash
 sudo mkdir /etc/keepalived/config
 ```
 
@@ -140,7 +124,7 @@ Furthermore, we define a health check, making sure that the service (in this cas
 Note the script being called on state change. This is based on the results shown in (ref. 3). This is required, as we are running keepalived and the real servers on the same nodes.
 
 For the script, place the following into ```/etc/keepalived/iptables.sh```:
-```
+```bash
 #!/bin/bash
 
 (
@@ -167,27 +151,27 @@ net.ipv4.conf.all.arp_ignore = 1
 net.ipv4.conf.all.arp_announce = 2
 ```
 and apply these settings by running:
-```
+```bash
 sudo sysctl -p
 ```
 
 Now, you can start keepalived, by running:
-```
+```bash
 sudo systemctl start keepalived
 ```
 on both nodes.
 
 Make sure the service started without errors by inspecting:
-```
+```bash
 sudo journalctl -f -u keepalived
 ```
 and check the configuration:
-```
+```bash
 sudo ipvsadm
 ```
 
 On a client of your choice (not on any of the cluster nodes), access the newly created virtual IP twice and observe the round robin in action:
-```
+```bash
 $ ssh -o "StrictHostkeyChecking=no" -o "UserKnownHostsFile=/dev/null" pi@192.168.44.120 hostname
 Warning: Permanently added '192.168.44.120' (ECDSA) to the list of known hosts.
 pi@192.168.44.120's password:
@@ -201,7 +185,7 @@ node01
 
 When killing one of the nodes (e.g., by unplugging), keepalived will automatically move the master to the other node and remove the real server from the list of serving hosts.
 
-(l2: GlusterFS & Kubernetes)
+## GlusterFS & Kubernetes
 We now apply these settings also for GlusterFS and Kubernetes.
 
 On node01, add ```/etc/keepalived/config/glusterfs.conf``` with the following content:
@@ -371,7 +355,7 @@ virtual_server 192.168.44.110 10250 {
 }
 ```
 
-(l2: Conclusion)
+## Conclusion
 This is a fairly easy load balancing and high availability setup, thanks to keepalived. When adding this to every node, any node can fail without the cluster or the connection to it failing. There are a few points to note though:
 
 - All incoming connections always go through the keepalived node with the highest priority for the given virtual IP. Then, this node takes care of distributing the traffic to other nodes in the configured fashion (e.g., round-robin). Thus, this node needs to handle all arriving packages. You can easily see this behavior when using Wireshark by establishing an SSH connection twice. All packets for both connections from an external host are sent to the master, in my case node01. Responses for the first connection come from node01, responses from second connection from node02.
@@ -381,7 +365,5 @@ This is a fairly easy load balancing and high availability setup, thanks to keep
 - When testing: Take your time. Fail-over can take a second or two, don't be as impatient and me and miss a running configuration already. If you are unsure about the state of keepalived, use ```journalctl -f -u keepalived````, this shows you very detailed the state on every node.
 - An important caveat of this setup is, that it can't be used for the nodes itself. When you access e.g., 192.168.44.120 via SSH, you will notice that you receive a timeout on every second call. This happens when you should be accessing the other node due to round-robin. Thus, this setup can't be used to configure e.g., the GlusterFS Kubernetes plugin but is rather intended for clients not part of the cluster.
 
-(l2: References)
-(source: 1 url:https://www.keepalived.org/doc/introduction.html)
-(source: 2 url:https://www.keepalived.org/manpage.html)
-(source: 3 url:http://gcharriere.com/blog/?p=339=1)
+## Additional Reading
+- [This article](http://gcharriere.com/blog/?p=339=1) helped me get started.
