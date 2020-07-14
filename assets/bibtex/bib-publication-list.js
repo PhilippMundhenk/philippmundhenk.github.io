@@ -80,10 +80,10 @@ var bibtexify = (function($) {
 			itemStr += '<br/>';
             if (entryData.url && entryData.url.match(/.*\.pdf/)) {
                 itemStr += ' <a title="PDF-version of this article" href="' +
-                            entryData.url + '" target=\"_blank\"><img src=\"assets/bibtex/lib/images/pdf.png\" /><\/a> ';
+                            entryData.url + '" target=\"_blank\"><img src=\"/assets/bibtex/lib/images/pdf.png\" /><\/a> ';
             } else if (entryData.url) {
                 itemStr += ' <a title="This article online" href="' + entryData.url +
-                            '" target=\"_blank\"><img src=\"assets/bibtex/lib/images/link.png\" /><\/a>';
+                            '" target=\"_blank\"><img src=\"/assets/bibtex/lib/images/link.png\" /><\/a>';
             }
             return itemStr;
         },
@@ -106,7 +106,7 @@ var bibtexify = (function($) {
             });
             output += '\}';
             itemStr += ' <a title="This article as BibTeX" href="#" onclick="((window.open()).document).write(\''+output+'\');return false;">' +
-                        '<img src=\"assets/bibtex/lib/images/bibtex.png\" /></a>';
+                        '<img src=\"/assets/bibtex/lib/images/bibtex.png\" /></a>';
             return itemStr;
         },
         // generates the twitter link for the entry
