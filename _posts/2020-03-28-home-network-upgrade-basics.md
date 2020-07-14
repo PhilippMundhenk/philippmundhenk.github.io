@@ -16,7 +16,7 @@ And as some people already asked when discussing my ideas: Yes, you may consider
 
 ## Design
 ### High-Level
-The general idea of the re-design is to consolidate all services onto a cluster of (mostly) Raspberry Pis, maybe with an added x86 node, if I can't get everything ported to ARM. In the first iteration, this cluster will be local, accessible over VPN from other locations (see e.g., my older article on [Site-to-site VPN with OpenWrt and FRITZ!Box](https://www.mundhenk.org/blog/fritzbox-openwrt-vpn)). In future iterations, I might add a remote components to this, utilizing also the additional Internet connections available there for fail-over. But this needs a bit more investigation.
+The general idea of the re-design is to consolidate all services onto a cluster of (mostly) Raspberry Pis, maybe with an added x86 node, if I can't get everything ported to ARM. In the first iteration, this cluster will be local, accessible over VPN from other locations (see e.g., my older article on [Site-to-site VPN with OpenWrt and FRITZ!Box](/fritzbox-openwrt-vpn). In future iterations, I might add a remote components to this, utilizing also the additional Internet connections available there for fail-over. But this needs a bit more investigation.
 
 I will start with a minimal setup and extend this in future. This also means that I will combine storage and compute nodes into one, where possible. In future iterations, there might be dedicated compute and storage nodes.
 
