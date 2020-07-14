@@ -1,7 +1,7 @@
 ---
 layout: post
 title: New Website - The Obligatory First Post
-categories: [first]
+categories: home
 ---
 
 This is the first entry to my new website. I hope that the redesign of this website gives me the motivation to write new articles more often and keep a higher discipline in contributions than on my last website.
