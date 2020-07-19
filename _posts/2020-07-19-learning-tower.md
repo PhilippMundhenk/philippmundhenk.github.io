@@ -98,3 +98,4 @@ Usage of Önsklig:
 As always, better is possible:
 - The wood will be very sensitive to water and humidity. You might want to consider to oil or paint all surfaces.
 - You might want to properly countersink the screws. With the soft spruce, I had a hard time doing this without cracking the wood.
+- Use beech as more stable wood. This will be a lot harder to work with though!
