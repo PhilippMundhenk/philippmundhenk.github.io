@@ -45,6 +45,7 @@ Having an academic education, reference management is something that I wanted to
 My publications and patents list was always an important part of my website. And while I don't publish as regularly as I used to (in industry patents are just more common, but also rather seldom), I still want to keep this list on my page. Obviously, my [Kirby BibTeX plugin](/kirby-bibtex/) no longer works, so I had to add it in a different way. Luckily, the BibTeX generator I use is based on JavaScript and running fully in the browser, thus there is no issue using it with Jekyll and GitHub Pages. I simply had to move the required scripts and CSS files, as well as the BibTeX library into the new folder structure of Jekyll, create a new layout, where I add the BibTeX plugin and use this for a page. Now of course, this could be enhanced into a proper configurable Jekyll plugin, and I might do that at some point, but it works for me for now.
 
 This is the layout I used:
+{% raw %}
 ```html
 ---
 layout: default
@@ -52,7 +53,7 @@ layout: default
 
 <article class="page">
 
-  <h1>{% raw %}{{ page.title }}{% endraw %}</h1>
+  <h1>{{ page.title }}</h1>
 
   <div class="entry">
     <div class="content">
@@ -69,10 +70,10 @@ layout: default
 		</div>
 	</div>
 	
-	{% raw %}{{ content }}{% endraw %}
+	{{ content }}
   </div>
 </article>
-```
+```{% endraw %}
 
 I had to do some minor tweaks to the CSS, as I did not like the table borders it inherited from the Jekyll theme, but this is a matter of personal taste.
 
@@ -82,11 +83,13 @@ In Kirby, it is possible to directly embed YouTube videos via dedicated tag. Whi
 ## Shariff
 I used the [Shariff buttons](https://github.com/heiseonline/shariff) via a [Kirby plugin](https://github.com/SpicyWeb-de/kirby-plugin-shariff). These buttons, developed by Heise, allow simple sharing of pages through social networks without integrating tracking cookies, etc. on my website. These are great, but I found that sharing for the most common networks is also possible with simple links. Some of those where already integrated with the theme I use, I additionally added the sharing link for LinkedIn. These are the links to use in your layout:
 
+{% raw %}
 ```html
-<a href="http://twitter.com/share?text={% raw %}{{ page.title }}{% endraw %}&url={% raw %}{{site.url}}{{page.url}}{% endraw %}" target="_blank">Twitter</a>
-<a href="https://www.facebook.com/sharer.php?u={% raw %}{{site.url}}{{page.url}}{% endraw %}" target="_blank">Facebook</a>
-<a href="https://www.linkedin.com/shareArticle?mini=true&url={% raw %}{{site.url}}{{page.url}}{% endraw %}" target="_blank">LinkedIn</a>
+<a href="http://twitter.com/share?text={{ page.title }}&url={{site.url}}{{page.url}}" target="_blank">Twitter</a>
+<a href="https://www.facebook.com/sharer.php?u={{site.url}}{{page.url}}" target="_blank">Facebook</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}" target="_blank">LinkedIn</a>
 ```
+{% endraw %}
 
 ## Disqus
 I had been using Disqus for comments on my website. While this is JavaScript based and support for it is available in Jekyll and the [Reverie Theme](https://github.com/amitmerchant1990/reverie) I use, I decided to drop it. Most readers contact my directly via mail and I had very few comments over the years.
