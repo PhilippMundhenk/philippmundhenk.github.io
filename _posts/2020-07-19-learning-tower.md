@@ -7,7 +7,7 @@ categories: [home, wood]
 I have recently come to know the concept of a "learning tower". This is a slightly more stable stepladder for toddlers to reach the counter top in the kitchen or the sink, long before they have the height to do so. With my son always requiring a lot of attention and wanting to be involved, I thought that would be just right for him. When I started looking up the prices of these, I was quite surprised: Apparently something so simple can turn out very expensive. I guess it always depends what the target group is willing to pay. A second though led me to Ikea and, after discovering there is nothing suitable available, to [Ikea hackers](https://www.ikeahackers.net). One of the most common DIY learning towers you find out there is constructed by bolting the [Ikea Bekväm ladder](https://www.ikea.com/de/de/p/bekvaem-tritthocker-birke-30178879/) and [Oddvar stool](https://www.ikea.com/de/de/p/oddvar-hocker-kiefer-20249330/) together. At the time of this writing this comes up to some 36 Euros material cost (plus screws) and ends a construction which is likely not very stable, not looking nicely. After searching for a little while longer, I stumbled on [this post](https://happygreylucky.com/ikea-hack-toddler-learning-tower-stool/) which is still based on the Ikea ladder, but adds a custom frame on top. This already looks much better. However, when already going custom, I thought I might just go all the way and built a fully custom learning tower. That kept me busy for the day. I think the final result looks great and for one day work at less than 19 Euros (plus screws) material cost, this is a real bargain.
 
 Here you can see the final product:
-!(/images/learningtower/learningtower.jpg)[DIY Learning Tower]
+![DIY Learning Tower](/images/learningtower/learningtower.jpg)
 
 ## Design
 To be very honest, I did not make a proper design or plan how to tackle this project. It seemed simple enough to just "wing it". Turned out to be true. Some simple measurements should be taken before, of course:
@@ -66,34 +66,33 @@ For less than 20 Euros and about a day of work with extremely simple tools, I th
 ## More Photos
 Here are some more photos:
 
-!(/images/learningtower/complete.jpg)[DIY Learning Tower]
+![DIY Learning Tower](/images/learningtower/complete.jpg)
 
 Front:
 
-!(/images/learningtower/front.jpg)[Front]
+![Front](/images/learningtower/front.jpg)
 
 Rear:
 
-!(/images/learningtower/rear.jpg)[Rear]
+![Rear](/images/learningtower/rear.jpg)
 
 Side Panel:
 
-!(/images/learningtower/side.jpg)[Side Panel]
-
+![Side Panel](/images/learningtower/side.jpg)
 
 Closeup of height adjustment:
 
-!(/images/learningtower/height_adjustment.jpg)[Height Adjustment]
+![Height Adjustment](/images/learningtower/height_adjustment.jpg)
 
 Closeup of step:
 
-!(/images/learningtower/step.jpg)[Step]
+![Step](/images/learningtower/step.jpg)
 
 Usage of Önsklig:
 
-!(/images/learningtower/oensklig.jpg)[Önsklig out]
+![Önsklig out](/images/learningtower/oensklig.jpg)
 
-!(/images/learningtower/oensklig2.jpg)[Önsklig in]
+![Önsklig in](/images/learningtower/oensklig2.jpg)
 
 ## Improvements
 As always, better is possible:
