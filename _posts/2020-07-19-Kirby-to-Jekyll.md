@@ -52,7 +52,7 @@ layout: default
 
 <article class="page">
 
-  <h1>{{ page.title }}</h1>
+  <h1>{% raw %}{{ page.title }}{% endraw %}</h1>
 
   <div class="entry">
     <div class="content">
@@ -69,7 +69,7 @@ layout: default
 		</div>
 	</div>
 	
-	{{ content }}
+	{% raw %}{{ content }}{% endraw %}
   </div>
 </article>
 ```
@@ -83,9 +83,9 @@ In Kirby, it is possible to directly embed YouTube videos via dedicated tag. Whi
 I used the [Shariff buttons](https://github.com/heiseonline/shariff) via a [Kirby plugin](https://github.com/SpicyWeb-de/kirby-plugin-shariff). These buttons, developed by Heise, allow simple sharing of pages through social networks without integrating tracking cookies, etc. on my website. These are great, but I found that sharing for the most common networks is also possible with simple links. Some of those where already integrated with the theme I use, I additionally added the sharing link for LinkedIn. These are the links to use in your layout:
 
 ```HTML
-<a href="http://twitter.com/share?text={{ page.title }}&url={{site.url}}{{page.url}}" target="_blank">Twitter</a>
-<a href="https://www.facebook.com/sharer.php?u={{site.url}}{{page.url}}" target="_blank">Facebook</a>
-<a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}" target="_blank">LinkedIn</a>
+<a href="http://twitter.com/share?text={% raw %}{{ page.title }}{% endraw %}&url={% raw %}{{site.url}}{{page.url}}{% endraw %}" target="_blank">Twitter</a>
+<a href="https://www.facebook.com/sharer.php?u={% raw %}{{site.url}}{{page.url}}{% endraw %}" target="_blank">Facebook</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url={% raw %}{{site.url}}{{page.url}}{% endraw %}" target="_blank">LinkedIn</a>
 ```
 
 ## Disqus
