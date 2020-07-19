@@ -85,7 +85,7 @@ I used the [Shariff buttons](https://github.com/heiseonline/shariff) via a [Kirb
 
 {% raw %}
 ```html
-<a href="http://twitter.com/share?text={{ page.title }}&url={{site.url}}{{page.url}}" target="_blank">Twitter</a>
+<a href="http://twitter.com/share?text={{page.title}}&url={{site.url}}{{page.url}}" target="_blank">Twitter</a>
 <a href="https://www.facebook.com/sharer.php?u={{site.url}}{{page.url}}" target="_blank">Facebook</a>
 <a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}" target="_blank">LinkedIn</a>
 ```
