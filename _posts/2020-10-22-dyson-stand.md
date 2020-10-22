@@ -74,8 +74,6 @@ This should now give you the basic stand. As mentioned above, I did not like the
 
 ## More Photos
 
-In the follwoing are some more photos.
-
 ![Empty stand](/images/dyson/empty.jpg)
 
 ![Accessory holders top](/images/dyson/close_up_top.jpg)
