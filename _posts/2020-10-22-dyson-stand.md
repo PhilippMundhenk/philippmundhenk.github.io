@@ -33,9 +33,9 @@ The dimensions of the stand where determined by two factors: The vacuum itself, 
 
 The vacuum with charging station has a standing height of about 1.2m. Ideally, one goes slightly higher, allowing to take out the handheld vacuum from the charging station, without having to take the extension and foot.
 
-On the other hand, an old piece of wood from a shelf I had left was 1.2m high and 40cm wide. I decided to use 30cm for the width of the back plate and cut off the rest to manufacture a foot of 30cm width and about 25cm depth. If you have, I recommend to use an extra piece of wood for the foot. It just looks mich nicer than assembling it yourself.
+On the other hand, an old piece of wood from a shelf I had left was 1.2m high and 40cm wide. I decided to use 30cm for the width of the back plate and cut off the rest to manufacture a foot of 30cm width and about 25cm depth. If you have, I recommend to use an extra piece of wood for the foot. It just looks much nicer than assembling it yourself.
 
-Building an L-shape stand, some support is necessary for it to not collapes when loaded (or bumped into). I used the leftover triangle pieces from the [DIY Learning Tower](/learning-tower/) I built a while ago. These pieces ar 11.5cm deep, 80cm high and 1.8cm wide.
+Building an L-shape stand, some support is necessary for it to not collapse when loaded (or bumped into). I used the leftover triangle pieces from the [DIY Learning Tower](/learning-tower/) I built a while ago. These pieces are 11.5cm deep, 80cm high and 1.8cm wide.
 
 With 30cm width of the stand and the triangle supports being 1.8cm wide, I have a good 26cm left for the Dyson brush. The big brushes are 25cm wide, so this fits just nice.
 
@@ -44,31 +44,31 @@ All other accessories where simply placed on wooden rods that I stick to the bac
 
 The shelves are mounted 20cm and 35cm above the foot, respectively. All other accessory holders are spaces 15cm apart vertically and about 5cm from the sides of the stand.
 
-For screws I used whatever I had lying around (extras from furnitue, bought for other projects, etc.).
+For screws I used whatever I had lying around (extras from furniture, bought for other projects, etc.).
 
-After assembly, I realized that the foot does not look very nice, being assembled out of three parts and coverd this with the back plate of another piece of furniture, cut to size. This material is very cheap and can be bought from almost any hardware store.
+After assembly, I realized that the foot does not look very nice, being assembled out of three parts and covered this with the back plate of another piece of furniture, cut to size. This material is very cheap and can be bought from almost any hardware store.
 
 ## Tools
 
 As usual, I used only very simple tools. A Bosch IXO with drill extension, as well as a pad saw is all I needed. For a nicer finish, you might want to use some grinding paper.
-If you want to run the charging cable through the backplate, a hole saw is helpful. I borrowed that from the neighbours. It would certainly also be possible with the pad saw, though.
+If you want to run the charging cable through the backplate, a hole saw is helpful. I borrowed that from the neighbors. It would certainly also be possible with the pad saw, though.
 If you want to cover the foot in a similar manner, you might need a hammer.
 
 ## Assembly
 
 As usual, to avoid the wood to split, make sure to pre-drill all screw holes!
 
-After cutting the pieces to the sizes described above, I first screwed the three pieces of the foot to bottom the backplate. Make sure to use two srews for each piece, if you used multiple pieces, to avoid turning. Also, when using multiple pieces, align them flush with the outside of the backplate. This might give you gaps in the center, if you did not cut perfectly (like me), but these can be covered later.
+After cutting the pieces to the sizes described above, I first screwed the three pieces of the foot to bottom the backplate. Make sure to use two screws for each piece, if you used multiple pieces, to avoid turning. Also, when using multiple pieces, align them flush with the outside of the backplate. This might give you gaps in the center, if you did not cut perfectly (like me), but these can be covered later.
 
 Next, mount the triangles to the foot and backplate. I used two screws on the backplate and one for the foot on each triangle. Use some screw clamps to hold the triangles in place.
 
 This should now give you the basic outline.
 
-I then attached to charging station to the top, allowing me to test the stability. to do so, align it flush with the top of the backplate and mark the two screwholes. If you want, you may now also drill the hole for the cable. This is optional, you can also run the cable along the front. I placed the center of the hole about 6cm from the bottom of the charging station (or: about 25cm from the top). The exact location does not matter much, as long as the hole is covered by the charging station and can be reached by the cable.
+I then attached to charging station to the top, allowing me to test the stability. to do so, align it flush with the top of the backplate and mark the two screw holes. If you want, you may now also drill the hole for the cable. This is optional, you can also run the cable along the front. I placed the center of the hole about 6cm from the bottom of the charging station (or: about 25cm from the top). The exact location does not matter much, as long as the hole is covered by the charging station and can be reached by the cable.
 
-The mounted charging station also allowed me to place the accessory holders and find the dimensions stated above. I then pre-drilled the marked locations and screwed in the accessory holdes from the back. The shelves have srew holes and are mounted from the front, though.
+The mounted charging station also allowed me to place the accessory holders and find the dimensions stated above. I then pre-drilled the marked locations, as well as the accessory holders, and screwed in the accessory holders from the back. The shelves have screw holes and are mounted from the front, though.
 
-This should now give you the basic stand. As mentioned above, I did not like the looks of the foot, consisting of three pieces and decided to cover that with a bit of furniture backplate (1mm MDF with white veneer). I covered both the top and also the front of the foot by nailing the material onto it with a nailgun (a simple hammer and nail will also do):
+This should now give you the basic stand. As mentioned above, I did not like the looks of the foot, consisting of three pieces and decided to cover that with a bit of furniture backplate (1mm MDF with white veneer). I covered both the top and also the front of the foot by nailing the material onto it with a nail gun (a simple hammer and nail will also do):
 
 ![Foot before and after](/images/dyson/foot.jpg)
 
@@ -93,4 +93,4 @@ This should now give you the basic stand. As mentioned above, I did not like the
 ## Conclusion
 
 Overall, I am very happy with this stand. The vacuum cleaner finally has a dedicated place, where it can be charged and stored, together with all accessories.
-It is certianly not the most pretty setup, but at a cost of 0,00€ and half a day of effort in building, it fulfills the requirements perfectly.
+It is certainly not the most pretty setup, but at a cost of 0,00€ and half a day of effort in building, it fulfills the requirements perfectly.
