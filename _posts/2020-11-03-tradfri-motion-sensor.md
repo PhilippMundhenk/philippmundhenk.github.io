@@ -20,7 +20,7 @@ Since I pass by IKEA on the way home from office, I tend to stop there every onc
 
 ## Problem Statement
 
-While I can acquire the Tradfri motion sensor relatively cheap, it does have some significant downsides when used with Home Assistant. While other motion sensors (e.g., Aqara), are acting as sensors-class devices in the ZigBee network, the Tradfri motion sensor acts as a controller. This is ideal for the purpose intended by IKEA, without hub or central home controller, as one can directly attach the motion sensor to lights without additional infrastructure needed. However, it makes it difficult for use in Home Assistant, as control input can only be observed indirectly, in this case.
+While I can acquire the Tradfri motion sensor relatively cheap, it does have some significant downsides when used with HA. While other motion sensors (e.g., Aqara), are acting as sensors-class devices in the ZigBee network, the Tradfri motion sensor acts as a controller. This is ideal for the purpose intended by IKEA, without hub or central home controller, as one can directly attach the motion sensor to lights without additional infrastructure needed. However, it makes it difficult for use in HA, as control input can only be observed indirectly, in this case.
 The control signals could be exposed by deconz as events, similar to remote controls, but for some reason this is not implemented. Instead they are exposed as sensor. This might be easier to understand for most users.
 
 Additionally, the motion sensor is fixed to an interval of about 2 minutes and enforces this by sending a command "On with timed off" with a parameter of 3 minutes on ZigBee. Thus, there is only a single event sent when motion is detected, after which the motion sensor remains quiet for about 2 minutes. In case motion is detected within this time, the motion sensor will send the same event again, thus extending the time the light is on.
@@ -40,7 +40,7 @@ When pairing the sensor, you will notice some issues: Just after pairing, a numb
 - From the newly opened box, drag the "0004 Groups" endpoint to the "Source" box in the Bind Dropbox
 - Change the group identifier to a free group (e.g., 0x0020)
 - Trigger the sensor (e.g., by waving) and IMMEDIATELY, press "Bind" in the Bind Dropbox. This should transfer the group setting to the sensor. It should be confirmed with a "success" message in the Bind Dropbox.
-- Restart deconz and Home Assistant. The devices should reflect the correct state now.
+- Restart deconz and HA. The devices should reflect the correct state now.
 
 ### Errors
 
@@ -56,7 +56,7 @@ I have seen this on one of my sensors and believe it is related to setting too m
 
 ## Wrapping the sensor
 
-Now that we have have stopped the sensor from influencing the states of our other ZigBee components, we want to use it as well. As we can see in Home Assistant, this sensor behaves somewhat strange:
+Now that we have have stopped the sensor from influencing the states of our other ZigBee components, we want to use it as well. As we can see in HA, this sensor behaves somewhat strange:
 
 ![Before](/images/tradfri_motion_sensor/before.png)
 
@@ -67,7 +67,7 @@ Instead, I decided to wrap the motion sensor with another "virtual" motion senso
 
 ![After](/images/tradfri_motion_sensor/after.png)
 
-This exercise is also a good example for learning the concepts of Home Assistant, as the most straightforward ways are not possible. Thus, one needs to understand the concepts underlying Home Assistant, e.g., that a sensor state can't be set, and build the setup accordingly. We need the following:
+This exercise is also a good example for learning the concepts of HA, as the most straightforward ways are not possible. Thus, one needs to understand the concepts underlying HA, e.g., that a sensor state can't be set, and build the setup accordingly. We need the following:
 
 ### Configuration
 
@@ -90,7 +90,7 @@ binary_sensor:
           {% endif %}
 ```
 
-Since Home Assistant does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a [Python script](https://github.com/rodpayne/home-assistant/blob/master/python_scripts/set_state.py), but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like Home Assistant.
+Since HA does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a [Python script](https://github.com/rodpayne/home-assistant/blob/master/python_scripts/set_state.py), but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like HA.
 
 I declare an input_boolean, which in turn is wrapped around by a binary_sensor, the "virtual" motion sensor. Technically, the input_boolean is enough for everything we do here. However, declaring a binary_sensor allows us to easily look and act like a motion sensor, when changing the device class the customizations:
 
