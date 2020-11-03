@@ -71,6 +71,7 @@ This exercise is also a good example for learning the concepts of HA, as the mos
 
 ### Configuration
 
+{% raw %}
 ```yaml
 input_boolean:
   motion_kitchen_raw:
@@ -89,6 +90,7 @@ binary_sensor:
             off
           {% endif %}
 ```
+{% endraw %}
 
 Since HA does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a [Python script](https://github.com/rodpayne/home-assistant/blob/master/python_scripts/set_state.py), but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like HA.
 
