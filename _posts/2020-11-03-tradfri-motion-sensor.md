@@ -71,7 +71,7 @@ This exercise is also a good example for learning the concepts of Home Assistant
 
 ### Configuration
 
-'''yaml
+```yaml
 input_boolean:
   motion_kitchen_raw:
     name: Kitchen Motion Raw
@@ -88,7 +88,7 @@ binary_sensor:
           {% else %}
             off
           {% endif %}
-'''
+```
 
 Since Home Assistant does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a [Python script](https://github.com/rodpayne/home-assistant/blob/master/python_scripts/set_state.py), but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like Home Assistant.
 
@@ -96,10 +96,10 @@ I declare an input_boolean, which in turn is wrapped around by a binary_sensor, 
 
 ### Customization
 
-'''yaml
+```yaml
 binary_sensor.motion_kitchen:
   device_class: motion
-'''
+```
 
 Here, I set the device class, making sure that states are correctly named, the icon is adjusted, etc.
 
@@ -107,7 +107,7 @@ Here, I set the device class, making sure that states are correctly named, the i
 
 Now the new input_boolean needs to be connected to the original sensor, in my case binary_sensor.tradfri_motion_sensor. This is done via automations.
 
-'''yaml
+```yaml
 - id: kitchen_motion_detected
   alias: Kitchen Motion Detected
   trigger:
@@ -128,19 +128,19 @@ Now the new input_boolean needs to be connected to the original sensor, in my ca
     to: 'off'
   action:
   - service: script.motion_kitchen_timed_off
-'''
+```
 
 There is one little trick in here: The sensor is turned off via a script, three minutes after it is turned on. However, if the original motion sensor is triggered again, we need to abort this sequence, making sure the motion sensor remains on. Thus, I had to move the off-sequence to a script, which is stopped, as soon as motion is detected again.
 
 ### Script
-'''yaml
+```yaml
 motion_kitchen_timed_off:
   sequence:
   - delay: 00:03:00
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.motion_kitchen_raw
-'''
+```
 
 This script turns off the motion sensor three minutes after motion has been detected.
 
