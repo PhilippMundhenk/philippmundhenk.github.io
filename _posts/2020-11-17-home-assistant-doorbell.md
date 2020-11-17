@@ -8,7 +8,7 @@ I live in an almost 100 year old rental flat. I don't have a smart doorbell and 
 
 ## Problem Statement
 
-With a simple, wired, "ding-dong-style" doorbell, it is not easily possible to add this to your home automation network. These are wired directly from the switch at the door/gate to the actual bell making the sound. Looking at one of these old doorbells, you will discover that they are working by a spring and coil mechanism, that when activated moves a clapper, which in sounds an actual bell. In the one direction it goes "ding", in the other, it goes "dong". This is ridiculously cheap to build and lasts for decades or more. 
+With a simple, wired, "ding-dong-style" doorbell, it is not easily possible to add this to your home automation network. These are wired directly from the switch at the door/gate to the actual bell making the sound. Looking at one of these old doorbells, you will discover that they are working by a spring and coil mechanism, that when activated moves a clapper, which in turn sounds an actual bell. In the one direction it goes "ding", in the other, it goes "dong". This is ridiculously cheap to build and lasts for decades or more. 
 
 ## Setup
 
@@ -18,7 +18,7 @@ The big advantage of this setup is that the rather strong magnetic field used to
 
 ## Wrapping the sensor
 
-Note that the magnetic field might cause multiple on/off cycles and we will need to debounce this. I will take a slightly different approach to my [motion sensor](/tradfri-motion-sensor/), but some of the configuration below might look familiar. We will also wrap the open/close sensor with a new binary sensor that we can name accordingly and assign a new device class with states that fit a little nicer to a doorbell than "open" and "close". However, the delay can be realized a little simpler.
+Note that the magnetic field might cause multiple on/off cycles and we will need to debounce this. I will take a slightly different approach to my [motion sensor](/tradfri-motion-sensor/), but some of the configuration below might look familiar. We will also wrap the open/close sensor with a new binary sensor that we can name accordingly and assign a new device class with states that fit a little nicer to a doorbell than "open" and "close". However, the delay can be realized a little simpler than for the [motion sensor](/tradfri-motion-sensor/).
 
 ### Configuration
 
@@ -58,7 +58,7 @@ Here, I set the device class, making sure that states are named on/off, the icon
 
 ### Automation
 
-Now the new input boolean needs to be connected to the original sensor, in my case binary_sensor.openclose_29. This is done via automations.
+Now the new input_boolean needs to be connected to the original sensor, in my case binary_sensor.openclose_29. This is done via automations.
 
 ```yaml
 - id: doorbell_pressed
@@ -105,7 +105,9 @@ The doorbell can be used for many applications. The first thing that comes to my
       title: Doorbell rings!
 ```
 
-If you have a webcam and a Raspberry Pi or some similar setup, you could point the webcam to the door and take a photo of your entrance, whenever the doorbell is pressed. You could of course also show a livestream from the camera on one or all of your media players. You could also alert a little stronger by flashing some lights or changing their color, rather than just a notification. For me, the notification is sufficient.
+If you have a webcam and a Raspberry Pi or some similar setup, you could point the webcam to the door and take a photo of your entrance, whenever the doorbell is pressed. You could of course also show a livestream from the camera on one or all of your media players. Make sure you follow your countries data protection policy when doing this. Not everyone is allowed to record public spaces everywhere at all times.
+
+You could also alert a little stronger by flashing some lights or changing their color, rather than just via a notification. For me, the notification is sufficient.
 
 In case I am currently watching TV or a movie, I don't want to have to deal with that first, but rather quickly rush to the door, the post does not wait long. So I just pause the TV, Kodi timeshift will take care that I don't miss anything, even when watching broadcast TV:
 
