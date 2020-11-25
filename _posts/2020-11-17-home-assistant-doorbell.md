@@ -71,21 +71,13 @@ Now the new input_boolean needs to be connected to the original sensor, in my ca
   - service: input_boolean.turn_on
     data:
       entity_id: input_boolean.doorbell_raw
-- id: doorbell_released
-  alias: Doorbell Released
-  trigger:
-  - entity_id: binary_sensor.openclose_29
-    platform: state
-    to: 'off'
-    for:
-      seconds: 2
-  action:
+  - delay: 00:00:02
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.doorbell_raw
 ```
 
-There is one little trick in here: The sensor is turned off only after a delay, in this case 2 seconds. Thus, if within two seconds, the on/off cycle is detected multiple times, this has no effect, as the input_boolean.doorbell_raw will remain on. This debounces the clapper moving, and also rapid doorbell pressing.
+There is one little trick in here: The turning off of the sensor is ignored and the input_boolean is turned off only after a delay, in this case 2 seconds. Thus, if within two seconds, the on/off cycle is detected multiple times, this has no effect, as the input_boolean.doorbell_raw will remain on. This debounces the clapper moving, and also rapid doorbell pressing.
 
 ## Usages
 
