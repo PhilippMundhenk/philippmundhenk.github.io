@@ -126,6 +126,7 @@ This is fairly straight forward.
 
 Now we will create two automations to switch on the lights when input_boolean.laptop is on and switch off, when input_boolean.laptop is off:
 
+{% raw %}
 ```yaml
 - id: laptop_logged_in
   alias: Laptop Logged In
@@ -148,9 +149,11 @@ Now we will create two automations to switch on the lights when input_boolean.la
     data:
       entity_id: switch.plug4
 ```
+{% endraw %}
 
 Also these are very simple automations and you can of course control everything from here, not only an RGB-LED strip. If you would like to control the color of the LED strip, based on the logged in user, you can try something like this:
 
+{% raw %}
 ```yaml
 - id: set_backlight_color
   alias: Set Backlight Color
@@ -178,6 +181,7 @@ Also these are very simple automations and you can of course control everything 
     data_template:
       entity_id: light.rgbLight1
 ```
+{% endraw %}
 
 ## Conclusion
 
