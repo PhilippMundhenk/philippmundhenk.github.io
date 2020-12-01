@@ -26,7 +26,7 @@ Lets first have a look at the latter, as polling seems somewhat inefficient. Spo
 
 We can now register a script to be called when the above events happen for the specified class. This called script can then check if the device added/removed is the dock, based on the vendor ID. To register the callbacks for adding/removing devices, use use something like this:
 
-```ps
+```posh
 $Query = "SELECT * FROM __InstanceCreationEvent WITHIN 30 WHERE TargetInstance ISA 'Win32_USBControllerDevice'";
 $Action = { & C:\detectDocked.ps1;  };
 Register-WmiEvent -Query $Query -Action $Action -SourceIdentifier LaptopDocked;
@@ -46,7 +46,7 @@ Thus, we might as well save ourselves all this trouble of registering callbacks 
 
 While pretty much every computer scientist will tell you polling is not a good idea in almost all cases, I can today refer to not being a computer scientist and use polling anyway. As we have seen above, there is unfortunately no other option. Thus, we extend on Sandy's script to detect both an existing and a missing dock, add some logic to not run unnecessary script calls and put all of that in an infinite loop, with a timeout of 5 seconds, which is much more acceptable than the 30 seconds used for WMI queries. Save the following e.g., in C:\dock\dockDetector.ps1
 
-```ps
+```posh
 [bool] $DockedInLastRun = $false
 while(1 -eq 1)
 {
