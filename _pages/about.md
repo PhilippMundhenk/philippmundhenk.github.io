@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-I am a Software Engineer at the [Autonomous Intelligent Driving GmbH](http://aid-driving.eu), a subsidiary of the [Audi AG](http://www.audi.de), focused on revolutionary approaches to autonomous driving. There, I am looking into middleware technologies and security questions for future automotive architectures.
+I am an expert on reliable & real-time embedded systems, specialized in aspects relating to security, communications, and software.
 
-My hobbies relevant to and reflected on this website lie in areas adjacent to my research interests, mostly centered in the area of computer networks and computing applications.
+My hobbies relevant to my work and reflected on this website lie in areas adjacent to my research and work interests, mostly centered in the area of computer networks and computing applications.
 
 I use this website to publish information about projects I am pursuing both professionally and in my spare time. It shall serve as a reference for myself and others, as reminder on where problems existed and how these problems have been solved and as a general overview over my work and interests.
 
@@ -18,13 +18,23 @@ The following is a list of my professional and educational experience.
 
 ## Professional Experience
 
-###### since 2018: Senior Software Engineer
-at [Autonomous Intelligent Driving GmbH](http://aid-driving.eu) in München, Germany
+###### since 2021: Senior Expert for Automotive Software Architectures
+at [Robert Bosch GmbH, Corporate Research (CR)](https://www.bosch.com/research/) in [Renningen](https://www.bosch.de/unser-unternehmen/bosch-in-deutschland/renningen/), Germany
 Topics:
-- Middleware concepts for future automotive architectures
-- Software platforms
-- Automotive network architectures
-- Automotive Security
+- Senior Expert (Fachreferent) for Automotive Software Architectures at Advanced Digital Technologies (ADT) department
+- Vehicle Computer Solution Architect for Strategic Portfolio (SPF) Information & Communication Technologies (ICT)
+- Program Co-Manager: Dynamic Distributed Systems in SPF ICT
+
+###### 2018 - 2020: Senior Software Engineer
+at [Autonomous Intelligent Driving GmbH](http://aid-driving.eu) and [Argo AI](https://www.argo.ai/) in München, Germany
+Topics:
+Building a software platform/middleware for autonomous driving in multiple roles:
+- Software Engineer: Extending the software platform and making it hard real-time capable
+- Product Owner: Setting the direction and prioritizing the software platform team
+- Network Architect: Defining and validating the network architecture for autonomous driving on level 4
+- System Integrator: Building tools for system (HW, SW) setup & integration and integrating software components for an efficient system
+
+AID was taken over by Argo AI in June 2020 at 3 years old and US$1.6 Billion valuation.
 
 ###### 2016 - 2018: Developer Data Transfer Technologies & Security
 at [Audi Electronics Venture GmbH](http://www.audi-electronics-venture.de) in Gaimersheim, Germany
