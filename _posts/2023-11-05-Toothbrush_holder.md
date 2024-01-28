@@ -16,6 +16,7 @@ I am missing a router or similar.
 Thus, after failing to achieve this, I decided to go for a smaller, more practical hack:
 Starting from a leftover piece of wood, sanded nice and soft, and with rounded corners, I added a few nails.
 The nails are just long enough that the toothbrush heads are not fully touching the wood, so that remaining water can escape, yet short enough so that there is no large gap.
+The nails are spaced 2cm apart.
 As this meant some of the nails are at the very limit of the size of the wood (i.e., pinching through the bottom), I added some flat foam feet.
 Next time I oil the garden furniture, I might give this stand a bit of oil as well to make it handle remaining water a little better.
 So whole effort is in the range of a few minutes.
