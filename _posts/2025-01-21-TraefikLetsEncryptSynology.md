@@ -73,16 +73,16 @@ Finding this information required of course a bit of research.
 
 This is required to create the folder structure. 
 There may be manual ways to do this, but I didn't figure it out.
-Instead, this seems simple enough.
-First, download the certificate and private key (e.g., from your backup of the traefik-certs-dumper export).
-Then, in DSM, go to Control Panel > Security > Certificate and click Add.
-"Add a new certificate", press "Next".
-Enter a descriptive name, select "Import certificate", select "set as default certificate", and press "Next".
-Upload your private key and certificate.
-While the file ending might not be .pem, the certificates created by traefik-certs-dumper are already in the correct format.
-you can upload these directly.
-You do not need to upload the intermediate certificate, DSM will just copy your cert, which already includes the intermediate.
-Press "Ok".
+Instead, this seems simple enough:
+
+- First, download the certificate and private key (e.g., from your backup of the traefik-certs-dumper export).
+- Then, in DSM, go to Control Panel > Security > Certificate and click Add.
+- "Add a new certificate", press "Next".
+- Enter a descriptive name, select "Import certificate", select "set as default certificate", and press "Next".
+- Upload your private key and certificate. While the file ending might not be .pem, the certificates created by traefik-certs-dumper are already in the correct format.
+you can upload these directly. You do not need to upload the intermediate certificate, DSM will just copy your cert, which already includes the intermediate.
+- Press "Ok".
+
 This will upload the certificate and prepare all the DSM settings for its use.
 
 ### Symlinking to certs
