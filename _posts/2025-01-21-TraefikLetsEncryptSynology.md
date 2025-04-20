@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Traefik's Let's Encrypt certificates for Synology NAS
+title: Traefik's Let's Encrypt certificates for Synology NAS - Updated
 categories: [home]
 ---
 
@@ -109,6 +109,56 @@ sudo ln -s /path/to/backup/certs/domain.crt /usr/syno/etc/certificate/_archive/<
 sudo ln -s /path/to/backup/certs/domain.crt /usr/syno/etc/certificate/_archive/<folder>/fullchain.pem
 sudo ln -s /path/to/backup/private/domain.key /usr/syno/etc/certificate/_archive/<folder>/privkey.pem
 ```
+
+### Update 2025-04-20
+
+Having run this setup for some time, I noticed that some applications do not use the new certificates.
+Apparently, these applications use separate folders.
+Big thanks to [bitaranto.ch](https://dokuwiki.bitaranto.ch/doku.php?id=synologyimportcertfrompfsense) that led me to figure this out!
+
+Depending on your configuration and installed packages, you may have more copies of these certificates that you need to symlink in ```/usr/local/etc/certificate/``` and ```/usr/syno/etc/certificate/```, e.g.,:
+
+```bash
+sudo rm /usr/local/etc/certificate/DirectoryServer/slapd/*.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/DirectoryServer/slapd/cert.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/DirectoryServer/slapd/fullchain.pem
+sudo ln -s /path/to/backup/private/domain.key /usr/local/etc/certificate/DirectoryServer/slapd/privkey.pem
+
+sudo rm /usr/local/etc/certificate/LogCenter/pkg-LogCenter/*.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/LogCenter/pkg-LogCenter/cert.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/LogCenter/pkg-LogCenter/fullchain.pem
+sudo ln -s /path/to/backup/private/domain.key /usr/local/etc/certificate/LogCenter/pkg-LogCenter/privkey.pem
+
+sudo rm /usr/local/etc/certificate/ScsiTarget/pkg-scsi-plugin-server/*.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/ScsiTarget/pkg-scsi-plugin-server/cert.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/ScsiTarget/pkg-scsi-plugin-server/fullchain.pem
+sudo ln -s /path/to/backup/private/domain.key /usr/local/etc/certificate/ScsiTarget/pkg-scsi-plugin-server/privkey.pem
+
+sudo rm /usr/local/etc/certificate/SynologyDrive/SynologyDrive/*.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/SynologyDrive/SynologyDrive/cert.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/local/etc/certificate/SynologyDrive/SynologyDrive/fullchain.pem
+sudo ln -s /path/to/backup/private/domain.key /usr/local/etc/certificate/SynologyDrive/SynologyDrive/privkey.pem
+
+sudo rm /usr/syno/etc/certificate/smbftpd/ftpd/*.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/syno/etc/certificate/smbftpd/ftpd/cert.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/syno/etc/certificate/smbftpd/ftpd/fullchain.pem
+sudo ln -s /path/to/backup/private/domain.key /usr/syno/etc/certificate/smbftpd/ftpd/privkey.pem
+
+sudo rm /usr/syno/etc/certificate/AppPortal/VideoStation_AltPort/*.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/syno/etc/certificate/AppPortal/VideoStation_AltPort/cert.pem
+sudo ln -s /path/to/backup/certs/domain.crt /usr/syno/etc/certificate/AppPortal/VideoStation_AltPort/fullchain.pem
+sudo ln -s /path/to/backup/private/domain.key /usr/syno/etc/certificate/AppPortal/VideoStation_AltPort/privkey.pem
+```
+
+Additionally, you may also need to create a task to restart the affected services, e.g.:
+- In Control Panel > Task Scheduler, press Create
+- Give a name, e.g., "reload services"
+- Select a schedule (e.g., weekly on Friday night)
+- In Task Settings, put all the services you need to reload:
+```bash
+systemctl restart nginx
+```
+The above restarts the webserver handing most applications such as DSM.
 
 And that is all there is to do!
 
