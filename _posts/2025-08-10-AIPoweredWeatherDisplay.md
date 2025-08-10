@@ -10,6 +10,9 @@ Why is AI required?
 It isn't.
 But since it's all the rage you are much more likely to read this post.
 Also, it makes for a bit more variety in the display.
+The result is something like this:
+
+![Kindle](/images/weather/kindle.png)
 
 ## Challenge
 
@@ -26,15 +29,16 @@ I was looking for the following features:
 
 ## The Backend
 
-### Workflow
-
 This is really where the magic happens.
 The backend determines the weather condition and generates the painting.
 The weather I retrieve from my local Home Assistant instance that is already set up to show the weather of the day for my home location.
 I decided against hosting the image generation myself, mostly due to the fact that my server capabilities are very limited.
-Thus, I went with the [free Cloudflare credit](https://developers.cloudflare.com/workers-ai/platform/pricing/)(of course not sponsored) and the FLUX.1 \[schnell\] model, which is rather generous and certainly enough for my purpose.
+Thus, I went with the [free Cloudflare credit](https://developers.cloudflare.com/workers-ai/platform/pricing/) (of course not sponsored) and the FLUX.1 \[schnell\] model, which is rather generous and certainly enough for my purpose.
 I store all the images on my NAS via Samba.
 For serving, I decided for a web server, since this is the easiest to integrate into the Kindle web browser.
+
+
+### n8n Workflow
 
 While I could use Python or similar to connect all of these components, I decided that this is a good use case to try out my new [n8n](https://n8n.io) instance.
 The logic flow of this automation can be summarized as:
@@ -52,30 +56,10 @@ The logic flow of this automation can be summarized as:
 		- Uploaded to the SMB2 share.
 - Return to Caller – The final image (either generated or retrieved) is returned as the binary response to the webhook.
 
+I put a more detailed description, as well as the complete workflow in the appendix below.
+
 The result of this workflow is an image such as this one:
 ![Weather](/images/weather/weather.jpg)
-
-#### Detailed Description
-
-Here is a detailed description of all the steps:
-
-| Step | Node Name | Function |
-|------|-----------|----------|
-| **Trigger** | **Webhook** | Listens at `/weather` for incoming requests and starts the workflow. |
-| | **When clicking ‘Execute workflow’** | Allows manual triggering for testing/debugging. |
-| **Weather Data Retrieval** | **Get a state** | Queries Home Assistant for the state of a given weather entity ID. |
-| **Check Storage** | **SMB** | Lists files in SMB share folder `weather/{state}` to see if relevant images already exist. |
-| **Summarization** | **Summarize** | Counts or summarizes the filenames retrieved. |
-| **Conditional Branching** | **If** | If the count of images is `0`, branch toward generating a new image. If not, branch toward random choice (Randomizer). |
-| **Randomizer** | **Randomizer** | With 10% probability, generate a new image, even if images already exist. |
-| **Image Retrieval Path** | **SMB → Sort → Code → SMB** | List images in the relevant folder again, randomly shuffle the list, take the first file from the shuffled list and download the selected image. |
-| **Image Generation Path** | **HTTP Request** | Calls Cloudflare AI (`flux-1-schnell`) and asks for a black-and-white image of a landscape in realist style during the given weather. |
-| | **Convert to File** | Converts the base64 image result from the API into binary format. |
-| | **Edit Image1** | Resizes image to 800×800. |
-| | **Edit Image** | Crops image to exactly 600×800 (the resolution of the used Kindle Touch). |
-| | **Crypto** | Generates a UUID for unique filename assignment. |
-| | **SMB** | Uploads processed image to SMB share at `weather/{state}/{uuid}.jpg`. |
-| **Final Step** | **Respond to Webhook** | Sends the final image (from either branch) back as the binary HTTP response. |
 
 ### Webserver
 
@@ -149,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 ?>
 ```
 
-This PHP script fetches the newest weather image, adapts it to the Kindle's slightly redious web browser so that it shows fullscreen and serves it back on a website that includes a header that automatically refreshes the page after one hour.
+This PHP script fetches the newest weather image, adapts it to the Kindle's slightly tedious web browser so that it shows fullscreen and serves it back on a website that includes a header that automatically refreshes the page after one hour.
 This way, every hour, a new image is displayed.
 
 
@@ -277,6 +261,28 @@ All-in-all a great success!
 In future, I might at some point get a nice frame for the Kindle, like I did for my [homelab status display](https://www.mundhenk.org/Homelab_shelf/) making it even more seemless.
 
 ## Appendix
+
+### Detailed Workflow Description
+
+Here is a detailed description of all the workflow steps.
+
+| Step | Node Name | Function |
+|------|-----------|----------|
+| **Trigger** | **Webhook** | Listens at `/weather` for incoming requests and starts the workflow. |
+| | **When clicking ‘Execute workflow’** | Allows manual triggering for testing/debugging. |
+| **Weather Data Retrieval** | **Get a state** | Queries Home Assistant for the state of a given weather entity ID. |
+| **Check Storage** | **SMB** | Lists files in SMB share folder `weather/{state}` to see if relevant images already exist. |
+| **Summarization** | **Summarize** | Counts or summarizes the filenames retrieved. |
+| **Conditional Branching** | **If** | If the count of images is `0`, branch toward generating a new image. If not, branch toward random choice (Randomizer). |
+| **Randomizer** | **Randomizer** | With 10% probability, generate a new image, even if images already exist. |
+| **Image Retrieval Path** | **SMB → Sort → Code → SMB** | List images in the relevant folder again, randomly shuffle the list, take the first file from the shuffled list and download the selected image. |
+| **Image Generation Path** | **HTTP Request** | Calls Cloudflare AI (`flux-1-schnell`) and asks for a black-and-white image of a landscape in realist style during the given weather. |
+| | **Convert to File** | Converts the base64 image result from the API into binary format. |
+| | **Edit Image1** | Resizes image to 800×800. |
+| | **Edit Image** | Crops image to exactly 600×800 (the resolution of the used Kindle Touch). |
+| | **Crypto** | Generates a UUID for unique filename assignment. |
+| | **SMB** | Uploads processed image to SMB share at `weather/{state}/{uuid}.jpg`. |
+| **Final Step** | **Respond to Webhook** | Sends the final image (from either branch) back as the binary HTTP response. |
 
 ### Full n8n workflow
 
