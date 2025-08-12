@@ -265,6 +265,74 @@ In future, I might at some point get a nice frame for the Kindle, like I did for
 
 ## Appendix
 
+### Gallery
+
+Here are some additional sample images that FLUX generated:
+
+#### clear night
+
+![image](/images/weather/clear-night/201998d8-8e6a-44ba-ae0b-c48817659f22.jpg)
+![image](/images/weather/clear-night/32dbfc52-2d89-476e-a081-c2f0129f45d3.jpg)
+![image](/images/weather/clear-night/54da816f-007f-46b4-b24a-0156f7965464.jpg)
+![image](/images/weather/clear-night/65f100e9-e0aa-4ff7-abb5-780be05dc4bf.jpg)
+![image](/images/weather/clear-night/84f2e577-37f0-4a3b-8ebb-ccc69277d3b7.jpg)
+![image](/images/weather/clear-night/8f9023d6-95d7-40f8-a1d0-b2acc32761c6.jpg)
+![image](/images/weather/clear-night/c55066e1-d5da-44db-94c8-84ba6c11ba15.jpg)
+![image](/images/weather/clear-night/eb64137d-ac36-4f8d-abbb-cfe501aa1f84.jpg)
+
+#### cloudy
+
+![image](/images/weather/cloudy/070530ba-e360-4099-acf5-80cdc36d032e.jpg)
+![image](/images/weather/cloudy/08ec5c31-a073-40b7-919b-03e3a4b2acdc.jpg)
+![image](/images/weather/cloudy/2a7444a7-9858-4830-8dc9-398bc7e87876.jpg)
+![image](/images/weather/cloudy/88727587-4d7e-4bb3-8b81-e9471748b534.jpg)
+![image](/images/weather/cloudy/960ecc6a-170e-41b8-a905-05a6d1414405.jpg)
+![image](/images/weather/cloudy/a1f1cc54-55c3-4e3a-bea3-0517074f2882.jpg)
+![image](/images/weather/cloudy/b3897b7f-eaf3-4703-8312-135dba62f015.jpg)
+![image](/images/weather/cloudy/e03a451f-9986-4d7a-a7b0-0f725dc45b13.jpg)
+![image](/images/weather/cloudy/ea01909a-057e-49ce-b585-6a8cf13ca46e.jpg)
+![image](/images/weather/cloudy/ea582fe6-dc11-4a7f-b088-d4623352ead1.jpg)
+
+#### partly cloudy
+
+![image](/images/weather/partlycloudy/a3b39b0e-5e0c-40f3-938b-d790afb1071d.jpg)
+
+#### rainy
+
+![image](/images/weather/rainy/00bed3bc-df9d-49b6-a4fd-147c89fed8aa.jpg)
+![image](/images/weather/rainy/0ac31785-30e9-45eb-9a58-143db02a14a9.jpg)
+![image](/images/weather/rainy/104c0b5b-b412-420c-8ee8-11f14a8e2ede.jpg)
+![image](/images/weather/rainy/18e1c25e-d838-4e50-bff8-a757884dda9e.jpg)
+![image](/images/weather/rainy/2a6b2d94-c200-416d-93ce-b3ecc825eb31.jpg)
+![image](/images/weather/rainy/3b00799e-15d6-4f19-85ec-c18def445eb7.jpg)
+![image](/images/weather/rainy/476fe175-8419-47bd-9299-81e2e3234986.jpg)
+![image](/images/weather/rainy/8337228c-1d2e-47cc-b4e2-4b244f0f6a7f.jpg)
+![image](/images/weather/rainy/87604a60-efc0-420b-b311-32bd7cfb48db.jpg)
+![image](/images/weather/rainy/87ea2568-d4ba-4701-a3f2-152bb1126398.jpg)
+![image](/images/weather/rainy/8af1d4f4-8344-43b4-a813-147388a44084.jpg)
+![image](/images/weather/rainy/a01f675f-156c-4702-999d-c0e734571382.jpg)
+![image](/images/weather/rainy/b700e792-fe50-4f31-a429-f59eaf0fc96d.jpg)
+![image](/images/weather/rainy/c0f322e0-d0f2-48cb-a43b-b4d8da1feef3.jpg)
+![image](/images/weather/rainy/c6f96e8d-bc64-4368-ad56-f97d0505cee6.jpg)
+
+#### sunny
+
+![image](/images/weather/sunny/0a51095d-c773-4896-bb03-6012b884f0a8.jpg)
+![image](/images/weather/sunny/0a60d926-8aeb-460d-82c7-03198e4dfc12.jpg)
+![image](/images/weather/sunny/2843cf57-c743-48f6-887a-1927589426ab.jpg)
+![image](/images/weather/sunny/61caeb43-271f-480f-a0ed-1c5a6613c380.jpg)
+![image](/images/weather/sunny/7060c88b-9125-4bbd-9536-c90ced30d088.jpg)
+![image](/images/weather/sunny/8eb8ef70-7135-4a1f-8ac0-ef7a07bd9194.jpg)
+![image](/images/weather/sunny/98729e64-c95f-4913-b73f-3c15554215eb.jpg)
+![image](/images/weather/sunny/9b29a46f-a350-4750-a59c-c8cc01f89668.jpg)
+![image](/images/weather/sunny/a9e88893-0139-4cb9-aff5-61f053c7257a.jpg)
+![image](/images/weather/sunny/b713f34f-9492-4450-bb3c-cc9d39448d8a.jpg)
+![image](/images/weather/sunny/d3418e0b-6943-4b69-a75c-30fa8f6f8589.jpg)
+![image](/images/weather/sunny/d62d3ec6-ad7a-4da9-98b7-b9387a9daf44.jpg)
+![image](/images/weather/sunny/d6e4f48b-4316-4b77-9d02-291d91d90ea4.jpg)
+![image](/images/weather/sunny/eddf09b6-3b34-4571-8008-49710feee05a.jpg)
+![image](/images/weather/sunny/fcae7bbc-f53a-448d-8d27-97f9e22a3312.jpg)
+
 ### Detailed Workflow Description
 
 Here is a detailed description of all the workflow steps.
