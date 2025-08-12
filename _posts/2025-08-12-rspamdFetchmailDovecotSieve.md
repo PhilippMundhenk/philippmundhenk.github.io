@@ -35,7 +35,7 @@ Here’s the sequence from retrieval to delivery:
 
 I use Fetchmail to grab mail from my remote POP3 server, send it through Rspamd, and then deliver it to Dovecot.
 
-**`/etc/fetchmailrc`**
+`/etc/fetchmailrc`
 
 ```conf
 poll mail.example.com protocol pop3 port 995 user user@example.com
@@ -56,7 +56,7 @@ I enable **Sieve** for delivery and **IMAPSieve** to trigger learning when mail 
 
 ### Enable Sieve in delivery protocols
 
-**`/etc/dovecot/conf.d/10-master.conf`**
+`/etc/dovecot/conf.d/10-master.conf`
 
 ```conf
 protocol lmtp {
@@ -66,7 +66,7 @@ protocol lmtp {
 }
 ```
 
-**`/etc/dovecot/conf.d/15-lda.conf`**
+`/etc/dovecot/conf.d/15-lda.conf`
 
 ```conf
 protocol lda {
@@ -76,7 +76,7 @@ protocol lda {
 }
 ```
 
-**`/etc/dovecot/conf.d/20-imap.conf`**
+`/etc/dovecot/conf.d/20-imap.conf`
 
 ```conf
 protocol imap {
@@ -90,7 +90,7 @@ protocol imap {
 
 This tells Dovecot what to do when mail is copied to or from the Spam folder.
 
-**`/etc/dovecot/conf.d/90-sieve.conf`**
+`/etc/dovecot/conf.d/90-sieve.conf`
 
 ```conf
 sieve_script personal {
@@ -134,7 +134,7 @@ mailbox Spam {
 
 ## Sieve Scripts for Learning
 
-### `/etc/dovecot/sieve/ham.sieve`
+`/etc/dovecot/sieve/ham.sieve`
 
 ```sieve
 require ["vnd.dovecot.pipe", "copy", "imapsieve", "environment", "variables"];
@@ -161,7 +161,7 @@ pipe :copy "learn-ham.sh";
 * Stops if the destination is Trash (I don’t want to learn from deletions).
 * Runs the script `learn-ham.sh` to train Rspamd that this is a legitimate (ham) message.
 
-### `/etc/dovecot/sieve/spam.sieve`
+`/etc/dovecot/sieve/spam.sieve`
 
 ```sieve
 require ["vnd.dovecot.pipe", "copy", "imapsieve", "environment", "variables"];
@@ -196,7 +196,7 @@ chmod +x /etc/dovecot/sieve/learn-*.sh
 
 ## Default Delivery Sieve
 
-**`/home/.dovecot.sieve`**
+`/home/.dovecot.sieve`
 
 ```sieve
 require ["fileinto", "envelope", "variables", "mailbox", "subaddress", "fileinto", "imap4flags"];
