@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rspamd Filtering for Fetchmail, Dovecot & Sieve with Learning
+title: Rspamd Filtering for Fetchmail, Dovecot, Sieve with Learning
 categories: [home]
 ---
 
