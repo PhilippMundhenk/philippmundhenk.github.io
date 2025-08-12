@@ -293,6 +293,7 @@ Here is the full n8n workflow.
 Feel free to import, adapt and use, as you like.
 At the very least, you will need to adapt your SMB (`<id>`, `<name>`), Home Assistant (`<id>`, `<name>`) and Cloudflare (`<account_name>`, `<secret>`) credentials, as well as your Home Assistant weather entity ID (`<entityID>`).
 
+{% raw %}
 ```json
 {
   "name": "Weather Display",
@@ -864,3 +865,4 @@ At the very least, you will need to adapt your SMB (`<id>`, `<name>`), Home Assi
   "tags": []
 }
 ```
+{% endraw %}
