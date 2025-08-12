@@ -9,8 +9,6 @@ It seemed there was no complete documentation and the configuration options have
 So I pieced this together myself and provide it as a short tutorial here.
 Of course, there is lots of possible implementations of this, I use a smarthost setup with Fetchmail.
 Since no spam filter is perfect out-of-the-box, I also wanted to have learning of spam/ham supported.
-This setup gives me the flexibility of retrieving mail from anywhere while keeping the server-side filtering and learning fully automated.
-In this guide, I will walk through the exact configuration I use, explain the Sieve scripts in detail, and show how everything connects.
 
 ## Overview
 
