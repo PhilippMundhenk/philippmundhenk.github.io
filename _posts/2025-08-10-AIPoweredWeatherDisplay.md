@@ -56,6 +56,9 @@ The logic flow of this automation can be summarized as:
 		- Uploaded to the SMB2 share.
 - Return to Caller – The final image (either generated or retrieved) is returned as the binary response to the webhook.
 
+The complete workflow looks like this:
+![Workflow](/images/weather/workflow.png)
+
 I put a more detailed description, as well as the complete workflow in the appendix below.
 
 The result of this workflow is an image such as this one:
