@@ -31,6 +31,19 @@ Here’s the sequence from retrieval to delivery:
     ↳ Spam/Ham learning on folder moves
 ```
 
+## Installation
+
+You will need to install Sieve (including IMAPSieve) and Rspamd, the exact syntax for this depends on your system.
+In my case, on Alpine, this looks like this:
+```
+RUN apk add --no-cache \
+	dovecot-pigeonhole-plugin \
+	rspamd \
+	rspamd-client
+```
+
+Also make sure that Rspamd (and Dovecot, of course) is running, e.g., via systemd, or e.g., your container start script.
+
 ## Fetchmail Configuration
 
 I use Fetchmail to grab mail from my remote POP3 server, send it through Rspamd, and then deliver it to Dovecot.
@@ -227,6 +240,22 @@ if header :is "X-Spam" "yes" {
 * **No learning from Trash:** Moving to Trash doesn’t trigger anything.
 
 Over time, Rspamd builds up statistical learning, improving its accuracy.
+
+### Testing
+
+To test the filtering, wait for the next spam mail (it will come, don't worry) and see if this ends up in the Spam folder.
+Check the headers and look for the X-Spam header or the X-Spam-Score to see if Rspamd classifies an email as spam or not.
+
+To check the learning functionality, watch the Rspamd logs at `/var/log/rspamd/rspamd.log`.
+You should see an entry like this:
+```
+(controller) <xxx>; csession; rspamd_controller_learn_fin_task: <127.0.0.1> learned message as spam: xxx@example.com
+```
+when training for spam, or
+```
+(controller) <xxx>; csession; rspamd_controller_learn_fin_task: <127.0.0.1> learned message as ham: xxx@example.com
+```
+when training for ham.
 
 ## Conclusion
 
