@@ -161,8 +161,6 @@ pipe :copy "learn-ham.sh";
 * Stops if the destination is Trash (I don’t want to learn from deletions).
 * Runs the script `learn-ham.sh` to train Rspamd that this is a legitimate (ham) message.
 
----
-
 ### `/etc/dovecot/sieve/spam.sieve`
 
 ```sieve
@@ -173,8 +171,6 @@ pipe :copy "learn-spam.sh";
 **Explanation:**
 
 * Much simpler — whenever a message is copied into the Spam folder, it runs `learn-spam.sh` to tell Rspamd this is spam.
-
----
 
 ### Learning Scripts
 
@@ -197,8 +193,6 @@ I make them executable:
 ```bash
 chmod +x /etc/dovecot/sieve/learn-*.sh
 ```
-
----
 
 ## Default Delivery Sieve
 
@@ -226,8 +220,6 @@ if header :is "X-Spam" "yes" {
 * The `:create` flag ensures folders are created automatically if they don’t exist.
 * Note that this script is only run if the user has not specified a sieve script! You may want to disallow user scripts (see `sieve_script personal` above), if you are afraid your users may override this script.
 
----
-
 ## How Learning Works in Practice
 
 * **Mark spam:** If I drag a message from Inbox to Spam, Dovecot triggers `learn_spam.sh`.
@@ -235,8 +227,6 @@ if header :is "X-Spam" "yes" {
 * **No learning from Trash:** Moving to Trash doesn’t trigger anything.
 
 Over time, Rspamd builds up statistical learning, improving its accuracy.
-
----
 
 ## Conclusion
 
