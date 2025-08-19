@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing n8n-nodes-kodi: A Powerful Plugin for Kodi Automation
+title: Automation Kodi through n8n with n8n-nodes-kodi
 categories: [home]
 ---
 
