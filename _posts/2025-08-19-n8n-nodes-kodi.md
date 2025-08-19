@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Automation Kodi through n8n with n8n-nodes-kodi
+title: Automating Kodi through n8n with n8n-nodes-kodi
 categories: [home]
 ---
 
