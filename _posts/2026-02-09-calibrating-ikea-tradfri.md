@@ -65,6 +65,7 @@ These points allow us to map a requested color temperature to an xy value that a
 
 To control multiple bulbs as one unit and hide the adaption behind a nice interface, I created a template RGBW light in Home Assistant:
 
+{% raw %}
 ```yaml
 light:
   - name: "Living Room Lights"
@@ -112,6 +113,7 @@ light:
 
     supports_transition: "{{ true }}"
 ```
+{% endraw %}
 
 This template light reflects the combined state of all the individual bulbs and routes color temperature changes through a calibration script.
 Note that it only tracks the first light for level, temperature, color, etc. but that's enough for me.
@@ -124,6 +126,7 @@ This script does a cubic interpolation between the two reference points and is f
 It does lack accuracy beyond 4000K, but since my bulbs don't support that, I don't mind.
 The script takes a color temperature and multiple lights, which are turned on with their calibrated xy values, based on the calibration anchors defined above.
 
+{% raw %}
 ```yaml
 set_calibrated_xy_color:
   alias: Set Calibrated XY Color for Multiple Lights
@@ -190,7 +193,7 @@ set_calibrated_xy_color:
                 - "{{ x }}"
                 - "{{ y }}"
 ```
-
+{% endraw %}
 ## Results
 
 After setting this up, the difference is noticeable:
@@ -203,6 +206,7 @@ While RGBW bulbs can’t perfectly reproduce the entire white spectrum, this met
 
 The virtual RGBW is not perfectly tracking these lights, but since I barely use it manually and automate setting the light based on the angle of the sun, this is not an issue for me so far.
 
+{% raw %}
 ```yaml
 {% set x = state_attr('sun.sun', 'elevation') | float(0) %}
 {% if x <= 5 %}
@@ -213,6 +217,7 @@ The virtual RGBW is not perfectly tracking these lights, but since I barely use 
   {{ (2200 + (x - 5) * 51.42857) | round(0) }}
 {% endif %}
 ```
+{% endraw %}
 
 ## Conclusion
 
