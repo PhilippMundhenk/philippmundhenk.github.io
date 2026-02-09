@@ -8,8 +8,6 @@ IKEA’s Tradfri series offers a very affordable entry into smart lighting, with
 
 Over the last few weeks, I experimented with a method to improve white spectrum consistency across multiple Tradfri bulbs in my living room. Here’s what I did and how I implemented it in Home Assistant.  
 
----
-
 ## Comparing Lights Side-by-Side
 
 I started by placing different types of Tradfri RGBW bulbs next to each other:
@@ -18,8 +16,6 @@ I started by placing different types of Tradfri RGBW bulbs next to each other:
 - E14 RGBW candle bulb
 
 To get a reference, I used a **dedicated white spectrum lamp** (in my case a Tradfri E14). By visually comparing the lights side by side, it became clear that the built-in RGB values from IKEA did not match the reference lamp’s white spectrum.  
-
----
 
 ## Manual RGBW Calibration
 
@@ -34,8 +30,6 @@ Once I found satisfactory settings for the warm and cool ends of the spectrum, I
 - Cold / bottom end: ~4000K
 
 These two points serve as **calibration anchors** for each bulb.
-
----
 
 ## Storing Calibration Points in Home Assistant
 
@@ -194,6 +188,7 @@ set_calibrated_xy_color:
                 - "{{ y }}"
 ```
 {% endraw %}
+
 ## Results
 
 After setting this up, the difference is noticeable:
