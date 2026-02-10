@@ -12,7 +12,7 @@ Over the last few weeks, I experimented with a method to improve white spectrum 
 
 I probaby won't do a good job explaining color theory, due to my own lack of complete understanding but some basics are sufficient here.
 There are multiple ways to define a color.
-Among these are RGB, a combination of the colors red, green, blue; Hue/Saturation; and XY coordinates in the CIE diagram.
+Among these are RGB, a combination of the colors red, green, blue; Hue/Saturation; and xy coordinates in the CIE diagram.
 The spectrum of cold white to warm white can be expressed as part of the [Planckian Locus](https://en.wikipedia.org/wiki/Planckian_locus):
 
 ![Planckian Locus](/images/tradfri_calib/PlanckianLocus.png)
@@ -21,9 +21,9 @@ When setting different white temperatures, the RGBW lights create this from mixi
 Note that this differs from how RGBWW or white spectrum lights create the white spectrum, as these mix warm and cold white LEDs and through this achieve much "cleaner" whites.
 I use a white spectrum light as reference for my calibration.
 
-By changing the translation from color temperature to XY value, we can shift the Planckian Locus in the CIE diagram and calibrate lights to each other.
-I performed the initial manual calibration with the RGBW values, as I found it easier to think of e.g., "adding blue", "removing red" when adjusting the lights, compared to XY coordinates.
-Later, I read out the XY values at the calibration points of 2200K and 4000K via the Home Assistant Developer Tools:
+By changing the translation from color temperature to xy value, we can shift the Planckian Locus in the CIE diagram and calibrate lights to each other.
+I performed the initial manual calibration with the RGBW values, as I found it easier to think of e.g., "adding blue", "removing red" when adjusting the lights, compared to xy coordinates.
+Later, I read out the xy values at the calibration points of 2200K and 4000K via the Home Assistant Developer Tools:
 
 {% raw %}
 ```jinja
@@ -33,7 +33,7 @@ Y: {{ light_xy[1] if light_xy is not none else 'unknown' }}
 ```
 {% endraw %}
 
-I switched from RGBW to XY, as the Planckian Locus is easier to interpolate along these coordinates, rather than considering each of RGBW individually.
+I switched from RGBW to xy, as the Planckian Locus is easier to interpolate along these coordinates, rather than considering each of RGBW individually.
 
 ## Comparing Lights Side-by-Side
 
