@@ -8,6 +8,33 @@ IKEA’s Tradfri series offers a very affordable entry into smart lighting, with
 
 Over the last few weeks, I experimented with a method to improve white spectrum consistency across multiple Tradfri bulbs in my living room. Here’s what I did and how I implemented it in Home Assistant.  
 
+## A little bit of theory
+
+I probaby won't do a good job explaining color theory, due to my own lack of complete understanding but some basics are sufficient here.
+There are multiple ways to define a color.
+Among these are RGB, a combination of the colors red, green, blue; Hue/Saturation; and XY coordinates in the CIE diagram.
+The spectrum of cold white to warm white can be expressed as part of the [Planckian Locus](https://en.wikipedia.org/wiki/Planckian_locus):
+
+![Planckian Locus](/images/tradfri_calib/PlanckianLocus.png)
+
+When setting different white temperatures, the RGBW lights create this from mixing the available red, green, blue and white LEDs.
+Note that this differs from how RGBWW or white spectrum lights create the white spectrum, as these mix warm and cold white LEDs and through this achieve much "cleaner" whites.
+I use a white spectrum light as reference for my calibration.
+
+By changing the translation from color temperature to XY value, we can shift the Planckian Locus in the CIE diagram and calibrate lights to each other.
+I performed the initial manual calibration with the RGBW values, as I found it easier to think of e.g., "adding blue", "removing red" when adjusting the lights, compared to XY coordinates.
+Later, I read out the XY values at the calibration points of 2200K and 4000K via the Home Assistant Developer Tools:
+
+{% raw %}
+```jinja
+{% set light_xy = state_attr('light.e14', 'xy_color') %}
+X: {{ light_xy[0] if light_xy is not none else 'unknown' }}, 
+Y: {{ light_xy[1] if light_xy is not none else 'unknown' }}
+```
+{% endraw %}
+
+I switched from RGBW to XY, as the Planckian Locus is easier to interpolate along these coordinates, rather than considering each of RGBW individually.
+
 ## Comparing Lights Side-by-Side
 
 I started by placing different types of Tradfri RGBW bulbs next to each other:
@@ -15,14 +42,14 @@ I started by placing different types of Tradfri RGBW bulbs next to each other:
 - GU10 RGBW spotlight
 - E14 RGBW candle bulb
 
-To get a reference, I used a **dedicated white spectrum lamp** (in my case a Tradfri E14). By visually comparing the lights side by side, it became clear that the built-in RGB values from IKEA did not match the reference lamp’s white spectrum.  
+To get a reference, I used a **dedicated white spectrum lamp** (in my case a Tradfri E14). By visually comparing the lights side by side, it became clear that the built-in RGB values from IKEA did not match the reference lamp’s white spectrum.
 
 ## Manual RGBW Calibration
 
 The next step was **manual calibration**:
 
-1. I adjusted the RGBW values of each bulb until the light appeared close to the reference spectrum.
-2. The result was not perfect — no consumer RGBW light is — but it was significantly closer than the original settings.  
+1. I adjusted the RGBW values of each bulb until the light appeared as close to the reference spectrum as I could get.
+2. The result was not perfect — no consumer RGBW light is — but it was significantly closer than the original settings.
 
 Once I found satisfactory settings for the warm and cool ends of the spectrum, I recorded the **xy color values** (a point on the CIE spectrum) corresponding to:
 
