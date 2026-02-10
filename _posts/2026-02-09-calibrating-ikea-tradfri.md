@@ -15,7 +15,7 @@ There are multiple ways to define a color.
 Among these are RGB, a combination of the colors red, green, blue; Hue/Saturation; and xy coordinates in the CIE diagram.
 The spectrum of cold white to warm white can be expressed as part of the [Planckian Locus](https://en.wikipedia.org/wiki/Planckian_locus):
 
-![Planckian Locus](/images/tradfri_calib/PlanckianLocus.png)
+![Planckian Locus](/images/traedfri_calib/PlanckianLocus.png)
 
 When setting different white temperatures, the RGBW lights create this from mixing the available red, green, blue and white LEDs.
 Note that this differs from how RGBWW or white spectrum lights create the white spectrum, as these mix warm and cold white LEDs and through this achieve much "cleaner" whites.
