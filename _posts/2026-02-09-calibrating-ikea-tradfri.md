@@ -21,7 +21,8 @@ When setting different white temperatures, the RGBW lights create this from mixi
 Note that this differs from how RGBWW or white spectrum lights create the white spectrum, as these mix warm and cold white LEDs and through this achieve much "cleaner" whites.
 I use a white spectrum light as reference for my calibration.
 
-By changing the translation from color temperature to xy value, we can shift the Planckian Locus in the CIE diagram and calibrate lights to each other.
+Since we can't change how the lights map the given temperature to their LEDs, we instead change the translation from color temperature to xy value.
+This way, we can shift the Planckian Locus in the CIE diagram and calibrate lights to each other.
 I performed the initial manual calibration with the RGBW values, as I found it easier to think of e.g., "adding blue", "removing red" when adjusting the lights, compared to xy coordinates.
 Later, I read out the xy values at the calibration points of 2200K and 4000K via the Home Assistant Developer Tools:
 
