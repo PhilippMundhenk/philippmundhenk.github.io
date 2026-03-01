@@ -31,24 +31,7 @@ Even if you're comfortable with Docker hardening, this setup feels like breaking
 It works.
 But it defeats part of the isolation benefit of containers.
 
-# The New Architecture
-
-## Overview
-
-### Components
-
-- Docker host running:
-  - Postfix
-  - Dovecot
-  - fail2ban
-  - Traefik
-- Edge firewall: OPNsense
-- Notifications: ntfy
-- Enforcement: OPNsense alias table
-
----
-
-# Step 1: Let OPNsense Handle the Blocking
+## Step 1: Let OPNsense Handle the Blocking
 
 OPNsense provides a well-documented API and supports dynamic alias tables.
 
@@ -79,7 +62,7 @@ Add a WAN rule:
 
 Now the firewall enforces bans globally.
 
-## API User Permissions
+### API User Permissions
 
 Create a dedicated API user in OPNsense for fail2ban.
 This user needs at least the "Diagnostics: PF Table IP addresses" privilege.
@@ -89,7 +72,7 @@ The exact permission names may vary slightly by version.
 
 Use the button in the overview to download the API key and store for later use in fail2ban.
 
-## fail2ban Action for OPNsense
+### fail2ban Action for OPNsense
 
 You can e.g., use the opnsense action defined in [PR #2761](https://github.com/fail2ban/fail2ban/pull/2761/files).
 Use the action like so:
@@ -101,7 +84,7 @@ banaction = opnsense[firewall="192.168.123.1",key="top_key",secret="top_secret",
 Detection stays local.
 Enforcement moves to the edge.
 
-# Step 2: Notifications with ntfy
+## Step 2: Notifications with ntfy
 
 Blocking attackers is nice.
 
@@ -128,7 +111,7 @@ as a reminder, you can generate a token for user "user1" e.g., like this:
 docker exec -it ntfy_container ntfy token add user1
 ```
 
-# Step 3: Mail Server in Docker (Postfix + Dovecot)
+## Step 3: Mail Server in Docker (Postfix + Dovecot)
 
 I run Dovecot & Postfix inside Docker.
 
@@ -142,7 +125,7 @@ This keeps:
 - STARTTLS and wrapper mode native
 - No protocol interference at the proxy layer
 
-## Traefik TCP Entrypoints
+### Traefik TCP Entrypoints
 
 We use dedicated TCP entrypoints for secure mail:
 
@@ -169,16 +152,41 @@ entryPoints:
 Traefik forwards raw TCP connections and injects Proxy Protocol headers with original sender IP.
 Note: NAT at opnsense is not an issue here, as NAT preserves sender IP.
 
-## Postfix Configuration
+You also want to configure the Dovecot/Postfix containers for Traefik to know how to handle them, e.g.,
 
-### main.cf
+```
+# Dovecot
+labels
+  - "traefik.enable=true"
+  - "traefik.tcp.routers.dovecot-imaps.rule=HostSNI(`*`)"
+  - "traefik.tcp.routers.dovecot-imaps.entrypoints=imaps"
+  - "traefik.tcp.routers.dovecot-imaps.service=dovecot-imaps"
+  - "traefik.tcp.routers.dovecot-imaps.tls.passthrough=true"
+  - "traefik.tcp.services.dovecot-imaps.loadbalancer.server.port=993"
+  - "traefik.tcp.services.dovecot-imaps.loadbalancer.proxyProtocol.version=1"
+  - "traefik.http.routers.dovecot-imaps.middlewares="
+# Postfix
+labels
+  - "traefik.enable=true"
+  - "traefik.tcp.routers.postfix-smtps.rule=HostSNI(`*`)"
+  - "traefik.tcp.routers.postfix-smtps.entrypoints=smtps"
+  - "traefik.tcp.routers.postfix-smtps.service=postfix-smtps"
+  - "traefik.tcp.routers.postfix-smtps.tls.passthrough=true"
+  - "traefik.tcp.services.postfix-smtps.loadbalancer.server.port=465"
+  - "traefik.tcp.services.postfix-smtps.loadbalancer.proxyProtocol.version=1"
+  - "traefik.http.routers.postfix-smtps.middlewares="
+```
+
+### Postfix Configuration
+
+#### main.cf
 
 ```conf
 smtpd_upstream_proxy_protocol = haproxy
 smtpd_upstream_proxy_timeout = 5s
 ```
 
-### master.cf (SMTPS example)
+#### master.cf (SMTPS example)
 
 ```conf
 smtps     inet  n       -       n       -       -       smtpd
@@ -188,9 +196,7 @@ smtps     inet  n       -       n       -       -       smtpd
   -o smtpd_upstream_proxy_timeout=5s
 ```
 
----
-
-## Dovecot Configuration
+### Dovecot Configuration
 
 In `10-master.conf` (or equivalent), inside the IMAPS login service block:
 
@@ -211,7 +217,7 @@ Key point:
 
 Without this, Dovecot will log the Docker IP or reject the connection.
 
-## Resulting Logs (example)
+### Resulting Logs (example)
 
 Without Proxy Protocol:
 
@@ -228,9 +234,9 @@ imap-login: Info: Logged in: user=<user1>, method=PLAIN, rip=123.123.123.123, li
 Now fail2ban sees the real client IP and can ban it correctly — which then gets enforced at the firewall.
 This is of course also necessary for local banning, not just on the edge.
 
-# Why I prefer this
+## Why I prefer this
 
-## 1. Principle of Least Privilege
+### 1. Principle of Least Privilege
 
 fail2ban:
 
@@ -241,7 +247,7 @@ fail2ban:
 
 Containers remain isolated.
 
-## 2. Centralized Enforcement
+### 2. Centralized Enforcement
 
 Blocking happens at the edge.
 
@@ -249,14 +255,14 @@ Blocking happens at the edge.
 - Stops traffic before it reaches Docker
 - Cleaner policy model
 
-## 3. Cleaner Separation of Concerns
+### 3. Cleaner Separation of Concerns
 
 - Application detects
 - Firewall enforces
 
 Simple and predictable.
 
-# The Imperfection: Internal Attackers
+## The Imperfection: Internal Attackers
 
 This setup is not perfect.
 
@@ -284,7 +290,7 @@ The real solution:
 
 Edge-based banning is powerful — but it is not a substitute for internal network architecture.
 
-# Final Thoughts
+## Final Thoughts
 
 Moving fail2ban enforcement to opnsense significantly significantly cleans the dependencies and feels much cleaner.
 Note that latency is no issue at all with banning.
