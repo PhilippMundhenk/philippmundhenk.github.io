@@ -8,7 +8,7 @@ Running services in Docker is easy. Running them securely, observably, and witho
 
 For years, I ran fail2ban the traditional way: inside Docker, with access to the host network stack and enough capabilities to manipulate `iptables`. It worked. But it never felt right.
 
-This post documents how I moved fail2ban enforcement to the edge — onto my :contentReference[oaicite:0]{index=0} firewall — and why that decision simplified my setup considerably.
+This post documents how I moved fail2ban enforcement to the edge — onto my opnsense firewall — and why that decision simplified my setup considerably.
 
 ## The Problem with “Traditional” fail2ban in Docker
 
