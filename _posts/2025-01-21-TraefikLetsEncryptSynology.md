@@ -162,6 +162,90 @@ The above restarts the webserver handing most applications such as DSM.
 
 And that is all there is to do!
 
+### Update 2026-07-05
+
+I was having issues with the restarts, as well as with package updates destroying the symlinks.
+I thus removed the nginx restarts and replaced it with a weekly check for new certs, proper deployment of certs and check that deployment is correct (should be sufficient due to Lets Encrypt renewing certs a few weeks before expiry):
+
+```bash
+#!/bin/bash
+# /volume1/scripts/refresh_certs.sh — root, Task Scheduler, daily 03:00
+set -u
+
+SRC=/path/to/certs/domain.crt
+REF=/usr/local/etc/certificate/SynologyDrive/SynologyDrive/cert.pem
+PKGS=(LogCenter ScsiTarget DirectoryServer SynologyDrive)
+DEPLOY_DIRS=(
+  /usr/syno/etc/certificate/system/default
+  /usr/syno/etc/certificate/smbftpd/ftpd
+  /usr/syno/etc/certificate/AppPortal/VideoStation_AltPort
+  /usr/local/etc/certificate/LogCenter/pkg-LogCenter
+  /usr/local/etc/certificate/ScsiTarget/pkg-scsi-plugin-server
+  /usr/local/etc/certificate/DirectoryServer/slapd
+  /usr/local/etc/certificate/SynologyDrive/SynologyDrive
+)
+EXIT_ON_ROTATE=0   # set 1 to also get mail on successful rotations
+FAILED=0
+fail() { echo "FAIL: $*"; FAILED=1; }
+ok()   { echo "  ok: $*"; }
+
+fp() { openssl x509 -in "$1" -noout -fingerprint 2>/dev/null; }
+
+mkdir -p /usr/syno/share/certificate.d /var/tmp/nginx
+
+src=$(fp "$SRC") || { fail "source cert unreadable: $SRC"; exit 1; }
+disk=$(fp "$REF")
+
+[ "$src" = "$disk" ] && exit 0   # no rotation — silent, no mail
+
+echo "=== cert rotation detected $(date -Iseconds) ==="
+echo "source: $(openssl x509 -in "$SRC" -noout -subject -enddate | tr '\n' ' ')"
+
+# --- deploy ---
+out=$(/usr/syno/bin/synow3tool --gen-all 2>&1)
+if echo "$out" | grep -qi "successfully" && ! echo "$out" | grep -qi "cannot\|fail"; then
+    ok "synow3tool --gen-all"
+else
+    fail "synow3tool --gen-all: $out"
+fi
+
+out=$(/usr/syno/bin/synow3tool --nginx=reload 2>&1) && ok "nginx reload" || fail "nginx reload: $out"
+
+# --- verify deployed files match source ---
+for d in "${DEPLOY_DIRS[@]}"; do
+    [ -d "$d" ] || continue   # subscriber not present on this box
+    if [ "$(fp "$d/cert.pem")" = "$src" ]; then ok "deployed: $d"; else fail "stale after deploy: $d"; fi
+done
+
+# --- restart daemons that cache certs ---
+systemctl try-restart ftpd.service 2>/dev/null || /usr/syno/bin/synosystemctl restart ftpd
+sleep 2
+systemctl is-active --quiet ftpd.service && ok "ftpd restarted" || echo "  note: ftpd not active (may be disabled)"
+
+for pkg in "${PKGS[@]}"; do
+    /usr/syno/bin/synopkg status "$pkg" 2>/dev/null | grep -q '"status":"running"' || { echo "  note: $pkg not running, skipped"; continue; }
+    /usr/syno/bin/synopkg restart "$pkg" >/dev/null 2>&1
+    sleep 3
+    /usr/syno/bin/synopkg status "$pkg" 2>/dev/null | grep -q '"status":"running"' \
+        && ok "$pkg restarted" || fail "$pkg did not come back up"
+done
+
+# --- verify what nginx actually serves ---
+live=$(echo | openssl s_client -connect localhost:5001 2>/dev/null | openssl x509 -noout -fingerprint 2>/dev/null)
+[ "$live" = "$src" ] && ok "port 5001 serves new cert" || fail "port 5001 serves stale/unknown cert"
+
+if [ "$FAILED" -eq 1 ]; then
+    echo "=== ROTATION COMPLETED WITH ERRORS ==="
+    exit 1
+fi
+echo "=== rotation verified OK ==="
+exit "$EXIT_ON_ROTATE"
+```
+
+Save this, e.g., as /volume1/scripts/renew_certs.sh and use the task scheduler in the GUI to run this weekly.
+You may send the results to your email address, in case of error, you should receive meaningful error messages.
+Make sure to run the script as ```root```, weekly is sufficient.
+
 ## Conclusion
 
 Having already had my certificates extracted from Traefik, integrating them into DSM was much easier than I expected.
