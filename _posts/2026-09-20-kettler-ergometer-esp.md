@@ -11,8 +11,6 @@ No serial port, no Bluetooth, nothing — the only connector is an analog plug f
 Since I measure everything else in this house, that clearly could not stand.
 This is the story of wiring it up to an ESP32, a story that grew far beyond its original scope: Past a failed first approach, into Home Assistant, onto a chest strap, through an AI training coach posting to Matrix, and finally into a full role-playing game.
 
-![The Kettler Golf M](/images/kettler/kettler-golf-m.jpg)
-
 ## Reconnaissance
 
 Lifting the console off revealed a surprisingly tidy interface: three connectors, all helpfully labeled on the console PCB (visible after disassembly of the FB601).
@@ -51,9 +49,20 @@ The wiring became almost embarrassingly simple: Poti excitation and wiper on GPI
 The best part: The plugs of the ergometer fit perfectly onto the ESP and the ESP itself sits comfortable behind the console.
 Eventually, I might replace the console itself, but for now, the whole setup looks very clean, only requiring one additional USB wire for power.
 
-The ESPHome firmware reads cadence (one pulse per crank revolution, debounced), computes the load as a ratio of wiper to excitation voltage (immune to supply drift), and derives the numbers the console used to show as template sensors: Speed, distance, energy, and a resistance level 1–10 for nostalgia.
+The full pin map, for anyone with a similar bike:
+
+| Kettler | ESP32 |
+|---|---|
+| Poti low side | GPIO25 (driven low) |
+| Poti high side | GPIO32 (driven high, excitation) |
+| Poti wiper | GPIO33 (ADC) |
+| Reed switch | GPIO15 (internal pullup) |
+| Reed switch, other side | GND |
+
+The ESPHome firmware reads cadence (one pulse per crank revolution, debounced), maps the wiper voltage (0.6–3.0 V measured across the dial range) to a load percentage, and derives the numbers the console used to show as template sensors: Speed, distance, energy, and a resistance level 1–10 for nostalgia.
 There is also a power estimate from load and cadence, I should say honestly that it is a "plausible" formula, not a calibrated one, so the watts are good for trends but not for bragging.
 A "workout active" binary sensor (cadence above a threshold, with a hold time) is the trigger everything downstream builds on.
+The full ESPHome config, together with the Home Assistant packages from the following sections, is available [as a gist](https://gist.github.com/PhilippMundhenk/25a4a52b384748b7ba18c34e240c37a7).
 
 The one genuine loss: The bike no longer works offline.
 No WiFi means a dumb bike.
@@ -82,13 +91,17 @@ A template sensor samples the ride once a minute into a session log, including h
 From the strap data, trigger-based template sensors compute heart-rate recovery: HR at the moment the workout ends, again 60 and 120 seconds later, and the difference as HRR1, one of the more meaningful fitness numbers a home setup can produce.
 And because the brake is a permanent magnet, the load at a given dial position is identical every session, forever: Heart rate at fixed workload becomes a clean, week-over-week fitness trend that no drifting smart trainer can match.
 
-## An AI Coach on Matrix
+## A Coach on Matrix
 
 Reading graphs after every ride gets old, so the analysis is of course also automated.
-After each training (plus a rest for the recovery measurement), and additionally once a week, Home Assistant sends the session log and scale data to a local LLM via [Ollama](https://ollama.com), a small qwen3 model, since the server is of course also reused, old hardware, with a strict system prompt playing a terse cycling coach.
-The five-line verdict is posted to a Matrix room via Home Assistant's native Matrix integration, next to my existing [ha-matrix-agent](https://github.com/PhilippMundhenk/ha-matrix-agent).
-The result reads like: "Solid tempo session, harder than your last ride at less volume. The steady climb in heart rate at fixed resistance is normal fatigue drift."
-It is a strangely motivating thing to receive from the ergometer and an old laptop in the basement.
+After each training (plus a rest for the recovery measurement), and additionally once a week, Home Assistant compiles the session log and scale data into a short coach-style report: zone and drift analysis, recovery rating, comparison to the previous ride, and one concrete suggestion for the next session.
+The report is posted to a Matrix room via Home Assistant's native Matrix integration, next to my existing [ha-matrix-agent](https://github.com/PhilippMundhenk/ha-matrix-agent).
+The result reads like: "Same resistance, lower HR - fitness trending up. Next: add 5 min at the same level."
+It is a strangely motivating thing to receive from an exercise bike.
+
+I should admit this is not the AI coach I originally built.
+The first version sent everything to a local LLM via [Ollama](https://ollama.com) with a strict system prompt playing a terse cycling coach, and the tone was great, but the small model my old server can run got the numbers wrong too often for a report whose whole point is the numbers.
+So for now the coach is honest Jinja templating, and the Ollama hook stays in the config, waiting for stronger local hardware.
 
 ## RideQuest
 
@@ -111,6 +124,7 @@ So for motivation, this might still need a bit of work.
 The score is not just decoration: It is an entity in Home Assistant, which means earned points can be spent.
 The plan being to couple them to YouTube, so screen time is earned by pedaling.
 Whether this mechanism will be applied to the children or to their father first remains an open research question.
+The game itself is on GitHub: [RideQuest](https://github.com/PhilippMundhenk/RideQuest).
 
 ## Outlook
 
