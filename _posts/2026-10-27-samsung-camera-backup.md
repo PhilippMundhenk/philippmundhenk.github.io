@@ -85,6 +85,8 @@ It worked flawlessly on first attempt.
 
 Two numbers from that first session are worth knowing before you expect too much.
 The transfer rate was a steady 0.65 MB/s for every file, small JPEG or forty-megabyte video alike, which is the camera's 2012 Wi-Fi and not the server.
+Over a whole run it comes out lower, because every file costs a round trip and a fresh connection on top: The first full session moved 1,000 files and 3.8 GB in one hour and 52 minutes, 0.57 MB/s end to end.
+Plan with 4.5 to 5 Mbit/s, which is a few seconds per photo and a minute per video, and back up after every outing rather than after a season.
 And the camera sends at most a thousand files per run, newest first, and remembers what it sent, so a card with more new files than that simply needs Auto Backup started again.
 Both are in the docs, and the server logs the rate per file so the next person does not have to wonder.
 
