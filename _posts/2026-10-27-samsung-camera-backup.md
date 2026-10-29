@@ -31,9 +31,11 @@ On first start a three-step wizard asks where photos should go, which folder or 
 There are three modes.
 *Phone only* keeps the files in a folder on the phone, the app's own storage or any folder from the system picker, for example one that a sync client watches.
 *Home server only* streams every file straight to the server and keeps nothing.
-And *Phone + home server*, the one I use when travelling, keeps the files on the phone and uploads them to the server after every session or on demand, whenever the server is reachable.
+And *Phone + home server*, the one I use when travelling, keeps the files on the phone and hands them on to the server by itself: after every session, and otherwise whenever the phone can reach the server again, in the background, until everything has arrived.
 
 The main screen lists every transferred file with a mark borrowed from messengers: One check when the file is on the phone, two when it has reached the home server.
+Photos get a small preview, and a tap opens the file in the gallery.
+Next to *Start server* sits a *Hotspot* button, because the usual place for this app is a parking lot: Android lets no app switch the hotspot on, so the button takes you to the switch.
 
 ![The main screen with the transfer list](/images/cambackup/app-main.png)
 
@@ -54,7 +56,8 @@ It is the always-on target on the LAN, the backend the app uploads to, and the p
 Every stage is optional and skipped with a log line when its tool is missing.
 A ledger remembers every file ever received, so duplicates are recognised even after a file has been renamed and moved away.
 
-The status page shows totals, the recent files, the pipeline settings, which tools exist in the image, and the log.
+The status page shows totals, the recent files, the cameras and phones that have talked to the server, which tools exist in the image, and the log; every setting can be changed on a settings page next to it.
+Cameras are told apart by their address, so the page lets you give them a name.
 It also hands out the pairing file as a zip to unpack onto the SD card.
 
 ![The server's status page](/images/cambackup/web-status.png)
@@ -90,6 +93,21 @@ Plan with 4.5 to 5 Mbit/s, which is a few seconds per photo and a minute per vid
 And the camera sends at most a thousand files per run, newest first, and remembers what it sent, so a card with more new files than that simply needs Auto Backup started again.
 Both are in the docs, and the server logs the rate per file so the next person does not have to wonder.
 
+## The second session
+
+The second run, this time against the phone on its hotspot, did not work at all: The camera connected, announced its 717 remaining files, and then sat on its transfer screen without sending one.
+I blamed the hotspot for an evening.
+The log eventually showed what the camera really did: Before the first upload it asked the server about the last file of the previous run, the one the thousand-file cap had cut off, and our answer to that question was a polite nothing.
+A camera from 2012 does not do polite nothing.
+The firmware, it turned out, accepts exactly two answers there, "here is that file" or "there is no such file", and does something sensible with either; what it cannot handle is an empty list.
+One corrected answer later, the photos came in over the hotspot.
+
+Two things I take from that.
+First, a simulator only knows the sessions you have seen; it took a real second session to find a behaviour that only appears on a second session.
+Second, log every request, not just the interesting ones.
+The fix made it into both halves on the same day, because they share the protocol code, and the simulator now asks that same question on every test run.
+The details are in the [protocol notes](https://github.com/PhilippMundhenk/SamsungCameraServer/blob/main/docs/PROTOCOL.md), including the pleasant consequence that phone and home server need no synchronisation between them: The camera keeps the only state that matters, per file, on its card.
+
 ## Testing without a camera
 
 The camera was in a drawer for most of the development, so the test setup had to stand in for it.
@@ -98,6 +116,7 @@ Every module has a coverage gate at 95 percent of lines, and a smoke test builds
 The Espresso suite drives the real app, wizard and settings included, with a fake home server on the loopback interface, and runs on an emulator in GitHub Actions on every push.
 
 That setup caught the bugs I would have found the slow way: A truncated upload that was accepted as complete, a sync button that stayed on "Syncing…", and a container that could not move files between two volumes.
+What it could not catch is described above; since then the simulator behaves like the camera on its second visit, too.
 
 ## How it was built
 
@@ -112,7 +131,7 @@ Samsung Camera Backup is an independent project and has no relation to Samsung; 
 
 A few things I would still like to do:
 
-- **Resumable uploads** ([#18](https://github.com/PhilippMundhenk/SamsungCameraServer/issues/18)): The camera supports them, the server does not yet; a dropped Wi-Fi link currently restarts the file.
+- **Resumable uploads** ([#18](https://github.com/PhilippMundhenk/SamsungCameraServer/issues/18)): The camera supports them and remembers where it stopped; the server does not keep that state yet, so a dropped Wi-Fi link restarts the file.
 - **Per-camera time offsets** ([#19](https://github.com/PhilippMundhenk/SamsungCameraServer/issues/19)) on the server, for households with more than one of these cameras.
 - **Multi-user support** ([#20](https://github.com/PhilippMundhenk/SamsungCameraServer/issues/20)): One server for several people and cameras, each with their own pairing file and their own folder, so nobody's holiday ends up in somebody else's album.
 - **A proper release**: The first tagged version will put the APK on the releases page and a versioned image on GHCR; until then the `main` image and the build artifacts are what there is. A minor thing to do once all testing is complete and the last few wrinkles are ironed out.
