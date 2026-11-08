@@ -72,7 +72,7 @@ And JPEG compression in the PDF turns the 4 MB of a 300 dpi colour page into a f
 ## Home Assistant
 
 Since I measure and automate everything else in this house, the scanner had to show up in Home Assistant as well.
-There is now an [integration](https://github.com/PhilippMundhenk/ha-brother-scanner) and a [dashboard card](https://github.com/PhilippMundhenk/brother-scanner-card), both installable through HACS.
+There is now an [integration](https://github.com/PhilippMundhenk/ha-brother-scanner) with a [dashboard card](https://github.com/PhilippMundhenk/ha-brother-scanner#dashboard-card) included, installable through HACS.
 The integration creates a device with the scanner state, the last scan (downloadable through Home Assistant, the container's token stays on the server), the OCR queue, one button per action, selects for resolution, mode and source, services with response data, and events when a scan starts, finishes or fails.
 The card puts that on a dashboard, with a countdown while the scanner waits for the rear pages.
 
@@ -117,6 +117,6 @@ Thank you very much for your support!!
 ## References
 
 - [Brother Scanner Docker container](https://github.com/PhilippMundhenk/BrotherScannerDocker)
-- [Home Assistant integration](https://github.com/PhilippMundhenk/ha-brother-scanner) and [dashboard card](https://github.com/PhilippMundhenk/brother-scanner-card)
+- [Home Assistant integration](https://github.com/PhilippMundhenk/ha-brother-scanner) and [dashboard card](https://github.com/PhilippMundhenk/ha-brother-scanner#dashboard-card)
 - [Tesseract OCR Microservice](https://github.com/PhilippMundhenk/TesseractOCRMicroservice)
 - [The 2019 post](/analog-document-digitization/)
