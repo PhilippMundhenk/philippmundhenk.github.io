@@ -8,7 +8,7 @@ Most of the projects in the last posts were written together with Claude Code, a
 An agent that works unattended needs permission to run commands without asking, and a process with that permission and a network connection can send anything anywhere.
 That includes my GitHub token, the files in its workspace and every device on my home network.
 [tallygate](https://github.com/PhilippMundhenk/tallygate) is my answer to that: A gateway that every connection of the agent has to pass, with me deciding about the ones it does not know.
-This post is the tour of what it does, why it is built this way and what a security review found after the release.
+This post is the tour of what it does, why it is built this way and what the security reviews found.
 
 ## Background
 
@@ -102,10 +102,15 @@ An address written with a trailing dot, such as `192.168.1.1.`, was treated as a
 The gateway asked me about it like any unknown host, and my approval would have become a rule that opened my home network.
 Names that are addresses in disguise are refused now, and an approval can no longer open a blocked range.
 
-The review of the released version 0.4.0 found two more serious problems, and I list them here because hiding them would defeat the purpose.
+The review of version 0.4.0 found two more serious problems, and I list them here because hiding them would defeat the purpose.
 The control plane followed HTTP redirects sent by the agent, which gave the agent a way to make requests that never passed the gate.
 A second request on an already open plain-HTTP connection was not checked as strictly as the first.
-Both are tracked with all other findings in [public issues](https://github.com/PhilippMundhenk/tallygate/issues?q=is%3Aissue+label%3Asecurity), and their fixes are the content of the next release.
+Both are fixed, together with the fifteen smaller findings of that review.
+Every finding has a [public issue](https://github.com/PhilippMundhenk/tallygate/issues?q=is%3Aissue+label%3Asecurity) that says what was wrong, what was changed and what could not be tested.
+
+Some of the fixes are simply stricter defaults.
+The web interface now listens only on the machine it runs on until I decide otherwise.
+The images are signed, and the compose file of a release names exactly the images it was tested with.
 
 The lesson I take from this is not comforting, but it is useful.
 The isolation by network layout held in every review, because it does not depend on getting any code right.
@@ -129,7 +134,7 @@ tallygate is an independent project with no relation to Anthropic, and the name 
 
 ## Improvements
 
-- **The open findings**: The security issues from the last review are fixed in the next release, and the issue list shows how far that is.
+- **A real browser in the tests**: The interface is tested through its server and with small script checks, and nothing clicks through it in a browser yet.
 - **Several agents**: Today there is one agent with one policy, and a second agent for a different kind of task needs its own rules and its own log.
 - **A proper outage view**: The gateway now notices when the host itself has no network, and the agent's own status page should say so as well.
 - **Other agents**: Nothing in the gateway is specific to Claude Code, but the setup wizard and the remote session are.
