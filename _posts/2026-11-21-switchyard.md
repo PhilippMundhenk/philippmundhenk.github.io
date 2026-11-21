@@ -82,7 +82,7 @@ The simulator has learned the same behaviour, so it stays fixed.
 
 ## Using it
 
-Switchyard needs to be in the same network segment as the switches, because discovery is a broadcast.
+The search for switches is a broadcast, so it only works with Switchyard in the same network segment as the switches.
 In Docker that means host networking:
 
 ```yaml
@@ -100,6 +100,9 @@ services:
 The container runs as user 10001, so a bind-mounted `./data` folder has to belong to that user (`sudo chown 10001:10001 data`).
 Without a password in the environment, Switchyard generates one on the first start and prints it once on the console.
 A switch on another subnet can be added by its IP address instead of the search.
+Without the search, host networking is not needed either.
+A normal bridged container with the web port published (`ports: ["8080:8080"]` instead of `network_mode: host`) should work for switches added by IP address, as long as the switch answers to the sender rather than by broadcast.
+Firmware upgrades are the exception, they are best done with host networking.
 
 ![The switch list on a phone](/images/switchyard/phone-switches.png)
 
