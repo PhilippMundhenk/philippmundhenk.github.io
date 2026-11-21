@@ -4,7 +4,7 @@ title: A Web Interface for Old Netgear Plus Switches
 categories: [home, docker]
 ---
 
-My network has a small Netgear GS108E in it.
+My network has a small Netgear GS108E in it, one of the first hardware revision.
 It is one of those cheap "Plus" switches that can do VLANs, QoS and port mirroring without being a real managed switch.
 The early versions of these switches have no web interface at all.
 The only way to configure them is the ProSAFE Plus Utility, a Windows program built on Adobe AIR that Netgear stopped developing years ago.
@@ -73,7 +73,7 @@ The tests run against a software switch that answers like a real one over real U
 It enforces the VLAN rules, refuses wrong passwords, goes silent during a reboot, and accepts a firmware upload over TFTP.
 On top of that, browser tests drive the real interface in Chromium, and every Home Assistant discovery message is checked against Home Assistant's own schemas.
 
-The real switch still found something the simulator did not know.
+The real switch, a GS108E v1 with firmware 1.00.09, still found something the simulator did not know.
 Firmware treats settings it does not know in different ways.
 Some versions leave them out of the answer, some answer with an error, and some do not answer at all.
 My GS108E does something else again and answers the whole request with an empty reply as soon as one setting is unknown to it.
@@ -100,9 +100,22 @@ services:
 The container runs as user 10001, so a bind-mounted `./data` folder has to belong to that user (`sudo chown 10001:10001 data`).
 Without a password in the environment, Switchyard generates one on the first start and prints it once on the console.
 A switch on another subnet can be added by its IP address instead of the search.
-The phone layout works well enough for a quick look from the couch.
 
 ![The switch list on a phone](/images/switchyard/phone-switches.png)
+
+## On the phone
+
+Most of my changes to the switch happen from the couch, so the phone layout matters.
+Wide tables do not work on a phone, and a switch has a lot of per-port settings.
+On a small screen the sections of a switch are a drop-down instead of tabs.
+The statistics become one short row per port, with the link speed as the colour of the port number.
+The VLAN editor puts the ports in rows and the VLANs in columns, which fits a phone and also scales to larger switches.
+
+For QoS and port speed there is a row of port buttons and a single editor below it.
+Tapping several ports and choosing a limit once sets it for all of them.
+Ports that differ from the defaults get a small dot, and a short list underneath says what is set where.
+
+![The QoS editor on a phone](/images/switchyard/phone-qos.png)
 
 The [README](https://github.com/PhilippMundhenk/switchyard#readme) has the options, and [HARDWARE.md](https://github.com/PhilippMundhenk/switchyard/blob/main/docs/HARDWARE.md) walks through a careful first run on a real switch.
 
@@ -117,7 +130,7 @@ Switchyard is an independent project and is not affiliated with, endorsed or sup
 ## Improvements
 
 - **More models**: Only my GS108E has been seen so far, so [hardware reports](https://github.com/PhilippMundhenk/switchyard/issues/new/choose) of other models are very welcome.
-- **The risky parts**: Firmware upgrade, link aggregation and port speed settings have only run against the simulator.
+- **The risky parts**: The firmware upgrade has only run against the simulator, and my switch has no link aggregation or port speed settings to try.
 - **Model-specific settings**: Port LEDs, power saving and loop prevention exist on some models, but Switchyard does not write them yet.
 
 As always, the code is on GitHub, and improvements are welcome.
