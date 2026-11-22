@@ -113,8 +113,11 @@ It also notices when the camera is switched off and says so, instead of waiting 
 ## Reading the firmware
 
 Some of these lessons came with a field log from the real camera, and some needed more than a log.
-Samsung still offers the NX1000 firmware for download, and the camera's whole network stack is in that file.
-So I disassembled it and read the parts that handle the phone.
+Samsung never documented how the camera talks to a phone, so the only place to find out was the camera itself.
+Samsung still offers the NX1000 firmware for download, and its network stack is in that file.
+I disassembled it to make finderscope work with the camera, which European law allows for exactly this purpose.
+I read only the parts that handle the phone.
+Nothing from the firmware is published, neither in the app nor in its documentation.
 
 That answered questions no amount of testing would have.
 It explained the frozen camera, which waits without a timeout for a video encoder that is already stopped.
