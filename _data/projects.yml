@@ -21,8 +21,8 @@
       post: /labeler-2/
       extra:
         - { name: ptouch-print fork, repo: ptouch-print }
-    - name: Samsung Camera Server
-      text: A backup target for old Samsung Wi-Fi cameras, with automatic photo sorting.
+    - name: Samsung Camera Backup
+      text: Automatic photo backup from old Samsung Wi-Fi cameras, server and app, with photo sorting.
       repo: SamsungCameraServer
       post: /samsung-camera-backup/
       extra:
