@@ -18,7 +18,10 @@ The following is a list of my professional and educational experience.
 
 ## Professional Experience
 
-###### since 2021: Project Director for ICT Research
+###### since 2026: Chief Technology Officer (CTO)
+at [ETAS GmbH](https://www.etas.com)
+
+###### 2021 - 2026: Project Director for ICT Research
 at [Robert Bosch GmbH, Corporate Research (CR)](https://www.bosch.com/research/) in [Renningen](https://www.bosch.de/unser-unternehmen/bosch-in-deutschland/renningen/), Germany
 Topics:
 - Heading research area [Information- and Communication Technologies (ICT)](https://www.bosch.com/research/fields-of-innovation/information-communication-technologies/)
@@ -61,7 +64,7 @@ at [TUM CREATE](http://www.tum-create.edu.sg) in Singapore
 Topics:
 - Research in Automotive Network Security (Authentication & Authorization Protocols, Architecture Verification, Scheduling, ...]
 - Responsible for the development of the infotainment system in the electric taxi EVA: www.eva-taxi.sg
-- Results available in my book [Amazon](https://www.amazon.de/dp/3736996047) or [online](https://www.mundhenk.org/publications)
+- Results available in my book [Amazon](https://www.amazon.de/dp/3736996047) or [online](/work/#publications)
 
 ###### 2012: Research Assistant
 at [TUM CREATE](http://www.tum-create.edu.sg) in Singapore

@@ -14,7 +14,7 @@ I hope I can overcome this behavior in myself, by having set up this website and
 
 This website is based on [Kirby](http://getkirby.com) with the [Baseblog theme](https://github.com/sashtown/baseblog). I adapted the theme further to suit my purpose.
 
-The comments section is powered by [Disqus](https://disqus.com).
+The comments section was powered by [Disqus](https://disqus.com); comments have since been removed.
 
 I would like to specifically mention the sharing buttons for Facebook, Twitter and Google+. These buttons use the [Shariff](https://github.com/heiseonline/shariff) scripts, developed by the German IT magazine c't and integrated via [a Kirby plugin](https://spicyhub.de/spicy-web/kirby-plugin-shariff). These buttons allow sharing of content without the ugly tracking that usually comes along with it. Yes, you do get tracked on websites, even if you don't share any content. The pure existence of the button on the page is sufficient. For pages that do not use the beautiful Shariff buttons you can use plugins to disable tracking, e.g. Disconnect for the [Chrome](https://chrome.google.com/webstore/detail/disconnect/jeoacafpbcihiomhlakheieifhpjdfeo?hl=en) or [Firefox](https://addons.mozilla.org/en-us/firefox/addon/disconnect/) browsers.
 
