@@ -2,6 +2,7 @@
 layout: page
 title: Search
 permalink: /search/
+hide_title: true
 ---
 
 <div id="search-container">

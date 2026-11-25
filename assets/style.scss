@@ -97,6 +97,11 @@ em, i, cite { font-style: italic; }
 
 .shell { max-width: var(--measure); margin: 0 auto; padding: 0 1.25rem; }
 
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
 .skip-link {
   position: absolute; left: -999px; top: 0.5rem;
   background: var(--surface); padding: 0.5rem 1rem; z-index: 10;
