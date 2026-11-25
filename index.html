@@ -1,52 +1,16 @@
 ---
 layout: default
 ---
-{% comment %}Home layout: set home_layout in _config.yml to stacked, compact or featured.{% endcomment %}
-{% assign home_layout = site.home_layout | default: "stacked" %}
 
-{% if home_layout == "compact" %}
-<ul class="home-compact">
-  {% for post in paginator.posts %}
-  <li>
-    <a class="home-compact__title" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    <span class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>{% for category in post.categories %}<span class="meta__sep">/</span>{{ category }}{% endfor %}</span>
-    <p>{{ post.excerpt | strip_html | truncatewords: 24, " …" }}</p>
-  </li>
-  {% endfor %}
-</ul>
-
-{% elsif home_layout == "featured" %}
-{% for post in paginator.posts %}
-  {% if forloop.first and paginator.page == 1 %}
-  <article class="home-featured">
-    <p class="meta"><span class="home-featured__label">Latest</span><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time></p>
-    <h2 class="home-featured__title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-    <p class="home-featured__excerpt">{{ post.excerpt | strip_html | truncatewords: 60, " …" }}</p>
-    <a class="home-featured__more" href="{{ site.baseurl }}{{ post.url }}">Read the post &rarr;</a>
-  </article>
-  <h2 class="home-section">Earlier posts</h2>
-  <div class="home-grid">
-  {% else %}
-    <a class="home-tile" href="{{ site.baseurl }}{{ post.url }}">
-      <span class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time></span>
-      <span class="home-tile__title">{{ post.title }}</span>
-      <span class="home-tile__excerpt">{{ post.excerpt | strip_html | truncatewords: 18, " …" }}</span>
-    </a>
-  {% endif %}
-{% endfor %}
-  </div>
-
-{% else %}
 <ol class="post-list">
   {% for post in paginator.posts %}
   <li class="post-stack">
-    <p class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>{% for category in post.categories %}<span class="meta__sep">/</span>{{ category }}{% endfor %}</p>
+    <p class="meta post-stack__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>{% if post.categories.size > 0 %}<span class="tags tags--inline">{% for category in post.categories %}<a href="{{ site.baseurl }}/categories/#{{ category | slugize }}">{{ category }}</a>{% endfor %}</span>{% endif %}</p>
     <h2 class="post-stack__title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
     <p class="post-stack__excerpt">{{ post.excerpt | strip_html | truncatewords: 40, " …" }}</p>
   </li>
   {% endfor %}
 </ol>
-{% endif %}
 
 {% if paginator.total_pages > 1 %}
 <nav class="pager" aria-label="Pages">

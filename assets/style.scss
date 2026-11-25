@@ -174,38 +174,11 @@ em, i, cite { font-style: italic; }
 }
 .post-stack__excerpt { margin: 0; color: var(--ink-soft); }
 
-// compact: dense index, one short line of text
-.home-compact {
-  list-style: none; padding: 0; margin: 0;
-  li { padding: 0.75rem 0; border-bottom: 1px solid var(--rule); }
-  p { margin: 0.15rem 0 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
-  .meta { display: block; margin: 0.1rem 0 0; }
-}
-.home-compact__title { font-weight: 650; font-size: 1.1rem; color: var(--ink); text-decoration: none; &:hover { color: var(--accent); } }
-
-// featured: newest post large, older posts as tiles
-.home-featured {
-  background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent);
-  border-radius: var(--radius); padding: 1.4rem 1.5rem; margin-bottom: 2.2rem;
-}
-.home-featured__label {
-  font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--bg); background: var(--accent); padding: 0.1rem 0.45rem; border-radius: 999px; margin-right: 0.6rem;
-}
-.home-featured__title { font-size: 1.7rem; line-height: 1.25; margin: 0.3rem 0 0.6rem; font-weight: 700; letter-spacing: -0.015em;
-  a { color: var(--ink); text-decoration: none; } a:hover { color: var(--accent); } }
-.home-featured__excerpt { margin: 0 0 0.8rem; color: var(--ink-soft); }
-.home-featured__more { font-weight: 600; }
-.home-section { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 0.8rem; }
-.home-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); gap: 0.9rem; }
-.home-tile {
-  display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem 1rem;
-  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius);
-  color: var(--ink); text-decoration: none;
-  &:hover { border-color: var(--accent); color: var(--ink); }
-}
-.home-tile__title { font-weight: 650; line-height: 1.3; }
-.home-tile__excerpt { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; }
+.post-stack__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.7rem; }
+.tags--inline { display: inline-flex; margin: 0; flex-wrap: wrap; gap: 0.35rem;
+  a { font-family: var(--font-mono); font-size: 0.72rem; text-decoration: none; color: var(--accent-ink);
+      background: var(--accent-wash); padding: 0.05rem 0.45rem; border-radius: 999px; }
+  a:hover { background: var(--accent); color: var(--bg); } }
 
 .pager {
   display: flex; justify-content: space-between; align-items: center;
