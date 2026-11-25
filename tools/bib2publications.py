@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Render files/library.bib as static HTML for the publications page.
 
-Usage: python3 tools/bib2publications.py [files/library.bib] [_includes/publications.html]
+Usage: python3 tools/bib2publications.py [files/library.bib] [_includes]
+
+Writes _includes/publications.html (everything except patents) and _includes/patents.html.
 
 Standard library only. The output is a plain HTML fragment (no scripts), grouped by year,
 newest first. The Pages workflow runs this before every build; run it locally after editing
@@ -151,7 +153,7 @@ def links(entry: dict) -> str:
     return " · ".join(out)
 
 
-def render(entries: list[dict]) -> str:
+def render(entries: list[dict], show_type: bool = True, bib_link: bool = True) -> str:
     years: dict[str, list[dict]] = {}
     for entry in entries:
         years.setdefault(entry.get("year", "n.d."), []).append(entry)
@@ -169,19 +171,24 @@ def render(entries: list[dict]) -> str:
             link = links(entry)
             if link:
                 text += f" {link}"
-            lines.append(f'  <li><span class="pubtype">{e(label)}</span> {text}</li>')
+            badge = f'<span class="pubtype">{e(label)}</span> ' if show_type else ""
+            lines.append(f'  <li>{badge}{text}</li>')
         lines.append("</ul>")
-    lines.append('<p>All entries as BibTeX: <a href="/files/library.bib">library.bib</a></p>')
+    if bib_link:
+        lines.append('<p>All entries as BibTeX: <a href="/files/library.bib">library.bib</a></p>')
     lines.append("</div>")
     return "\n".join(lines) + "\n"
 
 
 def main(argv: list[str]) -> int:
     src = Path(argv[1] if len(argv) > 1 else "files/library.bib")
-    dst = Path(argv[2] if len(argv) > 2 else "_includes/publications.html")
+    out = Path(argv[2] if len(argv) > 2 else "_includes")
     entries = parse_bib(src.read_text(encoding="utf-8"))
-    dst.write_text(render(entries), encoding="utf-8")
-    print(f"{len(entries)} entries -> {dst}")
+    papers = [x for x in entries if x["entrytype"] != "patent"]
+    patents = [x for x in entries if x["entrytype"] == "patent"]
+    (out / "publications.html").write_text(render(papers), encoding="utf-8")
+    (out / "patents.html").write_text(render(patents, show_type=False, bib_link=False), encoding="utf-8")
+    print(f"{len(papers)} publications, {len(patents)} patents -> {out}")
     return 0
 
 

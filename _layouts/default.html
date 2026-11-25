@@ -36,7 +36,7 @@
         <nav class="site-nav" aria-label="Main">
           {% assign path = page.url %}
           <a href="{{ site.baseurl }}/" {% if path == "/" or path contains "/page" or page.layout == "post" %}aria-current="page"{% endif %}>Blog</a>
-          <a href="{{ site.baseurl }}/publications/" {% if path contains "/publications" %}aria-current="page"{% endif %}>Research</a>
+          <a href="{{ site.baseurl }}/work/" {% if path contains "/work" %}aria-current="page"{% endif %}>Work</a>
           <a href="{{ site.baseurl }}/search/" {% if path contains "/search" %}aria-current="page"{% endif %}>Search</a>
           <a href="{{ site.baseurl }}/about/" {% if path contains "/about" %}aria-current="page"{% endif %}>About</a>
           <button type="button" id="theme-toggle" class="theme-toggle" title="Colour theme: system" hidden>&#9680;</button>

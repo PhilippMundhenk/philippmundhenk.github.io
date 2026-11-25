@@ -1,10 +1,11 @@
 ---
-layout: publications
-title: Publications
-permalink: /publications/
+layout: work
+title: Work
+permalink: /work/
+intro: Things I have built, at home and in research, followed by publications, patents and talks.
 ---
 
-# Talks
+<h2 id="talks">Talks</h2>
 
 ###### 2020:
 - **Automotive Software Architecture & Patterns**, Technische Universität München (TUM), Munich, Germany
@@ -36,7 +37,7 @@ permalink: /publications/
 ###### 2012:
 **Priority-based Scheduling on FlexRay**, TUM CREATE Scientific Seminar Series, Singapore
 
-# Research Community
+## Research Community
 Over the years, I have been reviewer and TPC member for the following journals and conferences:
 - ACM Transactions on Cyber-Physical Systems (TCPS)
 - Asia and South Pacific Design Automation Conference (ASP-DAC)
