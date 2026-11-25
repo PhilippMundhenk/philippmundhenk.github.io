@@ -215,8 +215,15 @@ em, i, cite { font-style: italic; }
   h2 { font-size: 1.45rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule); }
   h3 { font-size: 1.2rem; }
   h4, h5, h6 { font-size: 1.05rem; }
-  ul, ol { padding-left: 1.3rem; }
-  li + li { margin-top: 0.25em; }
+  ul, ol { padding-left: 1.35rem; }
+  ul { list-style: disc outside; }
+  ol { list-style: decimal outside; }
+  ul ul { list-style-type: circle; }
+  ul ul, ol ol, ul ol, ol ul { margin: 0.3em 0 0; }
+  li { padding-left: 0.15rem; line-height: 1.6; }
+  li::marker { color: var(--accent); }
+  li + li { margin-top: 0.35em; }
+  li > p { margin: 0 0 0.4em; }
   blockquote {
     margin-left: 0; padding: 0.2rem 1rem; border-left: 3px solid var(--accent);
     color: var(--ink-soft); background: var(--surface);
