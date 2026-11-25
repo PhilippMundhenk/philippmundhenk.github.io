@@ -8,17 +8,7 @@ layout: default
 
   <div class="entry">
     <div class="content">
-        <div>
-			<link rel="stylesheet" href="/assets/bibtex/bib-publication-list.css">
-			<div class="publications">
-				<table id="pubTable" class="display"></table>
-			</div>
-			<script type="text/javascript" src="/assets/js/jquery-2.1.4.min.js"></script>
-			<script type="text/javascript" src="/assets/js/jquery.dataTables-1.6.2.min.js"></script>
-			<script type="text/javascript" src="/assets/bibtex/BibTex-0.1.2.js"></script>
-			<script type="text/javascript" src="/assets/bibtex/bib-publication-list.js"></script>
-			<script type="text/javascript">$(document).ready(function() {bibtexify('/files/library.bib', 'pubTable');});</script>
-		</div>
+        {% include publications.html %}
 	</div>
 	
 	{{ content }}
