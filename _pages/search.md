@@ -9,4 +9,4 @@ permalink: /search/
     <ul id="results-container" style="text-align: left; list-style: none; padding-left: 0;"></ul>
 </div>
 
-<script src="{{ site.baseurl }}/assets/search.js"></script>
+<script src="{{ site.baseurl }}/assets/search.js?v={{ site.time | date: '%s' }}"></script>
