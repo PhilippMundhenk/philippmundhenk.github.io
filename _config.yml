@@ -83,6 +83,9 @@ plugins:
 
 include: ['_pages', '_publications', '.well-known']
 
+# Home page layout: stacked (default), compact or featured
+home_layout: stacked
+
 paginate: 6
 paginate_path: /page:num/
 
