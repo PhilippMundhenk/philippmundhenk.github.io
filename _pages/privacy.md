@@ -14,7 +14,7 @@ Philipp Mundhenk, e-mail: [contact@mundhenk.org](mailto:contact@mundhenk.org)
 
 - It sets no cookies and uses no analytics or tracking.
 - It has no comments, no contact forms and no user accounts.
-- It uses no scripts at all; styles, fonts and images are served from this website itself, so no third-party content is loaded while you read.
+- All styles, fonts, images and the small search script are served from this website itself; no third-party content is loaded while you read.
 
 ## Hosting (GitHub Pages)
 
@@ -35,7 +35,7 @@ No data is sent to these sites unless you click a link; after that, their own pr
 
 ## Search
 
-The search form sends your search term to DuckDuckGo (Duck Duck Go, Inc., USA) only when you press *Search*; their privacy policy applies from then on.
+The search runs entirely in your browser on an index loaded from this website; search terms are not sent anywhere.
 
 ## Your rights
 
