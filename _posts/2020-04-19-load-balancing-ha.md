@@ -7,7 +7,7 @@ categories: [homelab, networking, docker]
 In my last article [Home Network Upgrade - Basics](/home-network-upgrade-basics), I described the setup of a Raspberry Pi-based cluster I plan on using for the core of my upgraded home network. One issue there, however, was that the devices need to be addressed directly. E.g., a service running on Kubernetes is available via the IP addresses of both nodes, if everything is working fine. But the client needs to select one address. E.g., if a client uses node01, and this node fails, the client needs to adjust. This is undesirable for our setup. This we need to introduce a means for fail-over. Additionally, we use the same setup for load balancing the incoming requests. In this private setup load balancing is less of a requirement, but high availability is much desired.
 
 ## Software
-There are many load balancers available. However, most setups assume a single node taking care of load balancing. Unfortunately, in our small cluster, we can't afford an extra node just for this purpose. Furthermore, such a setup would introduce another single point of failure. Instead, we will be using [keepalived](https://www.keepalived.org/doc/introduction.html) to set up a distributed load balancer. Typically, this is also used on one or multiple dedicated nodes, but we will integrate it with the existing cluster nodes.
+There are many load balancers available. However, most setups assume a single node taking care of load balancing. Unfortunately, in our small cluster, we can't afford an extra node just for this purpose. Furthermore, such a setup would introduce another single point of failure. Instead, we will be using [keepalived](https://web.archive.org/web/20260217182942/https://www.keepalived.org/doc/introduction.html) to set up a distributed load balancer. Typically, this is also used on one or multiple dedicated nodes, but we will integrate it with the existing cluster nodes.
 
 ## Configuration
 First, install keepalived on both nodes:
@@ -15,7 +15,7 @@ First, install keepalived on both nodes:
 sudo apt install keepalived
 ```
 
-As usual, when in doubt about any of the following, refer to the [documentation](https://www.keepalived.org/doc/introduction.html) or the in this case excellent [manpage](https://www.keepalived.org/manpage.html).
+As usual, when in doubt about any of the following, refer to the [documentation](https://web.archive.org/web/20260217182942/https://www.keepalived.org/doc/introduction.html) or the in this case excellent [manpage](https://web.archive.org/web/20260518012906/https://www.keepalived.org/manpage.html).
 
 Now we will start configuring keepalived. Add the following to ```/etc/keepalived/keepalived.conf```
 ```
@@ -121,7 +121,7 @@ We configure a Master Load Balancer on node01. In case this fails, node02 automa
 
 Furthermore, we define a health check, making sure that the service (in this case SSH) is still available on both nodes. In case the service fails on a node, this node is removed from the virtual server and will no longer be included in the round robin schedule.
 
-Note the script being called on state change. This is based on the results shown in [this article](http://gcharriere.com/blog/?p=339=1). This is required, as we are running keepalived and the real servers on the same nodes.
+Note the script being called on state change. This is based on the results shown in [this article](https://web.archive.org/web/20240615075814/http://gcharriere.com/blog/?p=339=1). This is required, as we are running keepalived and the real servers on the same nodes.
 
 For the script, place the following into ```/etc/keepalived/iptables.sh```:
 ```bash
