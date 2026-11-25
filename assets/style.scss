@@ -260,6 +260,30 @@ pre { overflow-x: auto; padding: 1rem; line-height: 1.5; }
   padding: 0.05rem 0.4rem; border-radius: 999px; margin-right: 0.3rem; white-space: nowrap;
 }
 
+/* ---------- work page ---------- */
+
+.work__intro { color: var(--ink-soft); margin: -0.75rem 0 1rem; }
+.work__toc {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.5rem;
+  a { font-family: var(--font-mono); font-size: 0.8rem; text-decoration: none; color: var(--accent-ink);
+      border: 1px solid var(--rule); border-radius: 999px; padding: 0.15rem 0.7rem; }
+  a:hover { border-color: var(--accent); }
+}
+.work .prose h2 { margin-top: 2.4rem; }
+.work .prose h3.work__group { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 1.4rem 0 0.7rem; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.8rem; margin-bottom: 1rem; }
+.project {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.85rem 1rem;
+  display: flex; flex-direction: column;
+  &:hover { border-color: var(--accent); }
+}
+.prose .project__name { font-size: 1.02rem; margin: 0 0 0.25rem; border: 0; padding: 0;
+  a { color: var(--ink); text-decoration: none; } a:hover { color: var(--accent); } }
+.prose .project__text { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 0.5rem; flex: 1; }
+.prose .project__links { margin: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem;
+  a { font-family: var(--font-mono); font-size: 0.75rem; } }
+.work__more { font-size: 0.9rem; color: var(--muted); }
+
 /* ---------- search ---------- */
 
 #search-input {

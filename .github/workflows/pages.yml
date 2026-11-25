@@ -1,5 +1,5 @@
 # Builds and publishes the site to GitHub Pages.
-# Before the Jekyll build, files/library.bib is rendered into _includes/publications.html,
+# Before the Jekyll build, files/library.bib is rendered into _includes/publications.html and _includes/patents.html,
 # so the publications page is always up to date and needs no scripts.
 # Requires Settings > Pages > Source: "GitHub Actions".
 name: Publish site
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Render publications from BibTeX
-        run: python3 tools/bib2publications.py files/library.bib _includes/publications.html
+        run: python3 tools/bib2publications.py files/library.bib _includes
       - uses: actions/configure-pages@v6
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
