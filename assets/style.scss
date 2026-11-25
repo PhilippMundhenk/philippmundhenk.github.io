@@ -340,3 +340,14 @@ pre { overflow-x: auto; padding: 1rem; line-height: 1.5; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .prose img { filter: brightness(0.92); } }
 :root[data-theme="dark"] .prose img { filter: brightness(0.92); }
 
+// override the highlight theme's generic code rules (white box, red text, Courier)
+code { font-family: var(--font-mono); color: inherit; }
+.highlighter-rouge { background: transparent; color: inherit; font-size: inherit; }
+:not(pre) > code, code.highlighter-rouge {
+  background: var(--code-bg); color: var(--ink); font-size: 0.88em; letter-spacing: 0;
+  padding: 0.1em 0.35em; border-radius: 4px;
+}
+div.highlighter-rouge { border-radius: var(--radius); overflow: hidden; margin: 0 0 1.1em; }
+div.highlighter-rouge .highlight { margin: 0; border-radius: 0; }
+.highlight code { background: transparent; padding: 0; color: inherit; }
+
