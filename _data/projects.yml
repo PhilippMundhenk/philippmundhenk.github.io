@@ -1,5 +1,6 @@
 # Projects shown on the Work page. Edit freely: groups appear in this order, projects too.
 # Fields: name, text (one line), repo (GitHub repo name, optional), post (post URL, optional), extra (optional list of {name, repo}).
+# Instead of repo/post/extra, links: (list of {name, repo} or {name, post}) sets the card's links explicitly.
 
 - group: Home and homelab
   projects:
@@ -21,16 +22,15 @@
       post: /labeler-2/
       extra:
         - { name: ptouch-print fork, repo: ptouch-print }
-    - name: Samsung Camera Backup
-      text: Automatic photo backup from old Samsung Wi-Fi cameras, server and app, with photo sorting.
-      repo: SamsungCameraServer
+    - name: Samsung Camera Tools
+      text: Photo backup (server and app) and a remote viewfinder for old Samsung Wi-Fi cameras.
       post: /samsung-camera-backup/
-      extra:
+      links:
+        - { name: Backup code, repo: SamsungCameraServer }
+        - { name: Backup write-up, post: /samsung-camera-backup/ }
+        - { name: finderscope code, repo: finderscope }
+        - { name: finderscope write-up, post: /finderscope/ }
         - { name: photosort, repo: photosort }
-    - name: finderscope
-      text: A new remote viewfinder app for old Samsung Wi-Fi cameras.
-      repo: finderscope
-      post: /finderscope/
     - name: smlgw
       text: A smart meter gateway from USB IR readers (SML) to MQTT.
       repo: smlgw

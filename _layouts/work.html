@@ -23,9 +23,13 @@ layout: default
         <h4 class="project__name">{% if p.post %}<a href="{{ site.baseurl }}{{ p.post }}">{{ p.name }}</a>{% else %}<a href="https://github.com/PhilippMundhenk/{{ p.repo }}">{{ p.name }}</a>{% endif %}</h4>
         <p class="project__text">{{ p.text }}</p>
         <p class="project__links">
+          {% if p.links %}
+          {% for x in p.links %}<a href="{% if x.post %}{{ site.baseurl }}{{ x.post }}{% else %}https://github.com/PhilippMundhenk/{{ x.repo }}{% endif %}">{{ x.name }}</a>{% endfor %}
+          {% else %}
           {% if p.repo %}<a href="https://github.com/PhilippMundhenk/{{ p.repo }}">Code</a>{% endif %}
           {% if p.post %}<a href="{{ site.baseurl }}{{ p.post }}">Write-up</a>{% endif %}
           {% for x in p.extra %}<a href="https://github.com/PhilippMundhenk/{{ x.repo }}">{{ x.name }}</a>{% endfor %}
+          {% endif %}
         </p>
       </div>
       {% endfor %}
