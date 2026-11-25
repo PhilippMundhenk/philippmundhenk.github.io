@@ -1,6 +1,27 @@
-The MIT License (MIT)
+This repository holds the source of www.mundhenk.org. It is licensed in two parts.
 
-Copyright (c) 2019 Amit Merchant
+1. Content: Creative Commons Attribution 4.0 International (CC BY 4.0)
+   https://creativecommons.org/licenses/by/4.0/
+
+   Covers the texts of posts and pages (_posts/, _pages/, _publications/, index.html),
+   the images created by Philipp Mundhenk (images/) and files/library.bib.
+   Attribution: "Philipp Mundhenk, www.mundhenk.org" with a link to the original page.
+
+   Not covered (all rights reserved by their respective owners):
+   - material by third parties, such as product photos, logos, quotes and screenshots
+     of third-party software, where marked or evident;
+   - photos showing people;
+   - the papers, the dissertation, the presentation and the newspaper article in files/,
+     whose rights lie with their publishers and authors.
+
+2. Code: MIT License (text below)
+
+   Covers everything else, in particular _layouts/, _includes/, _sass/, assets/,
+   tools/, .github/ and the configuration files.
+
+   Copyright (c) 2026 Philipp Mundhenk
+   Copyright (c) 2019 Amit Merchant (parts taken over from the earlier theme)
+   Copyright (c) 2017 Vladimir "allejo" Jimenez (_includes/toc.html, see its header)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
