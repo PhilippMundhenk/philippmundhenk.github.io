@@ -12,6 +12,10 @@
         - { name: openskey, repo: openskey }
         - { name: Home Assistant integration, repo: ha-brother-scanner }
         - { name: OCR service, repo: TesseractOCRMicroservice }
+    - name: tallygate
+      text: An egress gateway for a coding agent, where every unknown connection waits for my approval.
+      repo: tallygate
+      post: /tallygate/
     - name: Switchyard
       text: A self-hosted web interface for old Netgear Plus switches that never had one.
       repo: switchyard
