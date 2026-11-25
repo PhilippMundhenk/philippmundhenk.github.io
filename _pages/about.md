@@ -61,7 +61,7 @@ at [TUM CREATE](http://www.tum-create.edu.sg) in Singapore
 Topics:
 - Research in Automotive Network Security (Authentication & Authorization Protocols, Architecture Verification, Scheduling, ...]
 - Responsible for the development of the infotainment system in the electric taxi EVA: www.eva-taxi.sg
-- Results available in my book [Amazon](https://www.amazon.de/dp/3736996047) or [online](https://www.mundhenk.org/publications)
+- Results available in my book [Amazon](https://www.amazon.de/dp/3736996047) or [online](/work/#publications)
 
 ###### 2012: Research Assistant
 at [TUM CREATE](http://www.tum-create.edu.sg) in Singapore

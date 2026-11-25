@@ -1,0 +1,69 @@
+# Projects shown on the Work page. Edit freely: groups appear in this order, projects too.
+# Fields: name, text (one line), repo (GitHub repo name, optional), post (post URL, optional), extra (optional list of {name, repo}).
+
+- group: Home and homelab
+  projects:
+    - name: Brother Scanner Docker
+      text: Brother scanner driver in a container, with scan-to-file buttons, duplex workflow and OCR.
+      repo: BrotherScannerDocker
+      post: /brother-scanner-docker-2/
+      extra:
+        - { name: openskey, repo: openskey }
+        - { name: Home Assistant integration, repo: ha-brother-scanner }
+        - { name: OCR service, repo: TesseractOCRMicroservice }
+    - name: Switchyard
+      text: A self-hosted web interface for old Netgear Plus switches that never had one.
+      repo: switchyard
+      post: /switchyard/
+    - name: Labeler
+      text: Print labels on a Brother P-Touch printer from the phone.
+      repo: labeler
+      post: /labeler-2/
+      extra:
+        - { name: ptouch-print fork, repo: ptouch-print }
+    - name: Samsung Camera Server
+      text: A backup target for old Samsung Wi-Fi cameras, with automatic photo sorting.
+      repo: SamsungCameraServer
+      post: /samsung-camera-backup/
+      extra:
+        - { name: photosort, repo: photosort }
+    - name: smlgw
+      text: A smart meter gateway from USB IR readers (SML) to MQTT.
+      repo: smlgw
+      post: /smlgw/
+    - name: RideQuest
+      text: A cycling game for an ESP32-instrumented 30-year-old ergometer.
+      repo: RideQuest
+      post: /kettler-ergometer-esp/
+    - name: Kindle Alarm Clock
+      text: An alarm clock on the Kindle Touch, built on the kapps app framework.
+      repo: Kindle-Alarm-Clock
+      post: /kindle-alarm-clock/
+      extra:
+        - { name: kapps, repo: kapps }
+    - name: No Frills Photo Sharing
+      text: A minimal photo sharing and collecting site for phones.
+      repo: NoFrillsPhotoSharing
+      post: /no-frills-photo-sharing/
+    - name: n8n-nodes-kodi
+      text: Control Kodi from n8n workflows.
+      repo: n8n-nodes-kodi
+      post: /n8n-nodes-kodi/
+
+- group: Research software
+  projects:
+    - name: IVNS
+      text: In-Vehicle Network Simulator for timing and security of automotive networks.
+      repo: IVNS
+    - name: LASAN
+      text: Lightweight Authentication for Secure Automotive Networks.
+      repo: LASAN
+    - name: SAAN
+      text: Automated security analysis for automotive networks.
+      repo: Security-Analysis-for-Automotive-Networks-SAAN-
+    - name: Automotive Ethernet Switch
+      text: FPGA prototype of a switch for automotive Ethernet.
+      repo: AutomotiveEthernetSwitch
+    - name: FIBEX Import/Export
+      text: Read and write FIBEX network descriptions as Java objects.
+      repo: FIBEX-Import-Export
