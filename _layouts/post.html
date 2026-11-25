@@ -29,12 +29,4 @@ layout: default
     {{ content }}
   </div>
 
-  <footer class="post__footer">
-    <p>Share: <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}">LinkedIn</a>,
-      <a href="https://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}">Facebook</a></p>
-    <nav class="post__pager" aria-label="More posts">
-      {% if page.previous %}<a class="post__pager-prev" href="{{ site.baseurl }}{{ page.previous.url }}"><span>Older</span>{{ page.previous.title }}</a>{% endif %}
-      {% if page.next %}<a class="post__pager-next" href="{{ site.baseurl }}{{ page.next.url }}"><span>Newer</span>{{ page.next.title }}</a>{% endif %}
-    </nav>
-  </footer>
 </article>
