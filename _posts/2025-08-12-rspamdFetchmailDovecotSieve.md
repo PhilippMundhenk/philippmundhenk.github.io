@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rspamd Filtering for Fetchmail, Dovecot & Sieve with Learning
-categories: [home]
+categories: [email, homelab, docker]
 ---
 
 I have been having some issues with setting up rspamd in combination with Dovecot >2.4.

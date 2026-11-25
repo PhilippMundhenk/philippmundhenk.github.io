@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Load Balancing and High Availability
-categories: [home, docker, tech, network]
+categories: [homelab, networking, docker]
 ---
 
 In my last article [Home Network Upgrade - Basics](/home-network-upgrade-basics), I described the setup of a Raspberry Pi-based cluster I plan on using for the core of my upgraded home network. One issue there, however, was that the devices need to be addressed directly. E.g., a service running on Kubernetes is available via the IP addresses of both nodes, if everything is working fine. But the client needs to select one address. E.g., if a client uses node01, and this node fails, the client needs to adjust. This is undesirable for our setup. This we need to introduce a means for fail-over. Additionally, we use the same setup for load balancing the incoming requests. In this private setup load balancing is less of a requirement, but high availability is much desired.

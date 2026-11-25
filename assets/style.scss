@@ -187,7 +187,7 @@ em, i, cite { font-style: italic; }
 
 .pager {
   display: flex; justify-content: space-between; align-items: center;
-  margin: 2rem 0 0; font-size: 0.95rem;
+  margin: 1.25rem 0 0; font-size: 0.9rem;
 }
 
 /* ---------- posts & pages ---------- */
@@ -299,13 +299,12 @@ pre { overflow-x: auto; padding: 1rem; line-height: 1.5; }
 
 /* ---------- footer ---------- */
 
-.site-footer { border-top: 1px solid var(--rule); margin-top: 4rem; padding: 1.5rem 0 2.5rem; }
-.site-footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
-.site-footer__icons .svg-icon { width: 32px; height: 32px; background-size: contain; opacity: 0.75; }
+.site-footer { border-top: 1px solid var(--rule); margin-top: 2rem; padding: 0.9rem 0 1.2rem; }
+.site-footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem 1rem; }
+.site-footer__icons { display: flex; gap: 0.35rem; line-height: 0; }
+.site-footer__icons .svg-icon { width: 26px; height: 26px; background-size: contain; opacity: 0.8; }
 .site-footer__icons a:hover .svg-icon { opacity: 1; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .site-footer__icons .svg-icon { filter: invert(1) hue-rotate(180deg); } }
-:root[data-theme="dark"] .site-footer__icons .svg-icon { filter: invert(1) hue-rotate(180deg); }
-.site-footer__legal { margin: 0; font-size: 0.85rem; color: var(--muted); }
+.site-footer__legal { margin: 0; font-size: 0.8rem; color: var(--muted); }
 
 /* ---------- small screens ---------- */
 

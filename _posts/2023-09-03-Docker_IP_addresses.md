@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Docker Networks & IP Address Ranges
-categories: [home]
+categories: [docker, networking, homelab]
 ---
 
 As shown in my [last post](https://www.mundhenk.org/homelab-review-2023/), I run a number of Docker containers.

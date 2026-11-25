@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SnappyMail Single Sign-On - Updated
-categories: [home]
+categories: [email, security, homelab]
 ---
 
 For many years, I had been using Rainloop as a fallback webmail client.

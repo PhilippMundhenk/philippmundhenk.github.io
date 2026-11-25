@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Site-to-site VPN with OpenWrt and FRITZ!Box
-categories: [home, VPN, tech, FritzBox, OpenWRT]
+categories: [networking, security, homelab]
 ---
 
 To connect two networks over the internet in a secure fashion, a [Virtual Private Network (VPN)](http://en.wikipedia.org/wiki/Virtual_private_network) is often the method of choice. However, the setup of a VPN is not straight-forward, much less if one tries to connect different brands of devices together. This article describes a low-budget solution utilizing an [AVM FRITZ!Box 7390](http://en.avm.de/products/fritzbox/) on one side and a [TP-Link TL-WR1043ND v1](http://www.tp-link.com/en/products/details/?model=TL-WR1043ND) running [OpenWrt](https://openwrt.org/) on the other side.

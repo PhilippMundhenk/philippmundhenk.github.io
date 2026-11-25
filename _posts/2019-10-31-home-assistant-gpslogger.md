@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Home Assistant, GPSLogger & no open port
-categories: [home, automation]
+categories: [home-automation, networking]
 ---
 
 I have recently started venturing into the area of home automation a little more. As you can expect, my focus is running a system as flexible, functional and yet secure as possible. This involves to not use components connected to the Internet. The details of this, however, shall be the content of another article. There, I will introduce the hardware (currently undergoing changes) and platform I use.

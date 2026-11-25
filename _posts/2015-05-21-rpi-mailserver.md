@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Raspberry Pi Mail Server (updated)
-categories: [home, tech, rpi, linux]
+categories: [email, homelab, linux]
 ---
 
 In many cases it can be beneficial to run an own mail server. Although it takes a bit of effort to set up and keep it running securely, the option to store a large amount of mails in a secure location can be very interesting. This also convinced me to set up my own mail server. In the following, I will cover most of the important tools and knowledge required to set up your own mail server. And the best thing about this: You don't need much power, a Raspberry Pi can easily handle a small private mail server!

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: New Website
-categories: [home, web]
+categories: [web]
 ---
 
 Since my server provider is upgrading his systems, this means I will have to move to a newer server. Since the old version of Kirby will no longer run without problems on the newer PHP versions (7+) of the new server, I decided to go with a new website instead of re-licensing the new version of [Kirby](https://getkirby.com/).

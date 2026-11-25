@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Web Interface for Old Netgear Plus Switches
-categories: [home, docker]
+categories: [networking, old-hardware, homelab]
 ---
 
 My network has a small Netgear GS108E in it, one of the first hardware revision.

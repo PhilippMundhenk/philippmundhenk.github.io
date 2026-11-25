@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Doorbell & Home Assistant 
-categories: [home]
+categories: [home-automation]
 ---
 
 I live in an almost 100 year old rental flat. I don't have a smart doorbell and do not have the option to install one. Nevertheless, I would like to reap the benefits of a smart doorbell, especially being notified on multiple devices. This is e.g., useful when wearing headphones alone in home office and the post is outside, trying to deliver a parcel. I have missed that more than once. 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IKEA TRÅDFRI Motion Sensor & Home Assistant 
-categories: [home]
+categories: [home-automation]
 ---
 
 I have recently been getting more and more into the topic of home automation. It find it to be a very family-suitable topic, since once setup, it is easy and fast to integrate another sensor or add a new automation. This allows to also maintain and enhance the system if one only has rather short amounts of time.

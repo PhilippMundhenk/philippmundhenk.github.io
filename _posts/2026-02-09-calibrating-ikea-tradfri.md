@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Calibrating IKEA Tradfri RGBW Lights
-categories: [home]
+categories: [home-automation]
 ---
 
 IKEA’s Tradfri series offers a very affordable entry into smart lighting, with a range of ZigBee-controlled RGB and RGBW bulbs. While they work well for color effects, there’s one glaring shortcoming: **the RGB lights struggle to reproduce accurate white color temperatures**. Warm whites can appear too pink or yellow, and cooler whites can lean slightly green or blue. 

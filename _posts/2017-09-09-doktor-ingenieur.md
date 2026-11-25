@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Doktor-Ingenieur
-categories: [home, work]
+categories: [research, automotive, security]
 ---
 
 It is my pleasure to announce that I have achieved one of my dreams and received a doctoral degree with highest honor (summa cum laude) in Electrical and Computer Engineering with my thesis entitled "Security for Automotive Electrical/Electronic (E/E) Architectures", and may now call myself Dr.-Ing. Philipp Mundhenk.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Automating Kodi through n8n with n8n-nodes-kodi
-categories: [home]
+categories: [home-automation, homelab]
 ---
 
 I've always been passionate about home automation and automating my life.

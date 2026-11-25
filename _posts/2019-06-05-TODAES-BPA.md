@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TODAES Best Paper Award 2019
-categories: [work]
+categories: [research, automotive, security]
 ---
 
 I am very happy to announce that an essential part of my PhD thesis, our (with Andrew Paverd, Artur Mrowca, Sebastian Steinhorst, Martin Lukasiewycz, Suhaib Fahmy, Samarjit Chakraborty) paper entitled "Security in Automotive Networks: Lightweight Authentication and Authorization" has received the ACM Transactions on Design Automation of Electronic Systems (TODAES) Best Paper Award 2019 at the 56th Design Automation Conference in Las Vegas yesterday!

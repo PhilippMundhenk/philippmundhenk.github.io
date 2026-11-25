@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Home Network Upgrade - Basics
-categories: [home, docker, tech, network]
+categories: [homelab, networking, docker]
 ---
 
 In this article (and likely following ones) I will be setting up a new home network infrastructure, using cloud technologies such as distributed file systems, containers, and orchestration mechanisms to abstract from the hardware, allowing redundancy in the infrastructure, as well as easier scalability in future.

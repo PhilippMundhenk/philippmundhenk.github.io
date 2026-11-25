@@ -1,7 +1,7 @@
 ---
 layout: post
 title: VBA Portable Date
-categories: [home, tech, VBA]
+categories: [tools]
 ---
 
 In Excel, the date format depends on the locale setting of the computer, e.g., the formula =TEXT(TODAY(),"YYYY-MM-DD") only works correctly on computers set to English locales, and =TEXT(HEUTE(),"JJJJ-MM-TT") works on computers with German locale settings. This makes worksheets with such functions not portable between computers with different locale settings.

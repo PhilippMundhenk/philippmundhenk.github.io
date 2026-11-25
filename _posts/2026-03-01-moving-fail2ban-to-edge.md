@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Moving fail2ban to the Edge
-categories: [home]
+categories: [security, homelab, networking]
 ---
 
 Running services in Docker is easy. Running them securely, observably, and without punching unnecessary holes into your host? That’s where things get interesting.

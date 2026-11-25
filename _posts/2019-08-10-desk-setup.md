@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Desk & Setup
-categories: [home, desk]
+categories: [diy]
 ---
 
 After many years of using small, cramped corners to set up my computer equipment, I used the chance of a new spacious flat to also build a nice, big desk. I feel there are few things more luxurious to have than space, especially, when not needed. That's the main philosophy for this new setup. Additionally, a sleek, minimalist design was required, while at the same time offering sufficient storage space for a large number of devices, cables, etc.

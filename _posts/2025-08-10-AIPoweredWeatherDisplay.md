@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AI-Powered Kindle Weather Display
-categories: [home]
+categories: [kindle, ai, old-hardware]
 ---
 
 I have been experimenting with Kindles for quite some time now and built and [alarm clock](https://www.mundhenk.org/kindle-alarm-clock/), a [homelab status display](https://www.mundhenk.org/Homelab_shelf/), and even a whole [app framework](https://www.mundhenk.org/kapps/).

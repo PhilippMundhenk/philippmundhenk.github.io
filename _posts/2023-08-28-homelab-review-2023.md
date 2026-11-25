@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Homelab Review 2023
-categories: [home]
+categories: [homelab, docker, networking]
 ---
 
 I have been getting multiple requests recently to give an overview over my homelab.
