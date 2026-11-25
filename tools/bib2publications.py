@@ -169,7 +169,7 @@ def render(entries: list[dict]) -> str:
             link = links(entry)
             if link:
                 text += f" {link}"
-            lines.append(f'  <li><span class="pubtype">[{e(label)}]</span> {text}</li>')
+            lines.append(f'  <li><span class="pubtype">{e(label)}</span> {text}</li>')
         lines.append("</ul>")
     lines.append('<p>All entries as BibTeX: <a href="/files/library.bib">library.bib</a></p>')
     lines.append("</div>")

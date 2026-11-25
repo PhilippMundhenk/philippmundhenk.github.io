@@ -12,9 +12,9 @@ Philipp Mundhenk, e-mail: [contact@mundhenk.org](mailto:contact@mundhenk.org)
 
 ## What this website does not do
 
-- It sets no cookies and uses no analytics or tracking.
+- It sets no cookies and uses no analytics or tracking. If you pick a colour theme, that choice is stored only in your browser (local storage) and never sent anywhere.
 - It has no comments, no contact forms and no user accounts.
-- All styles, fonts, images and the small search script are served from this website itself; no third-party content is loaded while you read.
+- All styles, fonts, images and the two small scripts (search, colour theme) are served from this website itself; no third-party content is loaded while you read.
 
 ## Hosting (GitHub Pages)
 
