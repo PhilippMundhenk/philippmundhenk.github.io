@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<article class="page work">
+  <h1 class="page__title">{{ page.title }}</h1>
+  {% if page.intro %}<p class="work__intro">{{ page.intro }}</p>{% endif %}
+
+  <nav class="work__toc" aria-label="On this page">
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#patents">Patents</a>
+    <a href="#talks">Talks</a>
+  </nav>
+
+  <section class="prose">
+    <h2 id="projects">Projects</h2>
+    {% for group in site.data.projects %}
+    <h3 class="work__group">{{ group.group }}</h3>
+    <div class="project-grid">
+      {% for p in group.projects %}
+      <div class="project">
+        <h4 class="project__name">{% if p.post %}<a href="{{ site.baseurl }}{{ p.post }}">{{ p.name }}</a>{% else %}<a href="https://github.com/PhilippMundhenk/{{ p.repo }}">{{ p.name }}</a>{% endif %}</h4>
+        <p class="project__text">{{ p.text }}</p>
+        <p class="project__links">
+          {% if p.repo %}<a href="https://github.com/PhilippMundhenk/{{ p.repo }}">Code</a>{% endif %}
+          {% if p.post %}<a href="{{ site.baseurl }}{{ p.post }}">Write-up</a>{% endif %}
+          {% for x in p.extra %}<a href="https://github.com/PhilippMundhenk/{{ x.repo }}">{{ x.name }}</a>{% endfor %}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <p class="work__more">All repositories: <a href="https://github.com/PhilippMundhenk?tab=repositories">github.com/PhilippMundhenk</a></p>
+
+    <h2 id="publications">Publications</h2>
+    {% include publications.html %}
+
+    <h2 id="patents">Patents</h2>
+    {% include patents.html %}
+
+    {{ content }}
+  </section>
+</article>

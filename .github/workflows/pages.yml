@@ -1,0 +1,44 @@
+# Builds and publishes the site to GitHub Pages.
+# Before the Jekyll build, files/library.bib is rendered into _includes/publications.html and _includes/patents.html,
+# so the publications page is always up to date and needs no scripts.
+# Requires Settings > Pages > Source: "GitHub Actions".
+name: Publish site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Render publications from BibTeX
+        run: python3 tools/bib2publications.py files/library.bib _includes
+      - uses: actions/configure-pages@v6
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

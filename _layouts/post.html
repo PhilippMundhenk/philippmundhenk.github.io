@@ -2,38 +2,39 @@
 layout: default
 ---
 
-<article class="post detailed">
-  <h1>{{ page.title }}</h1>
-
-  <div>
-    <p class="author_title">{{site.author}}  ·  {{ page.date | date: "%B %e, %Y" }}</p>
-    {% if page.last_modified_at %}
-    <p class="author_title" datetime="{{ page.last_modified_at | date_to_xmlschema }}">(Updated: {{ page.last_modified_at | date: "%b %-d, %Y" }})</p>
+<article class="post">
+  <header class="post__header">
+    <p class="meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+      {% if page.last_modified_at %}<span class="meta__sep">&middot;</span> updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%-d %b %Y" }}</time>{% endif %}
+      {% assign words = content | number_of_words %}<span class="meta__sep">&middot;</span> {{ words | divided_by: 200 | plus: 1 }} min read
+    </p>
+    <h1 class="post__title">{{ page.title }}</h1>
+    {% if page.categories.size > 0 %}
+    <ul class="tags">
+      {% for category in page.categories %}<li><a href="{{ site.baseurl }}/categories/#{{ category | slugize }}">{{ category }}</a></li>{% endfor %}
+    </ul>
     {% endif %}
-    <div class="post-tags">
-      {% if post %}
-        {% assign categories = post.categories %}
-      {% else %}
-        {% assign categories = page.categories %}
-      {% endif %}
-      {% for category in categories %}
-        <a href="{{site.baseurl}}/categories/#{{category|slugize}}">{{category}}</a>
-        {% unless forloop.last %}&nbsp;{% endunless %}
-      {% endfor %}
-    </div>
-  </div>
-    
-  <div class="entry">
-    {% include toc.html html=content %}
+  </header>
+
+  {% capture toc %}{% include toc.html html=content h_min=2 h_max=3 %}{% endcapture %}
+  {% if toc contains "<li" %}
+  <details class="toc" open>
+    <summary>Contents</summary>
+    {{ toc }}
+  </details>
+  {% endif %}
+
+  <div class="prose">
     {{ content }}
   </div>
 
-  <div>
-    <p><span class="share-box">Share:</span> <a href="https://www.linkedin.com/shareArticle?mini=true&url={{site.url}}{{page.url}}" target="_blank">LinkedIn</a>, <a href="https://www.facebook.com/sharer.php?u={{site.url}}{{page.url}}" target="_blank">Facebook</a></p>
-  </div>
-
-  <!--<div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>-->
-
+  <footer class="post__footer">
+    <p>Share: <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}">LinkedIn</a>,
+      <a href="https://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}">Facebook</a></p>
+    <nav class="post__pager" aria-label="More posts">
+      {% if page.previous %}<a class="post__pager-prev" href="{{ site.baseurl }}{{ page.previous.url }}"><span>Older</span>{{ page.previous.title }}</a>{% endif %}
+      {% if page.next %}<a class="post__pager-next" href="{{ site.baseurl }}{{ page.next.url }}"><span>Newer</span>{{ page.next.title }}</a>{% endif %}
+    </nav>
+  </footer>
 </article>
