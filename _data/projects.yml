@@ -27,6 +27,10 @@
       post: /samsung-camera-backup/
       extra:
         - { name: photosort, repo: photosort }
+    - name: finderscope
+      text: A new remote viewfinder app for old Samsung Wi-Fi cameras.
+      repo: finderscope
+      post: /finderscope/
     - name: smlgw
       text: A smart meter gateway from USB IR readers (SML) to MQTT.
       repo: smlgw
