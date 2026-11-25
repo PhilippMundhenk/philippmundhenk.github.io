@@ -57,7 +57,7 @@ service:
     - 'traefik.http.routers.ntfy_basic.middlewares=authelia-basic@docker'
 ```
 
-Note that with [Authelia 4.38](https://www.authelia.com/blog/4.38-pre-release-notes/), this might no longer be needed when the [authz endpoints](https://deploy-preview-5250--authelia-staging.netlify.app/configuration/miscellaneous/server-endpoints-authz/) are introduced.
+Note that with [Authelia 4.38](https://web.archive.org/web/20240301080543/https://www.authelia.com/blog/4.38-pre-release-notes/), this might no longer be needed when the [authz endpoints](https://web.archive.org/web/20250310001228/https://deploy-preview-5250--authelia-staging.netlify.app/configuration/miscellaneous/server-endpoints-authz/) are introduced.
 
 ## Split DNS
 

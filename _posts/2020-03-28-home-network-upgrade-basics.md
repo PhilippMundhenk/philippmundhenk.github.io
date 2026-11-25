@@ -263,7 +263,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-b
 ```
 This will do download the Kubernetes definition and set up everything you need.
 
-We will be using the API Server to access the dashboard. For this to work, we need to install client certificates in the browser (see [here](https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/1.7.x-and-above.md)). We will be extracting the certificates from kubeconfig for this purpose (see [here](https://www.australtech.net/kubernetes-unable-to-login-to-the-dashboard/)):
+We will be using the API Server to access the dashboard. For this to work, we need to install client certificates in the browser (see here). We will be extracting the certificates from kubeconfig for this purpose (see [here](https://www.australtech.net/kubernetes-unable-to-login-to-the-dashboard/)):
 ```bash
 grep 'client-certificate-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -d >> kubecfg.crt
 grep 'client-key-data' ~/.kube/config | head -n 1 | awk '{print $2}' | base64 -d >> kubecfg.key
@@ -395,7 +395,7 @@ pi@node01:~ $ cat /mnt/replicated/test
 ### GlusterFS in Kubernetes
 While the above works nicely with these two nodes, when adding more nodes, we need to take care to also mount the required GlusterFS volumes there (e.g., to ```/mnt/replicated```). Otherwise, the data required for the pod will not be available. This is an additional step to take on the host that can be avoided. We can instead use the Kubernetes support for GlusterFS (see [here](https://kubernetes.io/docs/concepts/storage/volumes/#glusterfs)) to avoid that extra step on the host. This has the additional advantage of more resilience, as the entry in ```/etc/fstab``` is no longer required, avoiding a failed boot, in case the given node is not available. Additionally, the GlusterFS plugin also automatically falls back to the next node, in case one should not be available. It also distributes the requests to GlusterFS across the given nodes.
 
-To set this connection up, I follow [this guide](https://github.com/kubernetes/examples/tree/master/volumes/glusterfs). First, create your endpoints file ```endpoints.yml```, in my case, it looks like this:
+To set this connection up, I follow [this guide](https://web.archive.org/web/20240614101727/https://github.com/kubernetes/examples/tree/master/volumes/glusterfs/). First, create your endpoints file ```endpoints.yml```, in my case, it looks like this:
 ```yaml
 apiVersion: v1
 kind: Endpoints

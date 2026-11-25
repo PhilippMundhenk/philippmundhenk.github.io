@@ -20,7 +20,7 @@ On the right side, we assume an IP address range of 192.168.1.0 with subnet mask
 
 ## Configuration
 ### FRITZ!Box
-While the FRITZ!Box has a web interface for configuring VPN connections, not all options we require for a site-to-site connection are available here. In [EDV-Huber](http://www.edv-huber.com/index.php/problemloesungen/16-net-to-net-connection-between-ipfire-and-fritzbox-ipsec) we have an excellent resource for the configuration of the VPN connection for the FRITZ!Box. Instead of configuring the VPN on the web interface, we create a config file, which we later upload in the web interface. Following [EDV-Huber](http://www.edv-huber.com/index.php/problemloesungen/16-net-to-net-connection-between-ipfire-and-fritzbox-ipsec), the file looks like this:
+While the FRITZ!Box has a web interface for configuring VPN connections, not all options we require for a site-to-site connection are available here. In [EDV-Huber](https://web.archive.org/web/20210614044536/https://edv-huber.com/index.php/problemloesungen/16-net-to-net-connection-between-ipfire-and-fritzbox-ipsec) we have an excellent resource for the configuration of the VPN connection for the FRITZ!Box. Instead of configuring the VPN on the web interface, we create a config file, which we later upload in the web interface. Following [EDV-Huber](https://web.archive.org/web/20210614044536/https://edv-huber.com/index.php/problemloesungen/16-net-to-net-connection-between-ipfire-and-fritzbox-ipsec), the file looks like this:
 ```
 vpncfg {
         connections {
@@ -202,7 +202,7 @@ This should fix the error.
 While this is a bit of a hacky solution, it does the job rather well for me. My networks are virtually always up, I have not seen an outage in all the time I have used this setup. And this is certainly a solution preferable to putting your (potentially vulnerable) services on the internet.
 
 A note on the security of this approach: This configuration is far from perfect. In a setup like the one described here, the parameters of the VPN are set by the non-open device, i.e. the FRITZ!Box. Unfortunately there is nothing much that can be done in terms of security, outside the parameters of the counterpart, if one cannot control this. Thus, we can simply follow these parameters.
-For more information on security with strongSwan, refer to the [strongSwan wiki](https://wiki.strongswan.org/projects/strongswan/wiki/SecurityRecommendations popup:yes).
+For more information on security with strongSwan, refer to the [strongSwan wiki](https://wiki.strongswan.org/projects/strongswan/wiki/SecurityRecommendations).
 
 It takes some research and effort to set up, but it can be done with existing solutions or relatively cheap commercial off-the-shelve hardware.
 

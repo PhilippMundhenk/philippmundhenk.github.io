@@ -16,7 +16,7 @@ All services are hosted in house, as I do not want to rely on internet connectio
 For central control, I am using Home Assistant (HA). There are a number of other options out there, but HA was the first to support my Logitech Harmony Hub natively, allowing me to get rid of the abysmal Logitech app for it.
 The overall system consists of a number of nodes spread across a ZigBee and WiFi networks. For interaction with the ZigBee network I use a ConBee II by dresden electronic. Via deconz this is attached to HA.
 
-Since I pass by IKEA on the way home from office, I tend to stop there every once in a while to have a look at the "As Is" section. Sometimes Tradfri devices show up there. Usually it is lamps, but sometimes I also find motion sensors. These are often priced around 7.5 Euros (i.e., 25% discount) a piece and are effectively new, as you can tell from the state of the original battery (labeled with Ikea). Another great resource for these motion sensors are classifieds portals, such as [eBay Kleinanzeigen](https://kleinanzeigen.ebay.de/), where these trade at low prices, especially when buying in bulk.
+Since I pass by IKEA on the way home from office, I tend to stop there every once in a while to have a look at the "As Is" section. Sometimes Tradfri devices show up there. Usually it is lamps, but sometimes I also find motion sensors. These are often priced around 7.5 Euros (i.e., 25% discount) a piece and are effectively new, as you can tell from the state of the original battery (labeled with Ikea). Another great resource for these motion sensors are classifieds portals, such as [eBay Kleinanzeigen](https://www.kleinanzeigen.de/), where these trade at low prices, especially when buying in bulk.
 
 ## Problem Statement
 
@@ -92,7 +92,7 @@ binary_sensor:
 ```
 {% endraw %}
 
-Since HA does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a [Python script](https://github.com/rodpayne/home-assistant/blob/master/python_scripts/set_state.py), but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like HA.
+Since HA does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a Python script, but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like HA.
 
 I declare an input_boolean, which in turn is wrapped around by a binary_sensor, the "virtual" motion sensor. Technically, the input_boolean is enough for everything we do here. However, declaring a binary_sensor allows us to easily look and act like a motion sensor, when changing the device class the customizations:
 

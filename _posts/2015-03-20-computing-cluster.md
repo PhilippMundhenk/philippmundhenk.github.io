@@ -189,7 +189,7 @@ Depending on your intended usage, you might also want to add your user as cluste
 qmgr -c 'set server managers+=cluster@localhost'
 ```
 
-Check out the full references of [qsub](http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html) and [qstat](http://gridscheduler.sourceforge.net/htmlman/htmlman1/qstat.html) for all options. A good tutorial on the basic usage is available at [NYU](https://wikis.nyu.edu/display/NYUHPC/Tutorial+-+Submitting+a+job+using+qsub).
+Check out the full references of [qsub](http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html) and [qstat](http://gridscheduler.sourceforge.net/htmlman/htmlman1/qstat.html) for all options. A good tutorial on the basic usage is available at [NYU](https://web.archive.org/web/20190126042724/https://wikis.nyu.edu/display/NYUHPC/Tutorial+-+Submitting+a+job+using+qsub).
 
 ## Debug
 Most errors we encountered when setting up our cluster where caused by either incompatible versions of TORQUE, NFS mounting or rights issues or wrong settings of hostnames.

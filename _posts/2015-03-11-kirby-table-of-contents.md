@@ -6,7 +6,7 @@ categories: [web, tools]
 
 For longer blog entries, it would be nice to be able to divide them into different sections and show a table of contents, such as done on this site. While Kirby, the CMS I am using for this site, allows to add different levels of headlines by adding one or multiple # in front of text, it does not automatically create anchors, which can be linked to. Additionally, there is no option to automatically create a table of contents of a page.
 
-> This is for Kirby 2. It might work for Kirby 1 as [Kirbytext Extension Plugin](http://getkirby.com/blog/kirbytext), but I have not tested that.
+> This is for Kirby 2. It might work for Kirby 1 as [Kirbytext Extension Plugin](https://web.archive.org/web/20150924031437/http://getkirby.com:80/blog/kirbytext), but I have not tested that.
 > It is untested for Kirby 3.
 
 ## Installation
@@ -14,7 +14,7 @@ To install the script, [download it](https://github.com/PhilippMundhenk/Kirby-Ta
 
 ## Usage
 ### Headlines
-As I required the above functions, I implemented these myself, by using [Kirby Tags](http://getkirby.com/docs/advanced/kirbytext), thus extending the underlying Markdown specification of Kirby. I added tags for different level headlines (e.g. l1, l2, ...), which automatically generate an anchor, with the same name as the text of the headline:
+As I required the above functions, I implemented these myself, by using [Kirby Tags](https://web.archive.org/web/20151128214033/http://getkirby.com:80/docs/advanced/kirbytext), thus extending the underlying Markdown specification of Kirby. I added tags for different level headlines (e.g. l1, l2, ...), which automatically generate an anchor, with the same name as the text of the headline:
 ```
 conventional: #Headline1
 new: (l1: Headline1)

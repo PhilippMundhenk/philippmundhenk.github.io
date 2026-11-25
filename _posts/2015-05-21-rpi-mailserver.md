@@ -115,7 +115,7 @@ fetchmail -f /etc/fetchmailrc &
 ### Roundcube
 While Sam Hobbs prefers to use SquirellMail, I prefer a more advanced webmail client. After testing a few solutions, I decided to go for Roundcube.
 
-You can install Roundcube as described [here](http://trac.roundcube.net/wiki/Howto_Install)
+You can install Roundcube as described [here](https://web.archive.org/web/20160317235228/http://trac.roundcube.net:80/wiki/Howto_Install)
 
 Make sure your settings are correct in **/var/lib/roundcube/config/config.inc.php**. As you are not running your server directly, you might want to use a different sender address, than the default local_user@hostname.local. This can be configured here, by setting:
 ```

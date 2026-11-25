@@ -43,7 +43,7 @@ binary_sensor:
 ```
 {% endraw %}
 
-Since HA does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a [Python script](https://github.com/rodpayne/home-assistant/blob/master/python_scripts/set_state.py), but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like HA.
+Since HA does not allow us to directly set the state of the sensor, which is generally a good idea, we need to use an input_boolean instead. It would be possible to set the sensor values via a Python script, but I try to avoid third-party plugins, if I can. Maintenance can be an issue, especially with fast-moving software like HA.
 
 I declare an input_boolean, which in turn is wrapped around by a binary_sensor, the "virtual" doorbell sensor. Technically, the input_boolean is enough for everything we do here. However, declaring a binary_sensor allows us to easily look and act like a sound sensor, when changing the device class the customizations:
 

@@ -114,7 +114,7 @@ sudo ln -s /path/to/backup/private/domain.key /usr/syno/etc/certificate/_archive
 
 Having run this setup for some time, I noticed that some applications do not use the new certificates.
 Apparently, these applications use separate folders.
-Big thanks to [bitaranto.ch](https://dokuwiki.bitaranto.ch/doku.php?id=synologyimportcertfrompfsense) that led me to figure this out!
+Big thanks to [bitaranto.ch](https://web.archive.org/web/20260706092002/https://dokuwiki.bitaranto.ch/doku.php?id=synologyimportcertfrompfsense) that led me to figure this out!
 
 Depending on your configuration and installed packages, you may have more copies of these certificates that you need to symlink in ```/usr/local/etc/certificate/``` and ```/usr/syno/etc/certificate/```, e.g.,:
 

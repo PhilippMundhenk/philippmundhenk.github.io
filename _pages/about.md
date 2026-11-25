@@ -24,7 +24,7 @@ at [ETAS GmbH](https://www.etas.com)
 ###### 2021 - 2026: Project Director for ICT Research
 at [Robert Bosch GmbH, Corporate Research (CR)](https://www.bosch.com/research/) in [Renningen](https://www.bosch.de/unser-unternehmen/bosch-in-deutschland/renningen/), Germany
 Topics:
-- Heading research area [Information- and Communication Technologies (ICT)](https://www.bosch.com/research/fields-of-innovation/information-communication-technologies/)
+- Heading research area [Information- and Communication Technologies (ICT)](https://web.archive.org/web/20230730101649/https://www.bosch.com/research/fields-of-innovation/information-communication-technologies/)
 - ~25 projects
 - ~140 researchers
 - 8 locations globally.
@@ -71,7 +71,7 @@ at [TUM CREATE](http://www.tum-create.edu.sg) in Singapore
 Topic: Policy-based message scheduling in the FlexRay static segment
 
 ###### 2011: Internship in Software-Development in R&D
-at [Bosch Sicherheitssysteme GmbH](http://www.bosch-sicherheitssysteme.de) in Grasbrunn, Germany
+at [Bosch Sicherheitssysteme GmbH](https://web.archive.org/web/20140705102824/http://www2.bosch-sicherheitssysteme.de:80/) in Grasbrunn, Germany
 Task: Optimization of an embedded communications stack
 
 ###### 2007-2010: Software-Development Engineer in R&D
@@ -86,7 +86,7 @@ at [TUM CREATE](http://www.tum-create.edu.sg),
 [Technical University Munich (TUM)](http://www.tum.de)
 and [Nanyang Technological University (NTU)](http://www.ntu.edu.sg) Interdisciplinary Graduate School (IGS)
 under the NTU-TUM Joint PhD Programme
-with supervisors [Prof. Dr. Sc. Samarjit Chakraborty](http://www.rcs.ei.tum.de/staff/chakraborty/) and [Assoc. Prof. Suhaib A. Fahmy](http://suhaibfahmy.com/)
+with supervisors [Prof. Dr. Sc. Samarjit Chakraborty](http://www.rcs.ei.tum.de/staff/chakraborty/) and [Assoc. Prof. Suhaib A. Fahmy](https://web.archive.org/web/20210415115132/http://suhaibfahmy.com/)
 
 Topic: "Security for Automotive Electrical/Electronic (E/E) Architectures"
 
@@ -95,7 +95,7 @@ Topic: "Security for Automotive Electrical/Electronic (E/E) Architectures"
 ###### 2012: Internship & Master-Thesis
 at [TUM CREATE](http://www.tum-create.edu.sg) in Singapore
 Topic: Policy-based message scheduling in the FlexRay static segment
-with scholarship of the [Prof. Dr.-Ing. Erich Müller-Stiftung](http://stiftungen.stifterverband.info/t001_muellererich/index.html)
+with scholarship of the [Prof. Dr.-Ing. Erich Müller-Stiftung](https://web.archive.org/web/20200219023342/http://stiftungen.stifterverband.info:80/t001_muellererich/index.html)
 
 ###### 2011: Visiting Student
 at [Korea Advanced Institute of Science and Technology (KAIST)](http://www.kaist.edu) in Daejeon, Korea
@@ -104,7 +104,7 @@ with [PROMOS scholarship](http://www.daad.de/promos/) from [DAAD](http://www.daa
 ###### 2010-2012: Master of Science (M. Sc.] / Dipl.-Ing. (TUM]
 in **Electrical and Computer Engineering (Elektro- und Informationstechnik)**
 at [Technical University Munich (TUM)](http://www.tum.de)
-with scholarships from [Siemens Master Program](http://www.siemens.de/jobs/studenten/studentenprogramme/smp/seiten/default.aspx) and [e-fellows.net](http://www.e-fellows.net)
+with scholarships from [Siemens Master Program](https://web.archive.org/web/20161006024730/http://www.siemens.de:80/jobs/studenten/studentenprogramme/smp/seiten/default.aspx) and [e-fellows.net](http://www.e-fellows.net)
 
 *graduated among top 10 students*
 
@@ -125,11 +125,11 @@ from the [Open University London](http://www.open.ac.uk), in combination with [B
 ## Awards
 
 - **2019**: [2019 ACM Transactions on Design Automation of Electronic Systems (TODAES) Best Paper Award](https://dl.acm.org/journal/todaes/honors-and-awards)
-- **2015**: Participant at the [Global Young Scientists Summit (GYSS)](http://www.nrf.gov.sg/gyss@one-north-2015)
+- **2015**: Participant at the [Global Young Scientists Summit (GYSS)](https://web.archive.org/web/20150408011542/http://www.nrf.gov.sg:80/gyss@one-north-2015)
 - **2012**: Graduated among top 10 students, [Technische Universität München (TUM)](http://www.tum.de)
-- **2012**: [Prof. Dr.-Ing. Erich Müller-Stiftung Scholarship](http://stiftungen.stifterverband.info/t001_muellererich/index.html)
+- **2012**: [Prof. Dr.-Ing. Erich Müller-Stiftung Scholarship](https://web.archive.org/web/20200219023342/http://stiftungen.stifterverband.info:80/t001_muellererich/index.html)
 - **2011**: [PROMOS scholarship](http://www.daad.de/promos/)
-- **2010 - 2012**: [Siemens Master Program Scholarship](http://www.siemens.de/jobs/studenten/studentenprogramme/smp/seiten/default.aspx)
+- **2010 - 2012**: [Siemens Master Program Scholarship](https://web.archive.org/web/20161006024730/http://www.siemens.de:80/jobs/studenten/studentenprogramme/smp/seiten/default.aspx)
 - **2010 - 2011**: [e-fellows.net scholarship](http://www.e-fellows.net)
 - **2009**: Scholarship of the Landesstiftung Baden-Württemberg [Baden-Württemberg Stipendium](http://www.bw-stipendium.de)
 - **2007 - 2010**: Best degree in year, [Baden-Wuerttemberg Cooperative State University Loerrach (Duale Hochschule Baden-Württemberg (DHBW) Lörrach)](http://www.dhbw-loerrach.de)
