@@ -1,0 +1,70 @@
+# Departure light: dashboard tab for a YAML dashboard (e.g. ui-lovelace.yaml)
+# From https://www.mundhenk.org/departure-light/ (MIT licence)
+# Paste this list item under `views:`, at the same indentation as your other tabs.
+- title: Departure
+  path: departure
+  icon: mdi:door-open
+  cards:
+    - type: entities
+      title: Leaving the house
+      show_header_toggle: false
+      entities:
+        - entity: sensor.departure_today
+          name: Today
+          format: time
+        - entity: sensor.departure_warning_start
+          name: Countdown starts
+          format: time
+        - type: simple-entity
+          entity: input_datetime.departure_skip_date
+          name: Paused on
+        - type: simple-entity
+          entity: input_datetime.departure_paused_until
+          name: Paused until
+        - entity: input_boolean.ball_notification_active
+          name: Ball lamp busy
+    - type: grid
+      columns: 3
+      square: false
+      cards:
+        - type: button
+          entity: script.departure_pause_today
+          name: Pause today
+          icon: mdi:bell-off
+          tap_action: { action: toggle }
+        - type: button
+          entity: script.departure_pause_tomorrow
+          name: Pause tomorrow
+          icon: mdi:calendar-arrow-right
+          tap_action: { action: toggle }
+        - type: button
+          entity: script.departure_resume
+          name: Resume
+          icon: mdi:bell-ring
+          tap_action: { action: toggle }
+    - type: entities
+      title: Weekly schedule
+      show_header_toggle: false
+      entities:
+        - { entity: input_boolean.departure_mon_enabled, name: Monday }
+        - { entity: input_datetime.departure_mon, name: " " }
+        - { entity: input_boolean.departure_tue_enabled, name: Tuesday }
+        - { entity: input_datetime.departure_tue, name: " " }
+        - { entity: input_boolean.departure_wed_enabled, name: Wednesday }
+        - { entity: input_datetime.departure_wed, name: " " }
+        - { entity: input_boolean.departure_thu_enabled, name: Thursday }
+        - { entity: input_datetime.departure_thu, name: " " }
+        - { entity: input_boolean.departure_fri_enabled, name: Friday }
+        - { entity: input_datetime.departure_fri, name: " " }
+        - { entity: input_boolean.departure_sat_enabled, name: Saturday }
+        - { entity: input_datetime.departure_sat, name: " " }
+        - { entity: input_boolean.departure_sun_enabled, name: Sunday }
+        - { entity: input_datetime.departure_sun, name: " " }
+    - type: entities
+      title: Countdown
+      show_header_toggle: false
+      entities:
+        - { entity: input_number.departure_lead_minutes, name: Lead time }
+        - { entity: input_number.departure_step_seconds, name: Colour step }
+        - { entity: input_number.departure_blink_minutes, name: Pulse duration }
+        - { entity: input_number.departure_brightness, name: Brightness }

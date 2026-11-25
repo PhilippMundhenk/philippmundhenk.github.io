@@ -1,0 +1,27 @@
+# Departure light: example of a sun-based white automation that cooperates with it.
+# From https://www.mundhenk.org/departure-light/ (MIT licence)
+# The condition on input_boolean.ball_notification_active keeps it away from the lamp
+# during a countdown. It must NOT trigger on that boolean: the package runs it itself.
+# sensor.light_temp_based_on_sun_angle is a template sensor, see
+# https://www.mundhenk.org/calibrating-ikea-tradfri/
+- id: track_living_room_lights_color_by_sun
+  alias: Track living room lights color by sun
+  description: Paused while the ball lamp shows a notification.
+  triggers:
+    - trigger: state
+      entity_id: sensor.light_temp_based_on_sun_angle
+  conditions:
+    - condition: state
+      entity_id: light.living_room_light
+      state: "on"
+    - condition: state
+      entity_id: input_boolean.ball_notification_active
+      state: "off"
+  actions:
+    - action: light.turn_on
+      target: { entity_id: light.living_room_light }
+      data:
+        brightness_pct: 100
+        color_temp_kelvin: "{{ states('sensor.light_temp_based_on_sun_angle') | int }}"
+  mode: queued
+  max: 2
