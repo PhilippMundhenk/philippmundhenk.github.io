@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Brother Scanner Docker 2.0
-categories: [home, docker]
+categories: [scanning, docker, homelab]
 ---
 
 Seven years ago I wrote about [digitizing analog documents](/analog-document-digitization/): A Brother MFC-L2700DW, its Linux driver in a Docker container on the DiskStation, two rewritten shortcut scripts that turn a simplex document feeder into a duplex workflow, and a small Tesseract service for the text recognition.

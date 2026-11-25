@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TeX, TikZ, Cache
-categories: [work, TeX, TikZ, tech]
+categories: [tools, research]
 ---
 
 When working in academia or writing your final thesis, you will come across TeX. While this is a great tool to write papers or a thesis, it has its caveats, one of these being performance. This especially holds when using TikZ or PGFPlots (which uses TikZ). When using these, every diagram and plot is redrawn every time you start your build process. To cache images, there is the function *\tikzexternalize*. This caches images, usually via automatically generated file names. This can lead to issues when you place a figure in the middle of your documents and do not clean the TikZ cache. Then, your figures might be confused by TeX. This is especially annoying when using the package *todonotes*, as every *\todo* is a TikZ image, resulting in confusion of ToDos whenever a new one is created.

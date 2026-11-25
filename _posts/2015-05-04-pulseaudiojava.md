@@ -1,7 +1,7 @@
 ---
 layout: post
 title: PulseAudio + Java = PulseAudioJava
-categories: [work, tech, Linux, Java]
+categories: [linux, tools]
 ---
 
 PulseAudio is the audio framework used in many Linux distributions. It controls all audio to be played and all audio playback devices (e.g. soundcards, headphones) connected to the computer. PulseAudio also provides tools to manage these inputs and outputs (called sinks). In our electric taxi [EVA](/eva) we have stereo speakers on every seat. We use PulseAudio to manage the input from internet radio, as well as streams from passenger smartphones and control which output (or seat) each input is directed to. For EVA, we wanted to be able to control PulseAudio inputs and sinks from our Java framework, such that we can start playing music from different sources on different seats. The tool described here allows us to do exactly this.

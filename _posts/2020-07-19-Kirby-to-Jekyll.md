@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kirby 2 -> Jekyll
-categories: [home, web]
+categories: [web]
 ---
 
 As I switched my website from the Kirby 2 to Jekyll (see also [here](/new-website)), I needed to convert the pages. I did that in a a fairly manual way, with the help of some simple macros. This was acceptable since I did not need to convert many pages. In the following, I describe the required changes, based on the features and plugins I have used.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DIY Dyson Vacuum Stand
-categories: [home]
+categories: [diy]
 ---
 
 A year or two ago, our 36 Euro vacuum cleaner died. While I managed to revive it a few times with self-built filters, tape, and some rewiring, we eventually decided to abandon the zombie cleaner and go for something nicer: A Dyson handheld vacuum cleaner. We went with the V8 as it was the first one with the additional filter after the motor and a lithium-ion battery. As this was already an older model, we managed to get it used for a good price with a number of accessories from a classifieds platform. We bought some more accessories we occasionally use (Car Cleaning Kit), of course from a classifieds platform as well. However, as probably every Dyson owner knows: Storing this vacuum with its fancy charging station and all the accessories is not quite straight-forward. Even when screwing to a wall, there is still no nice way to store the accessories. In this article, I will show the stand I built from wood scraps I had lying around from [another project](/learning-tower/). Here the final setup for motivation:

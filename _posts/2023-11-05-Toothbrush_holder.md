@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DIY Toothbrush Stand
-categories: [home]
+categories: [diy]
 ---
 
 This may be my shortest post in quite a while, but sometimes also small things bring large benefit.

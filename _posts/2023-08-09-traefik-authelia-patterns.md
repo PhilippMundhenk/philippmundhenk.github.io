@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Traefik & Authelia Patterns
-categories: [home]
+categories: [homelab, security, docker]
 ---
 
 I run a small number of webservices at home behind a [Traefik](https://traefik.io/traefik/) & [Authelia](https://www.authelia.com/) setup.

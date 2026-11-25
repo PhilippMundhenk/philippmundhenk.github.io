@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Computing Cluster
-categories: [work, cluster, tech]
+categories: [research, linux, tools]
 ---
 
 My work often crosses the areas of verification and optimization, which often require a large amount of computing power or memory. This holds especially whenever a large amount of testcases shall be solved. However, in many cases, e.g. with independent testcases, these computations can be easily parallelized, simply by calling a separate script for every testcase.

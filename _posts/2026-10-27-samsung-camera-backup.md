@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Backup Target for an Old Samsung Wi-Fi Camera
-categories: [home, docker]
+categories: [photography, old-hardware, docker]
 ---
 
 My NX1000 is a mirrorless camera from 2012 with a feature that was ahead of its time: Wi-Fi, and with it *Auto Backup*.

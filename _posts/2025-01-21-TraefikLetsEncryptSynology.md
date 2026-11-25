@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Traefik's Let's Encrypt certificates for Synology NAS - Updated
-categories: [home]
+categories: [homelab, security, docker]
 ---
 
 For about 15 years now, I have been using different Synology DiskStations (DS) as the backbone of my data storage.

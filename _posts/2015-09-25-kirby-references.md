@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kirby Reference Management
-categories: [home, tech, kirby]
+categories: [web, tools]
 ---
 
 As I often cite multiple sources in my articles here in Kirby, I built a minimal reference management, that lets me simply refer to these sources by a tag in the text. The actual URL of the source is then given at the bottom of the article in a separate section.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Analog document digitization
-categories: [home, docker]
+categories: [scanning, docker, homelab]
 ---
 
 I used to be good at sorting paper documents when I was younger. With the amount of letters (mostly bills) getting more and more in life, I gave up on sorting paper. I have yet to find an organizational scheme that easily allows me to store and retrieve a large number of documents within a short amount of time. Instead, I decided to do what I do best and use technology to help me. This post details the process I use for digitizing analog documents for home use.

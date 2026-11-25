@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Detecting Laptop Dock
-categories: [home]
+categories: [home-automation, tools]
 ---
 
 In my [last post](/screen-backlight/), I showed how I automate the LEDs mounted behind my computer screen to turn on and off automatically, when I log in or log out of the computer, respectively. There is a small caveat though: My computer is a laptop. Thus, it is possible that it is not in its docking station at the [desk](/desk-setup/), but e.g., with me on the couch. In this case, I of course don't want to turn on the LEDs. Thus, I need to detect the docking state of the laptop and notify Home Assistant of it. I then can trigger the lights based on the combined input of the log in/out and un-/docked state. This article will focus on a ThinkPad running Windows.

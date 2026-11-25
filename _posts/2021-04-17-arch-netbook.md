@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A Netbook in 2021
-categories: [home]
+categories: [linux, old-hardware]
 ---
 
 As everyone knows, I am a huge fan of Linux for many applications. I have a number of Linux-based servers running, I have been using different Linux 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kindle Alarm Clock (updated)
-categories: [home, Kindle, JavaScript, tech, HTML, Python]
+categories: [kindle, old-hardware]
 ---
 
 For some time, I have been looking for a nicely designed alarm clock and some "advanced" features, such as weekly timers and potentially DAB/Internet Radio, at a reasonable price. As it turns out, no such alarm clock exists. At least I could not find anything I like. I thus decided to build my own. I was always fasicnated by the Kindle, which is a great little device.  It has a large display, consumes relatively little energy, due to the e-ink display, runs a Linux-based OS and is easy to hack. In case of the Kindle Touch, it also includes speakers. Unfortunately, it does not have a backlight, which might be quite a drawback for an alarm clock. I decided to anyway try and see how far I get with it. As it turns out, I got quite a bit further than expected in a rather short amount of time. My conclusion: Hacking the Kindle is easy, extremely much fun and the device is ideal for a large range of applications. There are a few Kindle applications out there already, e.g. [Kindle Weather Display (web-based)](http://blog.yolo.pro/repurposing-an-old-kindle-touch-as-a-weather-display/) and [Kindle Weather Display (PNG-based)](https://mpetroff.net/2012/09/kindle-weather-display/). I used these as inspirations, but I wanted something a little more interactive, meaning a touch-controlled alarm clock. The concepts behind are descried in the following. I would still call it a prototype, as not everything es very neat, but it works, and I think it looks very nice!

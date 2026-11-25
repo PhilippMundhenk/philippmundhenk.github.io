@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Automated Monitor Light
-categories: [home]
+categories: [home-automation, diy]
 ---
 
 Since my desk is sitting in a rather dark corner of the living room and since I often write posts like this in the evenings, I thought a bit of monitor backlight would reduce eye strain a little. However, turning it on manually seems just too much of a hassle. Also, I use an RGB-LED strip and might like a different color than my wife. So clearly, some automation is urgently needed.

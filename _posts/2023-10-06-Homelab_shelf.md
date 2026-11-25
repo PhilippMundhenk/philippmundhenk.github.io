@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Building a Homelab Shelf
-categories: [home]
+categories: [homelab, diy]
 ---
 
 As shown in one of my [last posts](https://www.mundhenk.org/homelab-review-2023/), I operate a number of devices and services at home.

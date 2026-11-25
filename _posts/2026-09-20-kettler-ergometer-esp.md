@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Teaching a 30-Year-Old Kettler Ergometer New Tricks
-categories: [home]
+categories: [old-hardware, diy, home-automation]
 ---
 
 In our attic stands a very old Kettler Golf M ergometer.

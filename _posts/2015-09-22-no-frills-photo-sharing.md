@@ -1,7 +1,7 @@
 ---
 layout: post
 title: No Frills Photo Sharing and Collecting
-categories: [home, tech, PHP, JavaScript]
+categories: [web, photography]
 ---
 
 I recently had a larger celebration and liked the idea of distributing disposable cameras on the tables so that everyone can take quick snapshots, which I could later collect and summarize into an album. After a bit of investigation, however, I learned that these cameras are not particularly cheap and even worse, offer horrible image quality, right down to all black photos. Basically every current smartphone today takes better pictures. 

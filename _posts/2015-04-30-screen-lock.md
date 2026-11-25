@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Multi Machine Screen Lock
-categories: [work, tech, Linux]
+categories: [linux, tools]
 ---
 
 On my desk at work, I am using two computers: A Windows laptop, given from our IT department and a self-administered Linux workstation. The Windows laptop is Windows 7 and the workstation is Manjaro, an Arch Linux derivate, with a KDE desktop. The workstation is crunching numbers and running most of the time. I use Synergy to use the mouse and keyboard attached to the Linux workstation also on my laptop. This setup works fine, except for the case of locking screens when leaving the desk. I always have to lock and unlock both computers separately. This is costs me a few seconds and is thus not acceptable. A script is absolutely required to make this easier.

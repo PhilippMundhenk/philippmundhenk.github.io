@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A New Remote Viewfinder for Old Samsung Cameras
-categories: [home, android]
+categories: [photography, old-hardware]
 ---
 
 My NX1000 has a second Wi-Fi trick besides the [Auto Backup I wrote a server for](/samsung-camera-backup/).
