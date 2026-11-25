@@ -122,6 +122,8 @@ def venue(entry: dict) -> str:
         parts.append(f"<em>{journal}</em>" + (f", {e(vol)}{e(num)}" if vol else ""))
         if entry.get("pages"):
             parts.append(f"pp. {e(entry['pages'])}")
+        if entry.get("note"):
+            parts.append(e(entry["note"]))
     elif t in ("phdthesis", "mastersthesis"):
         parts.append(e(entry.get("school", "")))
         if entry.get("publisher"):
