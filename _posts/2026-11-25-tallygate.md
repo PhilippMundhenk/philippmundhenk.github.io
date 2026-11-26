@@ -38,6 +38,15 @@ The gateway is the only other machine on that network and offers a proxy, and th
 The isolation comes from the network layout and not from firewall rules inside the agent's container.
 A program that ignores the proxy settings simply cannot connect.
 
+Anthropic's own [reference dev container](https://docs.anthropic.com/en/docs/claude-code/devcontainer) takes a different route, and it is the setup most people meet first.
+It limits the agent with an `iptables` script inside the agent's container, using a fixed list of allowed domains that is resolved to addresses once at start.
+That is simple, works per project in VS Code and is a good fit at the desk.
+For an agent that runs alone, three things bothered me.
+The firewall sits inside the container it is meant to restrict, and the container needs extra privileges to set it up.
+A list of addresses taken at start cannot follow a service that moves, and it leaves DNS open.
+A destination that is not on the list simply fails, and nobody is asked.
+tallygate pays for the difference with three containers and a proxy that every tool has to use.
+
 ![The Overview tab with status, attention items and the last hour's connections](/images/tallygate/overview.png)
 
 ## Asking instead of guessing
