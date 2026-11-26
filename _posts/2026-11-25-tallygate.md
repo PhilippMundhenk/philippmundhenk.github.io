@@ -39,7 +39,8 @@ The isolation comes from the network layout and not from firewall rules inside t
 A program that ignores the proxy settings simply cannot connect.
 
 Anthropic's own [reference dev container](https://docs.anthropic.com/en/docs/claude-code/devcontainer) takes a different route, and it is the setup most people meet first.
-It limits the agent with an `iptables` script inside the agent's container, using a fixed list of allowed domains that is resolved to addresses once at start.
+It limits the agent with an `iptables` script inside the agent's container.
+The script uses a fixed list of allowed domains and resolves it to addresses once at start.
 That is simple, works per project in VS Code and is a good fit at the desk.
 For an agent that runs alone, three things bothered me.
 The firewall sits inside the container it is meant to restrict, and the container needs extra privileges to set it up.
