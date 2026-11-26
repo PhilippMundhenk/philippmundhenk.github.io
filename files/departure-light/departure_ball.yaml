@@ -1,0 +1,310 @@
+# =============================================================================
+# Departure light: a countdown to leaving the house on one colour lamp
+# Home Assistant package, from https://www.mundhenk.org/departure-light/
+# Licence: MIT (see the LICENSE file of the blog repository)
+#
+# Install: put this file into /config/packages/ and make sure configuration.yaml
+# loads packages:
+#   homeassistant:
+#     packages: !include_dir_named packages
+#
+# Change the three entity IDs under `variables:` in the automation at the bottom.
+#
+# Phases (all configurable via helpers):
+#   T - lead      : the lamp turns green
+#   T - lead -> T : hue walks green -> yellow -> orange -> red along the colour-wheel edge
+#   T -> T + blink: red brightness pulse ("leave now")
+#   afterwards    : previous light state restored
+#
+# IKEA Tradfri constraints respected:
+#   * Brightness and colour are never sent in the same call (separate calls, 1 s apart).
+#   * The bulb interpolates colour transitions in xy (a straight line through the
+#     white point), so the hue walk is done in many small steps (default 20 s).
+#     Each step stays close to the gamut edge and never washes out to white.
+#   * Min. 10 s between colour commands. The pulse uses brightness-only commands
+#     with transition == delay (no on/off toggling, no Zigbee identify effects).
+#
+# Other automations that set this lamp (e.g. a colour temperature that follows the
+# sun) should have the condition "input_boolean.ball_notification_active is off"
+# and no trigger on that boolean. This package runs the sun automation itself
+# when the countdown ends and the room was on.
+# =============================================================================
+
+input_boolean:
+  departure_mon_enabled: { name: "Departure Mon enabled", icon: mdi:calendar-check }
+  departure_tue_enabled: { name: "Departure Tue enabled", icon: mdi:calendar-check }
+  departure_wed_enabled: { name: "Departure Wed enabled", icon: mdi:calendar-check }
+  departure_thu_enabled: { name: "Departure Thu enabled", icon: mdi:calendar-check }
+  departure_fri_enabled: { name: "Departure Fri enabled", icon: mdi:calendar-check }
+  departure_sat_enabled: { name: "Departure Sat enabled", icon: mdi:calendar-check }
+  departure_sun_enabled: { name: "Departure Sun enabled", icon: mdi:calendar-check }
+  # Lock for other automations that touch the lamp:
+  # add a condition "ball_notification_active is off" there.
+  ball_notification_active:
+    name: "Ball lamp notification active"
+    icon: mdi:lightbulb-alert
+
+input_datetime:
+  departure_mon: { name: "Departure Mon", has_date: false, has_time: true }
+  departure_tue: { name: "Departure Tue", has_date: false, has_time: true }
+  departure_wed: { name: "Departure Wed", has_date: false, has_time: true }
+  departure_thu: { name: "Departure Thu", has_date: false, has_time: true }
+  departure_fri: { name: "Departure Fri", has_date: false, has_time: true }
+  departure_sat: { name: "Departure Sat", has_date: false, has_time: true }
+  departure_sun: { name: "Departure Sun", has_date: false, has_time: true }
+  # Date on which the countdown is paused (pause / dismiss).
+  departure_skip_date:
+    name: "Departure paused on"
+    has_date: true
+    has_time: false
+    icon: mdi:calendar-remove
+  # Paused up to and including this date (holidays). Starts again automatically.
+  departure_paused_until:
+    name: "Departure paused until"
+    has_date: true
+    has_time: false
+    icon: mdi:calendar-range
+
+# NOTE: an input_number starts at `min` when it is first created.
+# Set the values once after loading (suggested: 15 min, 5 min, 20 s, 80 %).
+input_number:
+  departure_lead_minutes:
+    name: "Departure lead time"
+    min: 5
+    max: 60
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:timer-sand
+  departure_blink_minutes:
+    name: "Departure blink duration"
+    min: 1
+    max: 15
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:alarm-light
+  departure_step_seconds:
+    name: "Departure colour step"
+    min: 10          # Tradfri / Zigbee: don't go faster
+    max: 120
+    step: 5
+    unit_of_measurement: s
+    icon: mdi:stairs
+  departure_brightness:
+    name: "Departure brightness"
+    min: 10
+    max: 100
+    step: 5
+    unit_of_measurement: "%"
+    icon: mdi:brightness-6
+
+template:
+  - sensor:
+      - name: "Departure today"
+        unique_id: departure_today
+        device_class: timestamp
+        icon: mdi:door-open
+        availability: >
+          {% set d = ['mon','tue','wed','thu','fri','sat','sun'][now().weekday()] %}
+          {{ is_state('input_boolean.departure_' ~ d ~ '_enabled', 'on')
+             and has_value('input_datetime.departure_' ~ d)
+             and states('input_datetime.departure_skip_date') != (now().date() | string)
+             and (now().date() | string) > states('input_datetime.departure_paused_until') }}
+        state: >
+          {% set d = ['mon','tue','wed','thu','fri','sat','sun'][now().weekday()] %}
+          {{ today_at(states('input_datetime.departure_' ~ d)).isoformat() }}
+
+      - name: "Departure warning start"
+        unique_id: departure_warning_start
+        device_class: timestamp
+        icon: mdi:timer-play
+        availability: "{{ has_value('sensor.departure_today') }}"
+        state: >
+          {{ (as_datetime(states('sensor.departure_today'))
+              - timedelta(minutes=states('input_number.departure_lead_minutes') | int(15))).isoformat() }}
+
+script:
+  # Pause today = also the "dismiss" action while the countdown runs.
+  departure_pause_today:
+    alias: "Departure – pause today / dismiss"
+    icon: mdi:bell-off
+    sequence:
+      - action: input_datetime.set_datetime
+        target: { entity_id: input_datetime.departure_skip_date }
+        data: { date: "{{ now().date() }}" }
+
+  departure_pause_tomorrow:
+    alias: "Departure – pause tomorrow"
+    icon: mdi:calendar-arrow-right
+    sequence:
+      - action: input_datetime.set_datetime
+        target: { entity_id: input_datetime.departure_skip_date }
+        data: { date: "{{ (now() + timedelta(days=1)).date() }}" }
+
+  departure_resume:
+    alias: "Departure – resume"
+    icon: mdi:bell-ring
+    sequence:
+      - action: input_datetime.set_datetime
+        target: { entity_id: input_datetime.departure_skip_date }
+        data: { date: "1970-01-01" }
+      - action: input_datetime.set_datetime
+        target: { entity_id: input_datetime.departure_paused_until }
+        data: { date: "1970-01-01" }
+
+automation:
+  - id: departure_ball_countdown
+    alias: "Departure – ball lamp countdown"
+    mode: single
+    max_exceeded: silent
+    variables:
+      ball: light.ball_lamp            # CHANGE: the colour lamp that shows the countdown
+      room: light.living_room_light    # CHANGE: the light group the lamp belongs to
+      # CHANGE: the automation that sets the room's white by the sun. Without one,
+      # the lamp's own previous state is restored instead.
+      sun_automation: automation.track_living_room_lights_color_by_sun
+    triggers:
+      - trigger: time
+        at: sensor.departure_warning_start
+      # Safety net: catches HA restarts / config changes inside the window.
+      - trigger: time_pattern
+        minutes: "/1"
+    conditions:
+      - condition: state
+        entity_id: input_boolean.ball_notification_active
+        state: "off"
+      - condition: template
+        value_template: >
+          {% if has_value('sensor.departure_today') and has_value('sensor.departure_warning_start') %}
+            {% set dep = as_datetime(states('sensor.departure_today')) %}
+            {% set start = as_datetime(states('sensor.departure_warning_start')) %}
+            {% set blink = states('input_number.departure_blink_minutes') | int(5) %}
+            {{ now() >= start - timedelta(seconds=5) and now() < dep + timedelta(minutes=blink) }}
+          {% else %}false{% endif %}
+    actions:
+      # --- Snapshot the current state before touching the lamp ----------------
+      - variables:
+          was_on: "{{ is_state(ball, 'on') }}"
+          room_was_on: "{{ is_state(room, 'on') }}"
+          old_bri: "{{ state_attr(ball, 'brightness') | int(128) }}"
+          old_mode: "{{ state_attr(ball, 'color_mode') }}"
+          old_kelvin: "{{ state_attr(ball, 'color_temp_kelvin') }}"
+          old_xy: "{{ state_attr(ball, 'xy_color') }}"
+          bri: "{{ states('input_number.departure_brightness') | int(80) }}"
+          step: "{{ [states('input_number.departure_step_seconds') | int(20), 10] | max }}"
+      - action: input_boolean.turn_on
+        target: { entity_id: input_boolean.ball_notification_active }
+
+      # --- Phase 1: start colour (green, or wherever we are if started late) ---
+      - variables:
+          lead_s: "{{ states('input_number.departure_lead_minutes') | int(15) * 60 }}"
+          remaining: "{{ [(as_datetime(states('sensor.departure_today')) - now()).total_seconds() | int, 0] | max }}"
+          hue0: "{{ ([120 * remaining / lead_s, 120] | min) | round(1) }}"
+      # Staged sequence so the old colour is never visible:
+      # 1) on / dim to 1 % instantly  2) set colour while dark  3) ramp up
+      - action: light.turn_on
+        target: { entity_id: "{{ ball }}" }
+        data: { brightness_pct: 1, transition: 0 }
+      - delay: { seconds: 1 }
+      - action: light.turn_on
+        target: { entity_id: "{{ ball }}" }
+        data: { hs_color: "{{ [hue0, 100] }}", transition: 0 }
+      - delay: { seconds: 1 }
+      - action: light.turn_on
+        target: { entity_id: "{{ ball }}" }
+        data: { brightness_pct: "{{ bri }}", transition: 2 }
+      - delay: { seconds: 3 }
+
+      # --- Phase 2: walk the hue 120° -> 0° in small steps until departure ------
+      - repeat:
+          while:
+            - condition: template
+              value_template: >
+                {{ has_value('sensor.departure_today')
+                   and now() < as_datetime(states('sensor.departure_today')) }}
+          sequence:
+            - variables:
+                lead_s: "{{ states('input_number.departure_lead_minutes') | int(15) * 60 }}"
+                remaining: "{{ [(as_datetime(states('sensor.departure_today')) - now()).total_seconds() | int, 0] | max }}"
+                dur: "{{ [[step, remaining] | min, 1] | max }}"
+                hue: "{{ ([120 * (remaining - dur) / lead_s, 120] | min) | round(1) }}"
+            - action: light.turn_on
+              target: { entity_id: "{{ ball }}" }
+              data:
+                hs_color: "{{ [[hue, 0] | max, 100] }}"
+                transition: "{{ dur }}"
+            - delay: { seconds: "{{ dur }}" }
+
+      # --- Phase 3: red brightness pulse (only if not paused/dismissed) --------
+      - if:
+          - condition: template
+            value_template: "{{ has_value('sensor.departure_today') }}"
+        then:
+          # The last hue step already ended on red, so no extra colour command here.
+          # Smooth "breathing": transition == delay, so each command arrives exactly
+          # when the previous fade ends (no mid-transition interrupts).
+          # Low level 10 %: Tradfri dims non-linearly and flickers near the bottom.
+          - repeat:
+              while:
+                - condition: template
+                  value_template: >
+                    {{ has_value('sensor.departure_today')
+                       and now() < as_datetime(states('sensor.departure_today'))
+                                   + timedelta(minutes=states('input_number.departure_blink_minutes') | int(5)) }}
+              sequence:
+                - action: light.turn_on
+                  target: { entity_id: "{{ ball }}" }
+                  data: { brightness_pct: 10, transition: 1.5 }
+                - delay: { milliseconds: 1600 }
+                - action: light.turn_on
+                  target: { entity_id: "{{ ball }}" }
+                  data: { brightness_pct: 100, transition: 1.5 }
+                - delay: { milliseconds: 1600 }
+
+      # --- Restore -------------------------------------------------------------
+      # Lamp was off  -> turn it off and wait until it reports off, so the room
+      #                  group no longer looks "on" when the lock is released.
+      # Room was on   -> release the lock and run the sun automation once, which
+      #                  applies the current white to all lamps of the room
+      #                  (only if that automation exists).
+      # Otherwise     -> restore the lamp's own snapshot (brightness / colour separately).
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ not was_on }}"
+            sequence:
+              - action: light.turn_off
+                target: { entity_id: "{{ ball }}" }
+              - wait_template: "{{ is_state(ball, 'off') }}"
+                timeout: { seconds: 10 }
+          - conditions:
+              - condition: template
+                value_template: >
+                  {{ room_was_on and states(sun_automation) not in ['unknown', 'unavailable'] }}
+            sequence:
+              - action: input_boolean.turn_off
+                target: { entity_id: input_boolean.ball_notification_active }
+              - action: automation.trigger
+                target: { entity_id: "{{ sun_automation }}" }
+                data: { skip_condition: false }
+        default:
+          - action: light.turn_on
+            target: { entity_id: "{{ ball }}" }
+            data: { brightness: "{{ old_bri }}" }
+          - delay: { seconds: 1 }
+          - choose:
+              - conditions:
+                  - condition: template
+                    value_template: "{{ old_mode == 'color_temp' and old_kelvin is not none }}"
+                sequence:
+                  - action: light.turn_on
+                    target: { entity_id: "{{ ball }}" }
+                    data: { color_temp_kelvin: "{{ old_kelvin }}" }
+              - conditions:
+                  - condition: template
+                    value_template: "{{ old_xy is not none }}"
+                sequence:
+                  - action: light.turn_on
+                    target: { entity_id: "{{ ball }}" }
+                    data: { xy_color: "{{ old_xy }}" }
+      - action: input_boolean.turn_off
+        target: { entity_id: input_boolean.ball_notification_active }
